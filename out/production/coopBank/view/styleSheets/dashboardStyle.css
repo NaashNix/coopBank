@@ -1,0 +1,29 @@
+#dashboardButton {
+    -fx-background-radius : 10 0 0 10;
+    -fx-background-color : #2C3E50;
+}
+
+#dashboardButton:hover{
+    -fx-background-color : #3d5369;
+}
+
+.menu-button {
+    -fx-background-radius : 0 0 0 0;
+    -fx-background-color : #2C3E50;
+}
+
+.menu-button : hover {
+    -fx-background-color : #3d5369;
+}
+
+.menu-button .arrow {
+    -fx-background-insets: 1 0 -1 0, 0;
+    -fx-background-color: -fx-mark-color, #FFFFFF;
+    -fx-padding: 0.25em; /* 3 */
+    -fx-shape: "M 0 0 h 7 l -3.5 4 z";
+}
+
+#textField:focused {
+    -fx-border-color : #3498db;
+    -fx-border-width : 2px;
+}

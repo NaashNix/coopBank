@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="menuBarContext" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: white;" stylesheets="@styleSheets/dashboardStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardFormController">
+   <children>
+      <AnchorPane fx:id="playGroundContext" layoutY="72.0" prefHeight="648.0" prefWidth="1280.0" />
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#2c3e50" height="56.0" layoutX="21.0" layoutY="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="221.0" />
+      <Label fx:id="lblDashboardTime" alignment="CENTER" layoutX="37.0" layoutY="12.0" prefHeight="29.0" prefWidth="186.0" text="10 : 00 PM" textFill="WHITE">
+         <font>
+            <Font name="Roboto Black" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblDashboardDate" alignment="CENTER" layoutX="31.0" layoutY="42.0" prefHeight="15.0" prefWidth="201.0" text="2021 September 03" textFill="WHITE">
+         <font>
+            <Font name="Roboto Black" size="13.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#5a6e83" height="56.0" layoutX="261.0" layoutY="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="762.0" />
+      <Rectangle fx:id="lastRectangle" arcHeight="20.0" arcWidth="20.0" fill="#2c3e50" height="56.0" layoutX="915.0" layoutY="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="342.0" />
+      <Button id="dashboardButton" fx:id="btnDashboard" layoutX="261.0" layoutY="8.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="144.0" text="Dashboard" textFill="WHITE">
+         <font>
+            <Font name="Roboto Medium" size="17.0" />
+         </font>
+      </Button>
+      <MenuButton fx:id="btnMenuButton" alignment="CENTER" layoutX="407.0" layoutY="8.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="144.0" text="Accounts" textFill="WHITE">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Action 1" />
+          <MenuItem mnemonicParsing="false" text="Action 2" />
+        </items>
+         <font>
+            <Font name="Roboto Medium" size="17.0" />
+         </font>
+      </MenuButton>
+      <MenuButton alignment="CENTER" layoutX="553.0" layoutY="8.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="116.0" text="Loans" textFill="WHITE">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Action 1" />
+            <MenuItem mnemonicParsing="false" text="Action 2" />
+         </items>
+         <font>
+            <Font name="Roboto Medium" size="17.0" />
+         </font>
+      </MenuButton>
+      <MenuButton alignment="CENTER" layoutX="671.0" layoutY="8.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="144.0" text="Reports" textFill="WHITE">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Action 1" />
+            <MenuItem mnemonicParsing="false" text="Action 2" />
+         </items>
+         <font>
+            <Font name="Roboto Medium" size="17.0" />
+         </font>
+      </MenuButton>
+      <MenuButton alignment="CENTER" layoutX="817.0" layoutY="8.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="117.0" text="Other" textFill="WHITE">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Action 1" />
+            <MenuItem mnemonicParsing="false" text="Action 2" />
+         </items>
+         <font>
+            <Font name="Roboto Medium" size="17.0" />
+         </font>
+      </MenuButton>
+      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="944.0" layoutY="19.0">
+         <image>
+            <Image url="@../assets/icons8-notification-48.png" />
+         </image>
+      </ImageView>
+      <Circle fill="#ff6b6b" layoutX="992.0" layoutY="35.0" radius="11.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Text fill="WHITE" layoutX="987.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Text>
+      <TextField id="textField" layoutX="1034.0" layoutY="23.0" prefHeight="15.0" prefWidth="205.0" promptText="Search Account" />
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="1215.0" layoutY="26.0" preserveRatio="true">
+         <image>
+            <Image url="@../assets/icons8-search.gif" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

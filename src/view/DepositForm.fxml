@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="648.0" prefWidth="1280.0" style="-fx-background-color: #e9ecf5;" stylesheets="@styleSheets/depositFormStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DepositFormController">
+   <children>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="427.0" layoutX="35.0" layoutY="20.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="608.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="126.0" layoutX="35.0" layoutY="484.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="608.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="591.0" layoutX="685.0" layoutY="20.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="556.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <TableView fx:id="latestTransactions" layoutX="700.0" layoutY="91.0" prefHeight="478.0" prefWidth="525.0" styleClass="noheader">
+        <columns>
+          <TableColumn fx:id="colDate" prefWidth="79.0" text="Date" />
+          <TableColumn fx:id="colAccount" prefWidth="147.0" text="Account" />
+            <TableColumn fx:id="colDescription" prefWidth="162.0" text="Description" />
+            <TableColumn fx:id="colAmount" prefWidth="136.0" text="Amount" />
+        </columns>
+      </TableView>
+      <Label layoutX="702.0" layoutY="34.0" text="Latest Transaction">
+         <font>
+            <Font name="Roboto Black" size="21.0" />
+         </font></Label>
+      <Label layoutX="53.0" layoutY="31.0" text="Transactoin Details">
+         <font>
+            <Font name="Roboto Black" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="453.0" layoutY="31.0" text="DEPOSIT SLIP" textFill="#16a085">
+         <font>
+            <Font name="Roboto Black" size="28.0" />
+         </font>
+      </Label>
+      <ComboBox layoutX="480.0" layoutY="496.0" prefWidth="150.0" promptText="Select Account" />
+      <Label layoutX="53.0" layoutY="494.0" text="Current Account Balance">
+         <font>
+            <Font name="Roboto Black" size="21.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

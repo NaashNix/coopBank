@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #F8FAFF;" stylesheets="@styleSheets/loginForm.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginFormController">
+   <children>
+      <StackPane layoutX="404.0" layoutY="231.0" minHeight="220.0" minWidth="450.0" prefHeight="256.0" prefWidth="468.0" AnchorPane.bottomAnchor="233.0" AnchorPane.leftAnchor="404.0" AnchorPane.rightAnchor="408.0" AnchorPane.topAnchor="231.0">
+         <children>
+            <Rectangle arcHeight="35.0" arcWidth="35.0" fill="WHITE" height="200.0" stroke="#2c3e50" strokeType="INSIDE" strokeWidth="4.0" width="412.0">
+               <effect>
+                  <DropShadow blurType="GAUSSIAN" height="18.0" offsetX="2.0" offsetY="2.0" radius="8.5" width="18.0">
+                     <color>
+                        <Color red="0.28947368264198303" green="0.28947368264198303" blue="0.28947368264198303" />
+                     </color>
+                  </DropShadow>
+               </effect>
+            </Rectangle>
+            <ImageView fitHeight="122.0" fitWidth="122.0" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/icons8-lock-80.png" />
+               </image>
+               <StackPane.margin>
+                  <Insets right="252.0" />
+               </StackPane.margin>
+            </ImageView>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back!">
+               <StackPane.margin>
+                  <Insets bottom="129.0" left="122.0" />
+               </StackPane.margin>
+               <font>
+                  <Font name="Lato-Light" size="29.0" />
+               </font>
+            </Text>
+            <TextField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="185.0" promptText="User Name" StackPane.alignment="CENTER">
+               <StackPane.margin>
+                  <Insets bottom="37.0" left="119.0" />
+               </StackPane.margin>
+            </TextField>
+            <PasswordField maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="24.0" prefWidth="185.0" promptText="Password">
+               <StackPane.margin>
+                  <Insets bottom="-42.0" left="118.0" />
+               </StackPane.margin>
+            </PasswordField>
+            <JFXButton minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="89.0" onAction="#loginTemp" style="-fx-background-color: #2C3E50;" text="LOGIN" textFill="WHITE">
+               <StackPane.margin>
+                  <Insets left="119.0" top="123.0" />
+               </StackPane.margin>
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>
