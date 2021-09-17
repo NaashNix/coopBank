@@ -2,10 +2,14 @@ package controller;
 
 import javafx.collections.transformation.TransformationList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import java.io.IOException;
+import java.net.URL;
 
-import java.util.Scanner;
 
 
 public class MainDashboardForm {
@@ -13,6 +17,7 @@ public class MainDashboardForm {
     public Text calDisplay;
     public String operator = "";
     public boolean start = true;
+    public AnchorPane mainDashboardForm;
     private double numOne;
     private TransformationList<Object, Object> actionEvent;
 
@@ -79,7 +84,21 @@ public class MainDashboardForm {
         }
     }
 
-    public void depositFormOnAction(ActionEvent actionEvent) {
+    public void depositFormOnAction(ActionEvent actionEvent) throws IOException {
+        URL resource = getClass().getResource("../view/DepositForm.fxml");
+        System.out.println(resource);
+        assert resource != null;
+        Parent load = FXMLLoader.load(resource);
+        mainDashboardForm.getChildren().clear();
+        mainDashboardForm.getChildren().add(load);
+    }
 
+    public void withdrawFormOnAction(ActionEvent actionEvent) throws IOException {
+        URL resource = getClass().getResource("../view/WithdrawForm.fxml");
+        System.out.println(resource);
+        assert resource != null;
+        Parent load = FXMLLoader.load(resource);
+        mainDashboardForm.getChildren().clear();
+        mainDashboardForm.getChildren().add(load);
     }
 }

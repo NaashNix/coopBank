@@ -5,9 +5,10 @@ USE SanasaBank;
 
 CREATE TABLE IF NOT EXISTS UserDetails(
     name VARCHAR(50),
-    userName VARCHAR(10),
-    address VARCHAR(60),
     telephone VARCHAR(12),
+    bankPosition VARCHAR(60),
+    userName VARCHAR(10),
+    password VARCHAR(12),
     CONSTRAINT PRIMARY KEY (userName)
 );
 
@@ -21,38 +22,44 @@ CREATE TABLE IF NOT EXISTS LoginDetails(
 );
 
 CREATE TABLE IF NOT EXISTS BankDetails(
-    systemDepDate DATE,
     bankName VARCHAR(25),
+    branchName VARCHAR(15),
+    branch VARCHAR(20),
     bankRegNumber VARCHAR(15),
-    branchName VARCHAR(15)
+    systemDepDate DATE
 );
 
 DESC BankDetails;
 
 CREATE TABLE IF NOT EXISTS Customer(
-    accountID VARCHAR(10),
+    accountNumber VARCHAR(14),
     customerName VARCHAR(70),
     customerAge INT,
+    sex VARCHAR(7),
+    accountType VARCHAR(20),
     customerAddress VARCHAR(50),
     telephoneNumber VARCHAR(12),
     customerBirthday DATE,
     joinedDate DATE,
-    customerNIC VARCHAR(10),
-    customerEmail VARCHAR(20),
-    accountBalance DECIMAL(8,2),
-    CONSTRAINT PRIMARY KEY (accountID)
+    customerNIC VARCHAR(15),
+    customerEmail VARCHAR(30),
+    rationLoan VARCHAR(10),
+    loanByDeposit VARCHAR(10),
+    instantLoan VARCHAR(10),
+    CONSTRAINT PRIMARY KEY (accountNumber)
 );
 
 DESCRIBE Customer;
-
+DELETE TABLE IF EXISTS DepositTransactions;
 CREATE TABLE IF NOT EXISTS DepositTransactions(
     depTransactionID VARCHAR(8),
     transactionDate DATE,
     transactionTime TIME,
-    accountID VARCHAR(10),
+    accountNumber VARCHAR(10),
+    description VARCHAR(30),
     amount DECIMAL(8,2),
     CONSTRAINT PRIMARY KEY (depTransactionID),
-    CONSTRAINT FOREIGN KEY (accountID) REFERENCES Customer(accountID)
+    CONSTRAINT FOREIGN KEY (accountNumber) REFERENCES Customer(accountNumber)
 );
 
 DESCRIBE DepositTransactions;
@@ -101,3 +108,6 @@ CREATE TABLE IF NOT EXISTS LoanDetails(
     loanID VARCHAR(4),
     
 );
+
+INSERT INTO BankDetails VALUES ('Sanasa Bank','Galthude Sanasa','Galthude','S-G1458','2020-10-26');
+    INSERT INTO UserDetails VALUES ('Default User','0702053777','Manager','user','1234');

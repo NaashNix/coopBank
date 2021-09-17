@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="userDetailsContext" prefHeight="648.0" prefWidth="1280.0" style="-fx-background-color: #e9ecf5;" stylesheets="@styleSheets/userDetailsStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserDetailsFormController">
+   <children>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="427.0" layoutX="657.0" layoutY="40.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="571.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <Label layoutX="675.0" layoutY="51.0" text="Edit/View Details">
+         <font>
+            <Font name="Roboto Black" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="1117.0" layoutY="48.0" text="Editing Mode" textFill="#575757">
+         <font>
+            <Font name="Roboto Medium" size="17.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtName" layoutX="869.0" layoutY="132.0" prefHeight="30.0" prefWidth="254.0" />
+      <Label layoutX="781.0" layoutY="136.0" text="Name" textFill="#494949">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtTelephone" layoutX="869.0" layoutY="180.0" prefHeight="30.0" prefWidth="254.0" />
+      <Label layoutX="734.0" layoutY="184.0" text="Telephone" textFill="#494949">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtPosition" layoutX="869.0" layoutY="228.0" prefHeight="30.0" prefWidth="254.0" />
+      <Label layoutX="757.0" layoutY="232.0" text="Position" textFill="#494949">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtUserName" layoutX="869.0" layoutY="276.0" prefHeight="30.0" prefWidth="254.0" />
+      <Label layoutX="726.0" layoutY="280.0" text="User Name" textFill="#494949">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="738.0" layoutY="328.0" text="Password" textFill="#494949">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtPassword" layoutX="869.0" layoutY="324.0" prefHeight="30.0" prefWidth="254.0" />
+      <Button layoutX="930.0" layoutY="388.0" mnemonicParsing="false" onAction="#saveButtonOnAction" prefHeight="42.0" prefWidth="115.0" style="-fx-background-insects: 0; -fx-border-width: 1 1 1 1; -fx-background-radius: 15px; -fx-background-color: #16a085;" text="Done" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="1059.0" layoutY="388.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="42.0" prefWidth="115.0" style="-fx-background-insects: 0; -fx-border-width: 1 1 1 1; -fx-background-radius: 15px; -fx-background-color: #7f8c8d;" text="Cancel" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="427.0" layoutX="47.0" layoutY="40.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="571.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <TableView fx:id="tblUserDetails" layoutX="90.0" layoutY="95.0" prefHeight="336.0" prefWidth="480.0">
+        <columns>
+          <TableColumn fx:id="colName" prefWidth="317.0" styleClass="noheader" text="Name" />
+          <TableColumn fx:id="colPosition" prefWidth="162.0" text="Position" />
+        </columns>
+      </TableView>
+      <Label layoutX="65.0" layoutY="51.0" text="System Users">
+         <font>
+            <Font name="Roboto Black" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="457.0" layoutY="48.0" text="Select To Edit/View" textFill="#575757">
+         <font>
+            <Font name="Roboto Medium" size="17.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

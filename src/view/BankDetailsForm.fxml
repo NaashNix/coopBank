@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="648.0" prefWidth="1280.0" style="-fx-background-color: #e9ecf5;" stylesheets="@styleSheets/bankDetailsStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BankDetailsFormController">
+   <children>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="400.0" layoutX="45.0" layoutY="30.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="608.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <Label layoutX="63.0" layoutY="41.0" text="Bank Details">
+         <font>
+            <Font name="Roboto Black" size="23.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtBankName" layoutX="279.0" layoutY="102.0" prefHeight="30.0" prefWidth="254.0" promptText="Eg. Sanasa Bank">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <Label layoutX="138.0" layoutY="106.0" text="Bank Name" textFill="#494949">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtBranch" layoutX="279.0" layoutY="150.0" prefHeight="30.0" prefWidth="254.0" promptText="Eg. Panadura">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <Label layoutX="185.0" layoutY="154.0" text="Branch" textFill="#494949">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtRegNumber" layoutX="279.0" layoutY="198.0" prefHeight="30.0" prefWidth="254.0" promptText="Eg. SCG1256">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" ellipsisString="m" layoutX="162.0" layoutY="196.0" lineSpacing="1.5" prefHeight="36.0" prefWidth="93.0" text="Reg. NO" textAlignment="RIGHT" textFill="#494949" wrapText="true">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtBranchName" layoutX="279.0" layoutY="246.0" prefHeight="30.0" prefWidth="254.0" promptText="Eg. Galthude Sanasa">
+         <font>
+            <Font size="15.0" />
+         </font></TextField>
+      <Label layoutX="116.0" layoutY="250.0" text="Branch Name" textFill="#494949">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtDepDate" editable="false" layoutX="280.0" layoutY="291.0" prefHeight="30.0" prefWidth="254.0" styleClass="dep-date-field" text="01 Octomber 2021">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font></TextField>
+      <Label layoutX="158.0" layoutY="295.0" text="Dep Date" textFill="#494949">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="372.0" layoutY="358.0" mnemonicParsing="false" onAction="#saveBranchDetails" prefHeight="42.0" prefWidth="115.0" style="-fx-background-color: #16a085;" styleClass="formButtons" text="Done" textFill="WHITE">
+         <font>
+            <Font name="Roboto Black" size="19.0" />
+         </font></Button>
+      <Button layoutX="502.0" layoutY="358.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="115.0" style="-fx-background-color: #7f8c8d;" styleClass="formButtons" text="Cancel" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font></Button>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="167.0" layoutX="45.0" layoutY="453.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="608.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <Label layoutX="63.0" layoutY="471.0" text="Developer Details">
+         <font>
+            <Font name="Roboto Black" size="23.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="130.0" layoutY="516.0" lineSpacing="1.5" prefHeight="73.0" prefWidth="423.0" text="Ravindu Thilakshana - (94) 70 20 53 777 2020P1148 - IJSE(GDSE)" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="DejaVu Sans Mono Bold" size="18.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="400.0" layoutX="683.0" layoutY="30.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="556.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="812.0" layoutY="76.0" preserveRatio="true">
+         <image>
+            <Image url="@../assets/sanasaLogo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="58.0" fitWidth="200.0" layoutX="442.0" layoutY="456.0">
+         <image>
+            <Image url="@../assets/ijse.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

@@ -1,0 +1,36 @@
+.table-view{
+     -fx-background-color: transparent;
+
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.table-view .column-header-background {
+    -fx-color: #2c3e50;
+    -fx-max-height: 25;
+    -fx-pref-height: 25;
+    -fx-min-height: 25;
+}
+
+.table-row-cell {
+    -fx-max-height:20;
+    -fx-background-color: #FFFFFF;
+    -fx-background-insets: 0, 0 0 1 0   ;
+    -fx-padding: 0.0em;
+    -fx-font-weight:bold;
+
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #7f8c8d;
+    -fx-text-fill: #FFFFFF;
+}
+
+.table-row-cell: hover {
+    -fx-background-color: #b2bec3;
+    -fx-font-weight : bold;
+}
+

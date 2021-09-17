@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="openNewAccountContext" prefHeight="648.0" prefWidth="1280.0" style="-fx-background-color: #fafbff;" stylesheets="@styleSheets/openNewAccountStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.OpenNewAccountFormController">
+   <children>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="590.0" layoutX="35.0" layoutY="30.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="608.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="352.0" layoutX="685.0" layoutY="30.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="556.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="215.0" layoutX="685.0" layoutY="405.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="556.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <Label layoutX="53.0" layoutY="44.0" text="Open New Account">
+         <font>
+            <Font name="Roboto Black" size="26.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtAccountNumber" editable="false" layoutX="257.0" layoutY="104.0" prefHeight="42.0" prefWidth="298.0" styleClass="accountNumberField">
+         <font>
+            <Font name="Open Sans SemiBold" size="17.0" />
+         </font></TextField>
+      <TextField fx:id="txtName" layoutX="257.0" layoutY="166.0" prefHeight="30.0" prefWidth="298.0" text="Ravindu Thilakshana">
+         <font>
+            <Font name="Open Sans SemiBold" size="13.0" />
+         </font></TextField>
+      <TextField fx:id="txtAddress" layoutX="257.0" layoutY="221.0" prefHeight="30.0" prefWidth="298.0" text="48/A/ Galthude Panadura">
+         <font>
+            <Font name="Open Sans SemiBold" size="13.0" />
+         </font></TextField>
+      <TextField fx:id="txtNIC" layoutX="257.0" layoutY="421.0" prefHeight="30.0" prefWidth="298.0" text="200129100596">
+         <font>
+            <Font name="Open Sans SemiBold" size="13.0" />
+         </font></TextField>
+      <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="112.0" prefWidth="151.0" text="Acc. Number" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="170.0" prefWidth="151.0" text="Full Name" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="225.0" prefWidth="151.0" text="Address" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="280.0" prefWidth="151.0" text="Birthday" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="328.0" prefWidth="151.0" text="Sex" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="425.0" prefWidth="151.0" text="NIC" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="480.0" prefHeight="21.0" prefWidth="151.0" text="Telephone Nu." textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="535.0" prefWidth="151.0" text="E-mail" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cmbAccountType" layoutX="257.0" layoutY="366.0" prefHeight="30.0" prefWidth="298.0" promptText="Select Account Type" />
+      <Label alignment="CENTER_RIGHT" layoutX="83.0" layoutY="370.0" prefWidth="151.0" text="Account Type" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtTelephone" layoutX="257.0" layoutY="476.0" prefHeight="30.0" prefWidth="298.0" text="0702053777">
+         <font>
+            <Font name="Open Sans SemiBold" size="13.0" />
+         </font></TextField>
+      <TextField fx:id="txtEmail" layoutX="258.0" layoutY="531.0" prefHeight="30.0" prefWidth="298.0" text="naashnix@gmail.com">
+         <font>
+            <Font name="Open Sans SemiBold" size="13.0" />
+         </font></TextField>
+      <RadioButton fx:id="radioMale" layoutX="281.0" layoutY="328.0" mnemonicParsing="false" onAction="#setSexSelection" selected="true" text="Male" />
+      <RadioButton fx:id="radioFemale" layoutX="401.0" layoutY="328.0" mnemonicParsing="false" onAction="#setSexSelection" text="Female" />
+      <DatePicker fx:id="pickerBirthday" editable="false" layoutX="257.0" layoutY="276.0" prefHeight="30.0" prefWidth="298.0" />
+      <Label layoutX="703.0" layoutY="44.0" text="Opening Deposit">
+         <font>
+            <Font name="Roboto Black" size="23.0" />
+         </font>
+      </Label>
+      <JFXToggleButton fx:id="toggleDeposit" layoutX="1032.0" layoutY="23.0" prefHeight="58.0" prefWidth="217.0" text="Without Deposit" toggleColor="#3498db" toggleLineColor="#508cb2">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </JFXToggleButton>
+      <TextField fx:id="txtAccNumber" layoutX="867.0" layoutY="111.0" prefHeight="30.0" prefWidth="298.0" text="asdfsadfasdfasdfasdf" />
+      <TextField fx:id="txtDescription" layoutX="867.0" layoutY="166.0" prefHeight="30.0" prefWidth="298.0" />
+      <TextField fx:id="txtAmount" layoutX="867.0" layoutY="221.0" prefHeight="30.0" prefWidth="298.0" />
+      <Label alignment="CENTER_RIGHT" layoutX="693.0" layoutY="115.0" prefWidth="151.0" text="Acc. Number" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="693.0" layoutY="170.0" prefWidth="151.0" text="Description" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="693.0" layoutY="225.0" prefWidth="151.0" text="Amount" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnDepositDone" layoutX="918.0" layoutY="288.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="115.0" text="Done" />
+      <Button fx:id="btnDepositCancel" layoutX="1048.0" layoutY="288.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="115.0" text="Cancel" />
+      <Label layoutX="703.0" layoutY="414.0" text="Verification">
+         <font>
+            <Font name="Roboto Black" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="1107.0" layoutY="415.0" text="Admin Passwords" textFill="#727272" />
+      <TextField fx:id="txtUserName" layoutX="761.0" layoutY="486.0" prefHeight="30.0" prefWidth="189.0" promptText="User Name" styleClass="verification-fields" />
+      <Button layoutX="919.0" layoutY="538.0" mnemonicParsing="false" onAction="#openAccountButtonOnAction" prefHeight="42.0" prefWidth="115.0" text="Done" />
+      <Button layoutX="1049.0" layoutY="538.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="115.0" text="Cancel" />
+      <TextField fx:id="txtPassword" layoutX="973.0" layoutY="486.0" prefHeight="30.0" prefWidth="189.0" promptText="Password" styleClass="verification-fields" />
+   </children>
+</AnchorPane>
