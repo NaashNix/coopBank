@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<!--
+  ~ Copyright (c) 2021. Coded By Ravindu Thilakshana (naashnix) naashnix.bio.link
+  -->
+
+<AnchorPane prefHeight="648.0" prefWidth="1280.0" style="-fx-background-color: #fafbff;" stylesheets="@styleSheets/searchAccountResultStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SearchAccountResultController">
+   <children>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="478.0" layoutX="35.0" layoutY="146.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="590.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <Label layoutX="49.0" layoutY="152.0" text="Account Details">
+         <font>
+            <Font name="Roboto Black" size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="516.0" layoutY="152.0" text="Basic Details" textFill="#727272">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="63.0" layoutY="220.0" prefWidth="151.0" text="Acc. Number" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="63.0" layoutY="268.0" prefWidth="151.0" text="Account Type" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="63.0" layoutY="316.0" prefWidth="151.0" text="Full Name" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="63.0" layoutY="364.0" prefWidth="151.0" text="Birthday" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtAccNumberInDetails" editable="false" layoutX="257.0" layoutY="219.0" prefHeight="30.0" prefWidth="298.0">
+         <font>
+            <Font name="Open Sans SemiBold" size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtAccType" editable="false" layoutX="257.0" layoutY="267.0" prefHeight="30.0" prefWidth="298.0">
+         <font>
+            <Font name="Open Sans SemiBold" size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtName" editable="false" layoutX="257.0" layoutY="315.0" prefHeight="30.0" prefWidth="298.0">
+         <font>
+            <Font name="Open Sans SemiBold" size="13.0" />
+         </font>
+      </TextField>
+      <Label alignment="CENTER_RIGHT" layoutX="63.0" layoutY="412.0" prefWidth="151.0" text="NIC" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="40.0" layoutY="460.0" prefHeight="23.0" prefWidth="174.0" text="Telephone Num." textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="63.0" layoutY="509.0" prefWidth="151.0" text="Address" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtNIC" editable="false" layoutX="257.0" layoutY="411.0" prefHeight="30.0" prefWidth="298.0">
+         <font>
+            <Font name="Open Sans SemiBold" size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtTelephone" editable="false" layoutX="257.0" layoutY="459.0" prefHeight="30.0" prefWidth="298.0">
+         <font>
+            <Font name="Open Sans SemiBold" size="13.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtAddress" editable="false" layoutX="257.0" layoutY="507.0" prefHeight="30.0" prefWidth="298.0">
+         <font>
+            <Font name="Open Sans SemiBold" size="13.0" />
+         </font>
+      </TextField>
+      <DatePicker fx:id="pickerBirthday" disable="true" editable="false" layoutX="257.0" layoutY="363.0" prefHeight="30.0" prefWidth="298.0" />
+      <Button fx:id="btnEditOrDone" layoutX="406.0" layoutY="553.0" mnemonicParsing="false" onAction="#BtnEditOrDoneOnAction" prefHeight="34.0" prefWidth="84.0" text="EDIT" />
+      <Button layoutX="496.0" layoutY="553.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="84.0" text="Cancel" />
+      <Label layoutX="57.0" layoutY="593.0" text="* Click the &quot;EDIT&quot; button to update the details" />
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="108.0" layoutX="655.0" layoutY="34.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="590.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <Label layoutX="669.0" layoutY="38.0" text="Account Balance">
+         <font>
+            <Font name="Roboto Black" size="26.0" />
+         </font>
+      </Label>
+      <JFXComboBox layoutX="1110.0" layoutY="35.0" prefHeight="24.0" prefWidth="126.0" promptText="Account Type" />
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="189.0" layoutX="655.0" layoutY="164.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="590.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="249.0" layoutX="655.0" layoutY="376.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="590.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="91.0" layoutX="35.0" layoutY="34.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="590.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <Label layoutX="55.0" layoutY="38.0" text="Search Account">
+         <font>
+            <Font name="Open Sans SemiBold" size="17.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtAccountNumberShower" layoutX="160.0" layoutY="69.0" prefHeight="35.0" prefWidth="320.0" />
+      <Rectangle fx:id="SQSearchIcon" arcHeight="10.0" arcWidth="10.0" fill="#2c3e50" height="40.0" layoutX="487.0" layoutY="66.0" onMouseClicked="#searchAccount" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0" />
+      <ImageView fx:id="imgSearchIcon" fitHeight="30.0" fitWidth="30.0" layoutX="493.0" layoutY="71.0" onMouseClicked="#searchAccount" preserveRatio="true">
+         <image>
+            <Image url="@../assets/white-search-30.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

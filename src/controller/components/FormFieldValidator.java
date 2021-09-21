@@ -4,6 +4,7 @@
 
 package controller.components;
 
+import com.sun.org.apache.bcel.internal.generic.Select;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -161,4 +162,18 @@ public class FormFieldValidator {
         return texts;
     }
 
+    public void setFieldsTextReadyToEdit(){
+        for (TextField field : allTextFields
+             ) {
+            field.setEditable(true);
+        }
+
+    }
+
+    public void setEditableFalse(){
+        for (TextField field : allTextFields
+        ) {
+            field.setEditable(false);
+        }
+    }
 }

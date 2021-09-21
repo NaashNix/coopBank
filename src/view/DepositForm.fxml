@@ -50,47 +50,53 @@
             <Font name="Roboto Black" size="28.0" />
          </font>
       </Label>
-      <ComboBox layoutX="480.0" layoutY="496.0" prefWidth="150.0" promptText="Select Account" />
+      <ComboBox fx:id="cmbBalanceShower" layoutX="438.0" layoutY="496.0" prefHeight="24.0" prefWidth="192.0" promptText="Select Account" />
       <Label layoutX="53.0" layoutY="494.0" text="Current Account Balance">
          <font>
             <Font name="Roboto Black" size="21.0" />
          </font>
       </Label>
-      <TextField layoutX="247.0" layoutY="112.0" prefHeight="30.0" prefWidth="254.0" />
+      <TextField fx:id="txtAccNumber" editable="false" layoutX="247.0" layoutY="112.0" prefHeight="30.0" prefWidth="254.0" />
       <Label layoutX="146.0" layoutY="116.0" text="Acc. No" textFill="#494949">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="247.0" layoutY="160.0" prefHeight="30.0" prefWidth="254.0" />
+      <TextField fx:id="txtName" editable="false" layoutX="247.0" layoutY="160.0" prefHeight="30.0" prefWidth="254.0" />
       <Label layoutX="163.0" layoutY="164.0" text="Name" textFill="#494949">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="247.0" layoutY="208.0" prefHeight="30.0" prefWidth="254.0" />
+      <TextField fx:id="txtAccType" editable="false" layoutX="247.0" layoutY="208.0" prefHeight="30.0" prefWidth="254.0" />
       <Label layoutX="123.0" layoutY="212.0" text="Acc. Type" textFill="#494949">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="247.0" layoutY="256.0" prefHeight="30.0" prefWidth="254.0" />
+      <TextField fx:id="txtDescription" layoutX="247.0" layoutY="256.0" prefHeight="30.0" prefWidth="254.0" />
       <Label layoutX="104.0" layoutY="259.0" text="Description" textFill="#494949">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="248.0" layoutY="301.0" prefHeight="30.0" prefWidth="254.0" />
+      <TextField fx:id="txtAmount" layoutX="248.0" layoutY="301.0" prefHeight="30.0" prefWidth="254.0" />
       <Label layoutX="140.0" layoutY="305.0" text="Amount" textFill="#494949">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="308.0" layoutY="368.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="115.0" text="Button" />
-      <Button layoutX="438.0" layoutY="368.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="115.0" text="Button" />
+      <Button layoutX="308.0" layoutY="358.0" mnemonicParsing="false" onAction="#confirmButtonOnAction" prefHeight="42.0" prefWidth="115.0" text="CONFIRM" />
+      <Button layoutX="438.0" layoutY="358.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="115.0" text="Cancel" />
       <Label alignment="CENTER" layoutX="137.0" layoutY="551.0" prefHeight="16.0" prefWidth="387.0" text="&lt;Rs. 458.00&gt;">
          <font>
             <Font name="Roboto Black" size="31.0" />
+         </font>
+      </Label>
+      <Label layoutX="50.0" layoutY="422.0" text="Transaction ID : " />
+      <Label fx:id="lblTransactionID" layoutX="166.0" layoutY="422.0" prefHeight="18.0" prefWidth="222.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
    </children>

@@ -9,14 +9,15 @@ public class OpenAccDepMoneyModel {
     private String transactionID;
     private String accountNumber;
     private String description;
-    private String amount;
+    private double amount;
     private String date;
     private String time;
+
 
     public OpenAccDepMoneyModel(){}
 
     public OpenAccDepMoneyModel(String transactionID, String accountNumber,
-                                String description, String amount, String date,
+                                String description, double amount, String date,
                                 String time) {
         this.setTransactionID(transactionID);
         this.setAccountNumber(accountNumber);
@@ -51,11 +52,11 @@ public class OpenAccDepMoneyModel {
         this.description = description;
     }
 
-    public String getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 

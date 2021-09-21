@@ -83,8 +83,14 @@
             </ImageView>
          </children>
       </Pane>
-      <Button layoutX="290.0" layoutY="543.0" mnemonicParsing="false" onAction="#confirmButtonOnAction" prefHeight="45.0" prefWidth="136.0" text="CONFIRM" />
-      <Button layoutX="440.0" layoutY="543.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="136.0" text="Edit" />
+      <Button fx:id="btnConfirm" layoutX="290.0" layoutY="543.0" mnemonicParsing="false" onAction="#confirmButtonOnAction" prefHeight="45.0" prefWidth="136.0" text="CONFIRM">
+         <font>
+            <Font size="17.0" />
+         </font></Button>
+      <Button fx:id="btnEdit" layoutX="440.0" layoutY="543.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="136.0" text="Edit">
+         <font>
+            <Font size="17.0" />
+         </font></Button>
       <Label layoutX="168.0" layoutY="254.0" prefHeight="20.0" prefWidth="46.0" text="Age   : ">
          <font>
             <Font name="Open Sans SemiBold" size="14.0" />

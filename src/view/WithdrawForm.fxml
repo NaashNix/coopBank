@@ -11,7 +11,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="648.0" prefWidth="1280.0" style="-fx-background-color: #e9ecf5;" stylesheets="@styleSheets/withdrawFormStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WithdrawFormController">
    <children>
       <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="427.0" layoutX="45.0" layoutY="30.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="608.0">
@@ -52,45 +51,45 @@
             <Font name="Roboto Black" size="28.0" />
          </font>
       </Label>
-      <ComboBox layoutX="490.0" layoutY="506.0" prefWidth="150.0" promptText="Select Account" />
+      <ComboBox fx:id="cmbAccountType" layoutX="429.0" layoutY="506.0" prefHeight="24.0" prefWidth="211.0" promptText="Select Account" />
       <Label layoutX="63.0" layoutY="504.0" text="Current Account Balance">
          <font>
             <Font name="Roboto Black" size="21.0" />
          </font>
       </Label>
-      <TextField layoutX="257.0" layoutY="122.0" prefHeight="30.0" prefWidth="254.0" />
+      <TextField fx:id="txtAccNumber" editable="false" layoutX="257.0" layoutY="122.0" prefHeight="30.0" prefWidth="254.0" />
       <Label layoutX="156.0" layoutY="126.0" text="Acc. No" textFill="#494949">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="257.0" layoutY="170.0" prefHeight="30.0" prefWidth="254.0" />
+      <TextField fx:id="txtName" editable="false" layoutX="257.0" layoutY="170.0" prefHeight="30.0" prefWidth="254.0" />
       <Label layoutX="173.0" layoutY="174.0" text="Name" textFill="#494949">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="257.0" layoutY="218.0" prefHeight="30.0" prefWidth="254.0" />
+      <TextField fx:id="txtAccType" editable="false" layoutX="257.0" layoutY="218.0" prefHeight="30.0" prefWidth="254.0" />
       <Label layoutX="133.0" layoutY="222.0" text="Acc. Type" textFill="#494949">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="257.0" layoutY="266.0" prefHeight="30.0" prefWidth="254.0" />
+      <TextField fx:id="txtDesc" layoutX="257.0" layoutY="266.0" prefHeight="30.0" prefWidth="254.0" />
       <Label layoutX="114.0" layoutY="269.0" text="Description" textFill="#494949">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="258.0" layoutY="311.0" prefHeight="30.0" prefWidth="254.0" />
+      <TextField fx:id="txtAmount" layoutX="258.0" layoutY="311.0" prefHeight="30.0" prefWidth="254.0" />
       <Label layoutX="150.0" layoutY="315.0" text="Amount" textFill="#494949">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="318.0" layoutY="378.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="115.0" text="Button" />
-      <Button layoutX="448.0" layoutY="378.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="115.0" text="Button" />
-      <Label alignment="CENTER" layoutX="147.0" layoutY="561.0" prefHeight="16.0" prefWidth="387.0" text="&lt;Rs. 458.00&gt;">
+      <Button layoutX="318.0" layoutY="378.0" mnemonicParsing="false" onAction="#btnConfirmWithdrawOnAction" prefHeight="42.0" prefWidth="115.0" text="CONFIRM" />
+      <Button layoutX="448.0" layoutY="378.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="115.0" text="Cancel" />
+      <Label fx:id="txtCurrentAccountBalanceShower" alignment="CENTER" layoutX="147.0" layoutY="561.0" prefHeight="16.0" prefWidth="387.0" text="&lt;Rs. 458.00&gt;">
          <font>
             <Font name="Roboto Black" size="31.0" />
          </font>

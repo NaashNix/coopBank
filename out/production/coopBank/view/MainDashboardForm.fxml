@@ -27,7 +27,7 @@
             <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
          </effect>
       </Rectangle>
-      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="407.0" layoutX="887.0" layoutY="44.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="359.0">
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="443.0" layoutX="880.0" layoutY="44.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="359.0">
          <effect>
             <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
          </effect>
@@ -179,11 +179,10 @@
             <Font name="Roboto Black" size="26.0" />
          </font>
       </Label>
-      <TextField layoutX="496.0" layoutY="116.0" prefHeight="30.0" prefWidth="280.0" promptText="TransactionID" />
-      <TextField layoutX="496.0" layoutY="169.0" prefHeight="30.0" prefWidth="280.0" promptText="Search Account" />
-      <TextField layoutX="496.0" layoutY="222.0" prefHeight="30.0" prefWidth="280.0" promptText="Account Holder’s Name" />
-      <TextField layoutX="496.0" layoutY="275.0" prefHeight="30.0" prefWidth="280.0" promptText="Amount" />
-      <Label layoutX="913.0" layoutY="59.0" text="Make Withdraw">
+      <TextField fx:id="txtDepositSearch" layoutX="496.0" layoutY="119.0" prefHeight="30.0" prefWidth="280.0" promptText="Search Account" />
+      <TextField fx:id="txtDepositName" layoutX="496.0" layoutY="222.0" prefHeight="30.0" prefWidth="280.0" promptText="Account Holder’s Name" styleClass="nonEditableField" />
+      <TextField fx:id="txtDepositAmount" layoutX="496.0" layoutY="275.0" prefHeight="30.0" prefWidth="280.0" promptText="Amount" />
+      <Label layoutX="906.0" layoutY="59.0" text="Make Withdraw">
          <font>
             <Font name="Roboto Black" size="26.0" />
          </font>
@@ -195,37 +194,36 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button layoutX="644.0" layoutY="384.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: #7F8C8D;" styleClass="formButtons" text="Cancel" textFill="WHITE">
+      <Button layoutX="644.0" layoutY="384.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: #7F8C8D;" styleClass="formButtons" text="Clear" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <TextField layoutX="496.0" layoutY="328.0" prefHeight="30.0" prefWidth="280.0" promptText="Description" />
+      <TextField fx:id="txtDepositDescription" layoutX="496.0" layoutY="328.0" prefHeight="30.0" prefWidth="280.0" promptText="Description" />
       <ImageView fitHeight="46.0" fitWidth="45.0" layoutX="765.0" layoutY="51.0" preserveRatio="true">
          <image>
             <Image url="@../assets/deposit.png" />
          </image>
       </ImageView>
-      <TextField layoutX="926.0" layoutY="116.0" prefHeight="30.0" prefWidth="280.0" promptText="TransactionID" />
-      <TextField layoutX="926.0" layoutY="169.0" prefHeight="30.0" prefWidth="280.0" promptText="Search Account" />
-      <TextField layoutX="926.0" layoutY="222.0" prefHeight="30.0" prefWidth="280.0" promptText="Account Holder’s Name" />
-      <TextField layoutX="926.0" layoutY="275.0" prefHeight="30.0" prefWidth="280.0" promptText="Amount" />
-      <TextField layoutX="926.0" layoutY="328.0" prefHeight="30.0" prefWidth="280.0" promptText="Description" />
-      <ImageView fitHeight="46.0" fitWidth="45.0" layoutX="1195.0" layoutY="51.0" preserveRatio="true">
+      <TextField fx:id="txtSearchWithdraw" layoutX="919.0" layoutY="119.0" prefHeight="30.0" prefWidth="280.0" promptText="Search Account" />
+      <TextField fx:id="txtWithdrawName" layoutX="919.0" layoutY="222.0" prefHeight="30.0" prefWidth="280.0" promptText="Account Holder’s Name" styleClass="nonEditableField" />
+      <TextField fx:id="txtWithdrawAmount" layoutX="919.0" layoutY="328.0" prefHeight="30.0" prefWidth="280.0" promptText="Amount" />
+      <TextField fx:id="txtWithdrawDesc" layoutX="919.0" layoutY="381.0" prefHeight="30.0" prefWidth="280.0" promptText="Description" />
+      <ImageView fitHeight="46.0" fitWidth="45.0" layoutX="1188.0" layoutY="51.0" preserveRatio="true">
          <image>
             <Image url="@../assets/withdraw.png" />
          </image>
       </ImageView>
-      <Button layoutX="954.0" layoutY="384.0" mnemonicParsing="false" onAction="#withdrawFormOnAction" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: #2A8CCC;" styleClass="formButtons" text="PROCEED" textFill="WHITE">
+      <Button layoutX="947.0" layoutY="432.0" mnemonicParsing="false" onAction="#withdrawFormOnAction" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: #2A8CCC;" styleClass="formButtons" text="PROCEED" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Button>
-      <Button layoutX="1074.0" layoutY="384.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: #7F8C8D;" styleClass="formButtons" text="Cancel" textFill="WHITE">
+      <Button layoutX="1067.0" layoutY="432.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: #7F8C8D;" styleClass="formButtons" text="Clear" textFill="WHITE">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
@@ -269,5 +267,16 @@
          </font>
       </Label>
       <Label layoutX="319.0" layoutY="495.0" text="03 : 15 PM" textFill="WHITE" />
+      <Button layoutX="581.0" layoutY="168.0" mnemonicParsing="false" onAction="#btnDepositSearchOnAction" prefHeight="24.0" prefWidth="107.0" style="-fx-background-color: #636e72;" styleClass="formButtons" text="Find" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button layoutX="1007.0" layoutY="168.0" mnemonicParsing="false" onAction="#withdrawFindButtonOnAction" prefHeight="24.0" prefWidth="107.0" style="-fx-background-color: #636e72;" styleClass="formButtons" text="Find" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <TextField fx:id="txtAccBalance" editable="false" layoutX="919.0" layoutY="275.0" prefHeight="30.0" prefWidth="280.0" promptText="Account Balance" styleClass="nonEditableField" />
    </children>
 </AnchorPane>

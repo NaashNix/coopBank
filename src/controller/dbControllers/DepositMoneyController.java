@@ -5,10 +5,12 @@
 package controller.dbControllers;
 
 import db.DbConnection;
+import model.DepositObjectModel;
 import model.OpenAccDepMoneyModel;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DepositMoneyController {
@@ -23,7 +25,7 @@ public class DepositMoneyController {
             --> As well as if the updation is done then user balance must be updated.
          */
 
-        Connection connection = (Connection) DbConnection.getInstance().getConnection();
+        Connection connection = DbConnection.getInstance().getConnection();
                 connection.setAutoCommit(false);
         PreparedStatement statement = connection.
                 prepareStatement("INSERT INTO DepositTransactions VALUES(?,?,?,?,?,?)");
@@ -34,9 +36,41 @@ public class DepositMoneyController {
             statement.setObject(5,deposit.getDescription());
             statement.setObject(6,deposit.getAmount());
 
-            if (statement.executeUpdate()>0){
+        statement.executeUpdate();
 
-            }
+        if (new SavingsAccountController().setAccountBalance(deposit.getAccountNumber(),deposit.getAmount())){
+                connection.commit();
+                return true;
+            }else
+        {
+            connection.rollback();
+            return false;
+        }
+
+    }
+
+    public boolean updateDepositInfo(DepositObjectModel model) throws SQLException, ClassNotFoundException {
+        Connection connection = DbConnection.getInstance().getConnection();
+        connection.setAutoCommit(false);
+        PreparedStatement statement = connection.
+                prepareStatement("INSERT INTO DepositTransactions VALUES(?,?,?,?,?,?)");
+        statement.setObject(1,model.getDepTransactionID());
+        statement.setObject(2,model.getDate());
+        statement.setObject(3,model.getTime());
+        statement.setObject(4,model.getAccountNumber());
+        statement.setObject(5,model.getDescription());
+        statement.setObject(6,model.getAmount());
+
+        statement.executeUpdate();
+
+        if (new SavingsAccountController().setAccountBalance(model.getAccountNumber(),model.getAmount())){
+            connection.commit();
+            return true;
+        }else
+        {
+            connection.rollback();
+            return false;
+        }
 
     }
 

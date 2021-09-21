@@ -4,7 +4,7 @@ import com.jfoenix.controls.JFXToggleButton;
 import controller.components.NumberGenerator;
 import controller.components.FormFieldValidator;
 import controller.components.ModifiedAlertBox;
-import controller.components.OpenAccountObjectPasser;
+import controller.components.ObjectPasser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -115,7 +115,6 @@ public class OpenNewAccountFormController {
         LocalDate givenDate = zone.toLocalDate();
 
         Period period = Period.between(givenDate,LocalDate.now());
-        System.out.println("Age : "+period.getYears());
         return period.getYears();
     }
 
@@ -279,7 +278,7 @@ public class OpenNewAccountFormController {
 
     }
 
-    private void createAccount(ActionEvent actionEvent) throws ParseException, IOException, SQLException, ClassNotFoundException {
+    private void createAccount(ActionEvent actionEvent) throws ParseException, IOException {
         /*
             --> This method will make Customer model and as well as if open with the
                 opening deposit, then make the depositMoney model.
@@ -294,8 +293,8 @@ public class OpenNewAccountFormController {
                 cmbAccountType.getValue(),
                 txtAddress.getText(),
                 txtTelephone.getText(),
-                pickerBirthday.getEditor().getText(),
-                LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")),
+                pickerBirthday.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
+                LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
                 txtNIC.getText(),
                 txtEmail.getText(),
                 null,
@@ -305,20 +304,19 @@ public class OpenNewAccountFormController {
 
         // * If account create with deposit, then this make model of transaction.
         OpenAccDepMoneyModel depositModel = null;
-        if (toggleDeposit.isDisable()){
+        if (!toggleDeposit.isDisable()){
             depositModel = new OpenAccDepMoneyModel(
                     new NumberGenerator().getTransactionID(),
                     txtAccountNumber.getText(),
                     txtDescription.getText(),
-                    txtAmount.getText(),
-                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")),
-                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("hh:mm"))
+                    Double.parseDouble(txtAmount.getText()),
+                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
+                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("hh:mm:ss"))
             );
-
         }
 
         // * Parsing customer and deposit model to parser to get in the confirm form.
-        OpenAccountObjectPasser.setModels(customerModel,depositModel);
+        ObjectPasser.setModels(customerModel,depositModel);
 
         // * Opening confirm details form.
         URL resource = getClass().getResource("../view/ConfirmOpenAccount.fxml");

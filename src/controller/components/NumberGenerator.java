@@ -31,15 +31,26 @@ public class NumberGenerator {
     }
 
     public String getTransactionID(){
-        long lastNumber = 1452369;
-        lastNumber += 3;
-        return "D-" + lastNumber;
+        Random random = new Random();
+        //return "D-" + lastNumber;
+        String month = LocalDateTime.now().format(DateTimeFormatter.ofPattern("MM"));
+        String day = LocalDateTime.now().format(DateTimeFormatter.ofPattern("d"));
+        String year = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yy"));
+        String sec = LocalDateTime.now().format(DateTimeFormatter.ofPattern("ss"));
+        String hour = LocalDateTime.now().format(DateTimeFormatter.ofPattern("hh"));
+        String rand =  String.format("%02d",random.nextInt(99));
+        return "D"+month+rand+year+sec+day+hour;
     }
 
     public String getWithdrawalID(){
-        long lastNumber = 3548961;
-        lastNumber+= 3;
-        return "W-"+lastNumber;
+        Random random = new Random();
+        String month = LocalDateTime.now().format(DateTimeFormatter.ofPattern("MM"));
+        String day = LocalDateTime.now().format(DateTimeFormatter.ofPattern("d"));
+        String year = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yy"));
+        String sec = LocalDateTime.now().format(DateTimeFormatter.ofPattern("ss"));
+        String hour = LocalDateTime.now().format(DateTimeFormatter.ofPattern("hh"));
+        String rand =  String.format("%02d",random.nextInt(99));
+        return "W"+month+rand+year+sec+day+hour;
     }
 
 }

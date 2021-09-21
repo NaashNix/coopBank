@@ -1,5 +1,8 @@
 package controller;
 
+import controller.components.ModifiedAlertBox;
+import controller.components.ObjectPasser;
+import controller.dbControllers.CustomerDetailsController;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -7,13 +10,18 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -24,6 +32,7 @@ public class DashboardFormController {
     public Label lblDashboardTime;
     public Label lblDashboardDate;
     public MenuButton buttonOther;
+    public TextField searchField;
 
     // * Initialize Method For Date And Time.
     public void initialize() throws IOException {
@@ -142,5 +151,40 @@ public class DashboardFormController {
 
 
 
+    }
+
+    public void searchFieldOnKeyPressed(KeyEvent keyEvent) throws SQLException, ClassNotFoundException, IOException {
+        if (keyEvent.getCode().equals(KeyCode.ENTER)){
+            if (searchField.getText().isEmpty()){
+                ModifiedAlertBox alert = new ModifiedAlertBox("Invalid Number",
+                        Alert.AlertType.ERROR,
+                        "ERROR!","Invalid Account Number!");
+                alert.showAlert();
+            }else{
+                if (checkAccountNumber()){
+                    ObjectPasser.setAccountNumber(searchField.getText());
+                    searchField.setText(null);
+                    URL resource = getClass().getResource("../view/SearchAccountResult.fxml");
+                    Parent load = FXMLLoader.load(resource);
+                    playGroundContext.getChildren().clear();
+                    playGroundContext.getChildren().add(load);
+                }else{
+                    ModifiedAlertBox alertBox = new ModifiedAlertBox("Invalid Number!", Alert.AlertType.ERROR,"ERROR!","Invalid Account Number!");
+                    alertBox.showAlert();
+                }
+            }
+        }
+
+    }
+
+    private boolean checkAccountNumber() throws SQLException, ClassNotFoundException {
+        return new CustomerDetailsController().checkAccountNumberIsExist(searchField.getText());
+    }
+
+    public void openSearchAccount(ActionEvent actionEvent) throws IOException {
+        URL resource = getClass().getResource("../view/SearchAccountResult.fxml");
+        Parent load = FXMLLoader.load(resource);
+        playGroundContext.getChildren().clear();
+        playGroundContext.getChildren().add(load);
     }
 }

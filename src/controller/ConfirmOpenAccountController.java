@@ -4,11 +4,12 @@
 
 package controller;
 
-import controller.components.OpenAccountObjectPasser;
+import controller.components.ObjectPasser;
 import controller.dbControllers.CustomerDetailsController;
 import javafx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
@@ -20,8 +21,6 @@ import model.OpenAccDepMoneyModel;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
 public class ConfirmOpenAccountController implements Initializable {
@@ -42,6 +41,8 @@ public class ConfirmOpenAccountController implements Initializable {
     public ProgressBar progressBarDone;
     public Label txtStatus;
     public ImageView imgDone;
+    public Button btnConfirm;
+    public Button btnEdit;
 
 
     @Override
@@ -50,8 +51,8 @@ public class ConfirmOpenAccountController implements Initializable {
             --> Initialize method will set the data to all the fields.
          */
 
-        setDataToCustomerFields(OpenAccountObjectPasser.getCustomerModel());
-        setDataToDepositFields(OpenAccountObjectPasser.getDepositModel());
+        setDataToCustomerFields(ObjectPasser.getCustomerModel());
+        setDataToDepositFields(ObjectPasser.getDepositModel());
     }
 
     private void setDataToDepositFields(OpenAccDepMoneyModel depositModel) {
@@ -59,7 +60,7 @@ public class ConfirmOpenAccountController implements Initializable {
         // * This will set the deposit details to the fields
         if (depositModel!=null){
             txtOpeningDeposit.setText("YES");
-            txtAmount.setText(depositModel.getAmount());
+            txtAmount.setText(String.valueOf(depositModel.getAmount()));
             txtDescription.setText(depositModel.getDescription());
 
         }else{
@@ -84,6 +85,10 @@ public class ConfirmOpenAccountController implements Initializable {
         }
 
     public void confirmButtonOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+
+        btnConfirm.setDisable(true);
+        btnEdit.setDisable(true);
+
         FadeTransition ft = new FadeTransition(Duration.millis(666));
         ft.setNode(paneCreatingAccount);
         ft.setFromValue(0);
@@ -113,10 +118,10 @@ public class ConfirmOpenAccountController implements Initializable {
         timeline.setCycleCount(1);
         timeline.play();
 
-        if (new CustomerDetailsController().savingDetails(customer)){
-            if (deposit != null){
-                if (new )
-            }
+        if (new CustomerDetailsController().savingDetails(customer,deposit)){
+            System.out.println("Saved!");
+        }else{
+            System.out.println("Failed! ");
         }
 
     }

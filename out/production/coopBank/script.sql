@@ -50,29 +50,40 @@ CREATE TABLE IF NOT EXISTS Customer(
 );
 
 DESCRIBE Customer;
-
+DELETE TABLE IF EXISTS DepositTransactions;
 CREATE TABLE IF NOT EXISTS DepositTransactions(
-    depTransactionID VARCHAR(8),
+    depTransactionID VARCHAR(14),
     transactionDate DATE,
     transactionTime TIME,
-    accountID VARCHAR(10),
-    amount DECIMAL(8,2),
+    accountNumber VARCHAR(14),
+    description VARCHAR(30),
+    amount DECIMAL(9,2),
     CONSTRAINT PRIMARY KEY (depTransactionID),
-    CONSTRAINT FOREIGN KEY (accountID) REFERENCES Customer(accountID)
+    CONSTRAINT FOREIGN KEY (accountNumber) REFERENCES Customer(accountNumber)
 );
+
+CREATE TABLE IF NOT EXISTS SavingsAccount(
+    accountNumber VARCHAR(14),
+    personalBalance DECIMAL(9,2),
+    CONSTRAINT FOREIGN KEY (accountNumber) REFERENCES Customer(accountNumber)
+);
+
 
 DESCRIBE DepositTransactions;
 
 CREATE TABLE IF NOT EXISTS WithdrawTransactions(
-    withdrawTransactionID VARCHAR(8),
+    withdrawTransactionID VARCHAR(14),
     transactionDate DATE,
     transactionTime TIME,
-    accountID VARCHAR(10),
-    amount DECIMAL(8,2),
+    accountNumber VARCHAR(14),
+    description VARCHAR(30),
+    amount DECIMAL(9,2),
     CONSTRAINT PRIMARY KEY (withdrawTransactionID),
-    CONSTRAINT FOREIGN KEY (accountID) REFERENCES Customer(accountID)
+    CONSTRAINT FOREIGN KEY (accountNumber) REFERENCES Customer(accountNumber)
 );
+
 DESCRIBE WithdrawTransactions;
+DROP TABLE WithdrawTransactions;
 
 CREATE TABLE IF NOT EXISTS MoneyJournal(
     mjTransactionID VARCHAR(8),
@@ -110,3 +121,30 @@ CREATE TABLE IF NOT EXISTS LoanDetails(
 
 INSERT INTO BankDetails VALUES ('Sanasa Bank','Galthude Sanasa','Galthude','S-G1458','2020-10-26');
     INSERT INTO UserDetails VALUES ('Default User','0702053777','Manager','user','1234');
+
+    SELECT EXISTS(SELECT * from Customer WHERE accountNumber=58170955210931);
+
+
+
+WithdrawObjectModel model = new WithdrawObjectModel(
+                    txtSearchWithdraw.getText(),
+                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
+                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("hh:ss:mm")),
+                    Double.parseDouble(txtWithdrawAmount.getText()),
+                    txtWithdrawDesc.getText(),
+                    new NumberGenerator().getWithdrawalID()
+            );
+            ObjectPasser.setWithdrawObjectModel(model);
+            URL resource = getClass().getResource("../view/WithdrawForm.fxml");
+            System.out.println(resource);
+            assert resource != null;
+            Parent load = FXMLLoader.load(resource);
+            mainDashboardForm.getChildren().clear();
+            mainDashboardForm.getChildren().add(load);
+
+            sudo mysql -u naashnix -h localhost -p
+            58170955210931
+
+            SELECT * FROM WithdrawTransactions;
+            SELECT * FROM SavingsAccount;
+            SELECT * FROM Customer;
