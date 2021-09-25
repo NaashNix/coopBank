@@ -2,12 +2,17 @@ package controller.dbControllers;
 
 import db.DbConnection;
 import model.CustomerModel;
+import model.CustomerModelMini;
 import model.OpenAccDepMoneyModel;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
 
 public class CustomerDetailsController {
     /*
@@ -42,12 +47,17 @@ public class CustomerDetailsController {
 
         // * Executing the query.
         statement.executeUpdate();
-        if (new DepositMoneyController().recordDepositTransaction(deposit)) {
+        if (deposit!=null){
+            if (new DepositMoneyController().recordDepositTransaction(deposit)) {
+                connection.commit();
+                return true;
+            } else {
+                connection.rollback();
+                return false;
+            }
+        }else{
             connection.commit();
             return true;
-        } else {
-            connection.rollback();
-            return false;
         }
     }
 
@@ -99,6 +109,29 @@ public class CustomerDetailsController {
 
     }
 
+    public CustomerModelMini getMiniCustomerModel(String accountNumber) throws SQLException, ClassNotFoundException {
+        if (checkAccountNumberIsExist(accountNumber)){
+            PreparedStatement statement = DbConnection.getInstance().getConnection()
+                    .prepareStatement("SELECT*FROM Customer WHERE accountNumber=?");
+            statement.setObject(1,accountNumber);
+
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()){
+                return new CustomerModelMini(
+                        resultSet.getString("customerName"),
+                        resultSet.getString("accountNumber"),
+                        resultSet.getString("telephoneNumber"),
+                        resultSet.getString("rationLoan"),
+                        resultSet.getString("loanByDeposit"),
+                        resultSet.getString("instantLoan")
+                );
+            }
+        }else{
+            return null;
+        }
+        return null;
+    }
+
     public boolean updateDetails(CustomerModel model) throws SQLException, ClassNotFoundException {
         PreparedStatement statement = DbConnection.getInstance().getConnection()
                 .prepareStatement("UPDATE Customer SET customerName=?, customerAge=?," +
@@ -126,6 +159,30 @@ public class CustomerDetailsController {
             return null;
         }
     }
+
+    public LocalDate getJoinedDate(String accountNumber) throws SQLException, ClassNotFoundException {
+        PreparedStatement statement = DbConnection.getInstance().getConnection()
+                .prepareStatement("SELECT joinedDate FROM Customer WHERE accountNumber=?");
+        statement.setObject(1,accountNumber);
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()) {
+            LocalDate date = resultSet.getDate(1).toLocalDate();
+            return date;
+        }
+        return null;
+    }
+
+    public double getAccountBalance(String accountNumber) throws SQLException, ClassNotFoundException {
+        PreparedStatement statement = DbConnection.getInstance().getConnection()
+                .prepareStatement("SELECT personalBalance FROM SavingsAccount WHERE accountNumber=?");
+        statement.setObject(1,accountNumber);
+        ResultSet resultSet = statement.executeQuery();
+        if (resultSet.next()){
+            return resultSet.getDouble(1);
+        }
+        return 0.0;
+    }
+
 }
 
 

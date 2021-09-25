@@ -8,14 +8,20 @@ import controller.dbControllers.DepositMoneyController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import model.DepositObjectModel;
 import model.OpenAccDepMoneyModel;
 import model.SampleTM;
 
+import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class DepositFormController {
 
@@ -31,6 +37,7 @@ public class DepositFormController {
     public TextField txtDescription;
     public TextField txtAmount;
     public Label lblTransactionID;
+    public AnchorPane depositConfirmContext;
     DepositObjectModel model;
 
     public void initialize() throws SQLException, ClassNotFoundException {
@@ -54,7 +61,6 @@ public class DepositFormController {
         lblTransactionID.setText(model.getDepTransactionID());
     }
 
-
     public void confirmButtonOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         FormFieldValidator validator = new FormFieldValidator(
                 txtAmount,txtDescription
@@ -75,13 +81,36 @@ public class DepositFormController {
         }
     }
 
-    private void proceedToMakeDeposit(DepositObjectModel deposit) throws SQLException, ClassNotFoundException {
+    private void proceedToMakeDeposit(DepositObjectModel deposit) throws SQLException, ClassNotFoundException{
         if(new DepositMoneyController().updateDepositInfo(deposit)){
+            refresh();
             ModifiedAlertBox alertBox = new ModifiedAlertBox("Done!", Alert.AlertType.INFORMATION,
                     "Succeed!","Transaction succeed!");
             alertBox.showAlert();
+
         }else{
             System.out.println("ERROR->[@Code:01]");
+        }
+    }
+
+    public void depositCancelOnAction(ActionEvent actionEvent) throws IOException {
+        URL resource = getClass().getResource("../view/MainDashboardForm.fxml");
+        System.out.println(resource);
+        assert resource != null;
+        Parent load = FXMLLoader.load(resource);
+        depositConfirmContext.getChildren().clear();
+        depositConfirmContext.getChildren().add(load);
+    }
+
+    private void refresh()  {
+        try {
+            URL resource = getClass().getResource("../view/MainDashboardForm.fxml");
+            assert resource != null;
+            Parent load = FXMLLoader.load(resource);
+            depositConfirmContext.getChildren().clear();
+            depositConfirmContext.getChildren().add(load);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

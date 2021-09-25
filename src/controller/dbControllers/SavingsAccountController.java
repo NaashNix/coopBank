@@ -13,7 +13,7 @@ import java.sql.SQLException;
 
 public class SavingsAccountController {
 
-    public boolean setAccountBalance(String accountNumber,double amount) throws SQLException, ClassNotFoundException {
+    public boolean updateSavingsForDepositTransaction(String accountNumber, double amount) throws SQLException, ClassNotFoundException {
         /*
             --> This method will set the personal's savings account balance.
          */
@@ -39,8 +39,13 @@ public class SavingsAccountController {
 
     }
 
-    public boolean updateSavingsAccountForWithdraw(String accountNumber, double amount){
-
+    public boolean updateSavingsAccountForWithdraw(String accountNumber, double amount) throws SQLException, ClassNotFoundException {
+        if (checkRecordIsExist(accountNumber)){
+            PreparedStatement statement = DbConnection.getInstance().getConnection()
+                    .prepareStatement("UPDATE SavingsAccount SET personalBalance=(personalBalance-"+amount+") WHERE accountNumber=?");
+            statement.setObject(1,accountNumber);
+            return statement.executeUpdate()>0;
+        }
         return false;
     }
 

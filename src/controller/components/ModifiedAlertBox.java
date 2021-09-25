@@ -1,9 +1,17 @@
 package controller.components;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.DialogPane;
+import javafx.scene.layout.AnchorPane;
 
+import java.io.IOException;
+import java.lang.reflect.Method;
+import java.net.URL;
 import java.util.Objects;
+import java.util.Optional;
 
 
 public class ModifiedAlertBox {
@@ -11,6 +19,7 @@ public class ModifiedAlertBox {
 
     public ModifiedAlertBox(String title, Alert.AlertType alertType, String header,
                             String context){
+
 
         alert = new Alert(alertType);
         alert.setTitle(title);
@@ -34,6 +43,23 @@ public class ModifiedAlertBox {
 
     }
 
+    public void setMethodToButtons(AnchorPane pane, String fxmlFile) throws IOException {
+        Optional<ButtonType> result = alert.showAndWait();
+        if (!result.isPresent()){
+            navigateToFxml(pane,fxmlFile);
+        }else if (result.get()==ButtonType.OK){
+            navigateToFxml(pane,fxmlFile);
+        }else{
+            navigateToFxml(pane,fxmlFile);
+        }
+    }
+
+    private void navigateToFxml(AnchorPane pane, String fxmlFile) throws IOException {
+        URL resource = getClass().getResource(fxmlFile);
+        Parent load = FXMLLoader.load(resource);
+        pane.getChildren().clear();
+        pane.getChildren().add(load);
+    }
 
     /*
         --> default .show() method will run when calling this

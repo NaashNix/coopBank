@@ -46,7 +46,10 @@
       <MenuButton alignment="CENTER" layoutX="553.0" layoutY="8.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="116.0" text="Loans" textFill="WHITE">
          <items>
             <MenuItem mnemonicParsing="false" onAction="#openLoanDetailsOnAction" text="Loan Details" />
-            <MenuItem mnemonicParsing="false" text="Action 2" />
+            <MenuItem mnemonicParsing="false" onAction="#IssueALoanOnAction" text="Issue A Loan" />
+            <MenuItem mnemonicParsing="false" onAction="#IssueInstantLoanOnAction" text="Instant Loan" />
+            <MenuItem mnemonicParsing="false" onAction="#IssueInstantLoanOnAction" text="Loan By Deposit" />
+            <MenuItem mnemonicParsing="false" onAction="#IssueInstantLoanOnAction" text="Ration Loans" />
          </items>
          <font>
             <Font name="Roboto Medium" size="17.0" />

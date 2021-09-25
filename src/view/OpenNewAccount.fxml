@@ -19,12 +19,12 @@
             <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
          </effect>
       </Rectangle>
-      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="352.0" layoutX="685.0" layoutY="30.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="556.0">
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="265.0" layoutX="685.0" layoutY="30.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="556.0">
          <effect>
             <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
          </effect>
       </Rectangle>
-      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="215.0" layoutX="685.0" layoutY="405.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="556.0">
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="215.0" layoutX="685.0" layoutY="325.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="556.0">
          <effect>
             <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
          </effect>
@@ -38,15 +38,15 @@
          <font>
             <Font name="Open Sans SemiBold" size="17.0" />
          </font></TextField>
-      <TextField fx:id="txtName" layoutX="257.0" layoutY="166.0" prefHeight="30.0" prefWidth="298.0" text="Ravindu Thilakshana">
+      <TextField fx:id="txtName" layoutX="257.0" layoutY="166.0" prefHeight="30.0" prefWidth="298.0">
          <font>
             <Font name="Open Sans SemiBold" size="13.0" />
          </font></TextField>
-      <TextField fx:id="txtAddress" layoutX="257.0" layoutY="221.0" prefHeight="30.0" prefWidth="298.0" text="48/A/ Galthude Panadura">
+      <TextField fx:id="txtAddress" layoutX="257.0" layoutY="221.0" prefHeight="30.0" prefWidth="298.0">
          <font>
             <Font name="Open Sans SemiBold" size="13.0" />
          </font></TextField>
-      <TextField fx:id="txtNIC" layoutX="257.0" layoutY="421.0" prefHeight="30.0" prefWidth="298.0" text="200129100596">
+      <TextField fx:id="txtNIC" layoutX="257.0" layoutY="421.0" prefHeight="30.0" prefWidth="298.0">
          <font>
             <Font name="Open Sans SemiBold" size="13.0" />
          </font></TextField>
@@ -96,11 +96,11 @@
             <Font name="Roboto Medium" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="txtTelephone" layoutX="257.0" layoutY="476.0" prefHeight="30.0" prefWidth="298.0" text="0702053777">
+      <TextField fx:id="txtTelephone" layoutX="257.0" layoutY="476.0" prefHeight="30.0" prefWidth="298.0">
          <font>
             <Font name="Open Sans SemiBold" size="13.0" />
          </font></TextField>
-      <TextField fx:id="txtEmail" layoutX="258.0" layoutY="531.0" prefHeight="30.0" prefWidth="298.0" text="naashnix@gmail.com">
+      <TextField fx:id="txtEmail" layoutX="258.0" layoutY="531.0" prefHeight="30.0" prefWidth="298.0">
          <font>
             <Font name="Open Sans SemiBold" size="13.0" />
          </font></TextField>
@@ -117,7 +117,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </JFXToggleButton>
-      <TextField fx:id="txtAccNumber" layoutX="867.0" layoutY="111.0" prefHeight="30.0" prefWidth="298.0" text="asdfsadfasdfasdfasdf" />
+      <TextField fx:id="txtAccNumber" layoutX="867.0" layoutY="111.0" prefHeight="30.0" prefWidth="298.0" />
       <TextField fx:id="txtDescription" layoutX="867.0" layoutY="166.0" prefHeight="30.0" prefWidth="298.0" />
       <TextField fx:id="txtAmount" layoutX="867.0" layoutY="221.0" prefHeight="30.0" prefWidth="298.0" />
       <Label alignment="CENTER_RIGHT" layoutX="693.0" layoutY="115.0" prefWidth="151.0" text="Acc. Number" textFill="#494949">
@@ -135,17 +135,15 @@
             <Font name="Roboto Medium" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="btnDepositDone" layoutX="918.0" layoutY="288.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="115.0" text="Done" />
-      <Button fx:id="btnDepositCancel" layoutX="1048.0" layoutY="288.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="115.0" text="Cancel" />
-      <Label layoutX="703.0" layoutY="414.0" text="Verification">
+      <Label layoutX="703.0" layoutY="334.0" text="Verification">
          <font>
             <Font name="Roboto Black" size="23.0" />
          </font>
       </Label>
-      <Label layoutX="1107.0" layoutY="415.0" text="Admin Passwords" textFill="#727272" />
-      <TextField fx:id="txtUserName" layoutX="761.0" layoutY="486.0" prefHeight="30.0" prefWidth="189.0" promptText="User Name" styleClass="verification-fields" />
-      <Button layoutX="919.0" layoutY="538.0" mnemonicParsing="false" onAction="#openAccountButtonOnAction" prefHeight="42.0" prefWidth="115.0" text="Done" />
-      <Button layoutX="1049.0" layoutY="538.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="115.0" text="Cancel" />
-      <TextField fx:id="txtPassword" layoutX="973.0" layoutY="486.0" prefHeight="30.0" prefWidth="189.0" promptText="Password" styleClass="verification-fields" />
+      <Label layoutX="1107.0" layoutY="335.0" text="Admin Passwords" textFill="#727272" />
+      <TextField fx:id="txtUserName" layoutX="761.0" layoutY="406.0" prefHeight="30.0" prefWidth="189.0" promptText="User Name" styleClass="verification-fields" />
+      <Button layoutX="919.0" layoutY="458.0" mnemonicParsing="false" onAction="#openAccountButtonOnAction" prefHeight="42.0" prefWidth="115.0" text="Done" />
+      <Button layoutX="1049.0" layoutY="458.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="42.0" prefWidth="115.0" text="Cancel" />
+      <TextField fx:id="txtPassword" layoutX="973.0" layoutY="406.0" prefHeight="30.0" prefWidth="189.0" promptText="Password" styleClass="verification-fields" />
    </children>
 </AnchorPane>

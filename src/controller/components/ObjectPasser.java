@@ -4,10 +4,7 @@
 
 package controller.components;
 
-import model.CustomerModel;
-import model.DepositObjectModel;
-import model.OpenAccDepMoneyModel;
-import model.WithdrawObjectModel;
+import model.*;
 
 public class ObjectPasser {
     private static CustomerModel customerModel;
@@ -15,6 +12,9 @@ public class ObjectPasser {
     private static String accountNumber;
     private static DepositObjectModel depositObjectModel;
     private static WithdrawObjectModel withdrawObjectModel;
+    private static CustomerModelMini customerForLoanPassing;
+    private static String loanType;
+
 
     public static void setModels(CustomerModel customer, OpenAccDepMoneyModel deposit){
         customerModel = customer;
@@ -52,4 +52,20 @@ public class ObjectPasser {
     public static void setWithdrawObjectModel(WithdrawObjectModel model) {
         ObjectPasser.withdrawObjectModel = model;
     }
+
+
+    public static CustomerModelMini getCustomerForLoanPassing() {
+        return customerForLoanPassing;
+    }
+
+    public static void setModelsForLoanPassing(CustomerModelMini customerForLoanPassing
+    ,String loanType) {
+        ObjectPasser.customerForLoanPassing = customerForLoanPassing;
+        ObjectPasser.loanType = loanType;
+    }
+
+    public static String getLoanType() {
+        return loanType;
+    }
+
 }

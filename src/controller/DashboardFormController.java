@@ -187,4 +187,25 @@ public class DashboardFormController {
         playGroundContext.getChildren().clear();
         playGroundContext.getChildren().add(load);
     }
+
+    public void IssueALoanOnAction(ActionEvent actionEvent) throws IOException {
+        URL resource = getClass().getResource("../view/LendingForm.fxml");
+        Parent load = FXMLLoader.load(resource);
+        playGroundContext.getChildren().clear();
+        playGroundContext.getChildren().add(load);
+    }
+
+    public void IssueInstantLoanOnAction(ActionEvent actionEvent) throws IOException {
+        URL resource = getClass().getResource("../view/ViewIssuedInstantLoans.fxml");
+        Parent load = FXMLLoader.load(resource);
+        playGroundContext.getChildren().clear();
+        playGroundContext.getChildren().add(load);
+    }
+
+    public void viewAllAccountOnAction(ActionEvent actionEvent) throws IOException {
+        URL resource = getClass().getResource("../view/ViewAllCustomersForm.fxml");
+        Parent load = FXMLLoader.load(resource);
+        playGroundContext.getChildren().clear();
+        playGroundContext.getChildren().add(load);
+    }
 }

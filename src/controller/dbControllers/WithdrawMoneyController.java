@@ -5,12 +5,15 @@
 package controller.dbControllers;
 
 import db.DbConnection;
-import model.DepositObjectModel;
+import model.LastTransacTableModel;
 import model.WithdrawObjectModel;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class WithdrawMoneyController {
     /*
@@ -31,14 +34,33 @@ public class WithdrawMoneyController {
 
         statement.executeUpdate();
 
-        if (new SavingsAccountController().setAccountBalance(model.getAccountNumber(),model.getAmount())){
+        if (new SavingsAccountController().updateSavingsAccountForWithdraw(model.getAccountNumber(),model.getAmount())){
             connection.commit();
             return true;
-        }else
-        {
+        }else {
             connection.rollback();
             return false;
         }
+    }
 
+    public ArrayList<LastTransacTableModel> getLastWithdrawalTransactions(String accountNumber) throws SQLException, ClassNotFoundException {
+        /*
+            --> This method returns the latest withdrawal transactions of the requested account owner.
+         */
+
+        ArrayList<LastTransacTableModel> models = new ArrayList<>();
+        PreparedStatement statement = DbConnection.getInstance().getConnection()
+                .prepareStatement("SELECT * FROM WithdrawTransactions WHERE accountNumber=? ORDER BY transactionDate DESC,transactionTime DESC LIMIT 10;");
+        statement.setObject(1,accountNumber);
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()){
+            models.add(new LastTransacTableModel(
+                    resultSet.getString("transactionDate"),
+                    "Savings",
+                    resultSet.getString("description"),
+                    resultSet.getDouble("amount")
+            ));
+        }
+        return models;
     }
 }

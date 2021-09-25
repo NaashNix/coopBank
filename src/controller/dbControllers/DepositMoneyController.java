@@ -10,8 +10,8 @@ import model.OpenAccDepMoneyModel;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class DepositMoneyController {
      /*
@@ -38,7 +38,7 @@ public class DepositMoneyController {
 
         statement.executeUpdate();
 
-        if (new SavingsAccountController().setAccountBalance(deposit.getAccountNumber(),deposit.getAmount())){
+        if (new SavingsAccountController().updateSavingsForDepositTransaction(deposit.getAccountNumber(),deposit.getAmount())){
                 connection.commit();
                 return true;
             }else
@@ -63,7 +63,7 @@ public class DepositMoneyController {
 
         statement.executeUpdate();
 
-        if (new SavingsAccountController().setAccountBalance(model.getAccountNumber(),model.getAmount())){
+        if (new SavingsAccountController().updateSavingsForDepositTransaction(model.getAccountNumber(),model.getAmount())){
             connection.commit();
             return true;
         }else

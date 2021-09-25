@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<!--
+  ~ Copyright (c) 2021. Coded By Ravindu Thilakshana (naashnix) naashnix.bio.link
+  -->
+
+<AnchorPane fx:id="confirmLendingContext" prefHeight="648.0" prefWidth="1280.0" style="-fx-background-color: #fafbff;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainLendingPageFormController">
+   <children>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="177.0" layoutX="35.0" layoutY="18.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="433.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="371.0" layoutX="35.0" layoutY="214.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="433.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <Label layoutX="60.0" layoutY="76.0" text="Loan Issued For">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="96.0" layoutY="110.0" text="Loan Type">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="75.0" layoutY="144.0" text="Loan Number">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtAccountNumber" editable="false" layoutX="188.0" layoutY="74.0" prefHeight="24.0" prefWidth="231.0" />
+      <TextField fx:id="txtLoanType" editable="false" layoutX="188.0" layoutY="108.0" prefHeight="24.0" prefWidth="231.0" />
+      <TextField fx:id="txtLoanNumber" editable="false" layoutX="188.0" layoutY="142.0" prefHeight="24.0" prefWidth="231.0" />
+      <Label alignment="CENTER_RIGHT" layoutX="38.0" layoutY="259.0" prefWidth="127.0" text="Max. Amount">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtMaxAmount" editable="false" layoutX="188.0" layoutY="259.0" prefHeight="24.0" prefWidth="231.0" />
+      <TextField fx:id="txtInterestRate" editable="false" layoutX="188.0" layoutY="343.0" prefHeight="24.0" prefWidth="231.0" />
+      <Label layoutX="80.0" layoutY="343.0" text="Interest Rate">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtInterestType" editable="false" layoutX="188.0" layoutY="385.0" prefHeight="24.0" prefWidth="231.0" />
+      <Label layoutX="77.0" layoutY="385.0" text="Interest Type">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="57.0" layoutY="469.0" text="Nu. Installments">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtMaxInstallments" editable="false" layoutX="188.0" layoutY="427.0" prefHeight="24.0" prefWidth="231.0" />
+      <Button layoutX="188.0" layoutY="523.0" mnemonicParsing="false" onAction="#confirmButtonOnAction" prefHeight="40.0" prefWidth="111.0" text="CONFIRM" />
+      <Button layoutX="310.0" layoutY="523.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="111.0" text="Cancel" />
+      <Label layoutX="52.0" layoutY="27.0" text="Basic Details">
+         <font>
+            <Font name="Roboto Black" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="52.0" layoutY="218.0" text="Loan Details">
+         <font>
+            <Font name="Roboto Black" size="23.0" />
+         </font>
+      </Label>
+      <Pane fx:id="summeryPane" layoutX="490.0" layoutY="10.0" prefHeight="587.0" prefWidth="480.0" visible="false">
+         <children>
+            <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="407.0" layoutX="10.0" layoutY="8.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="456.0">
+               <effect>
+                  <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+               </effect>
+            </Rectangle>
+            <Label layoutX="30.0" layoutY="20.0" text="Payment Details">
+               <font>
+                  <Font name="Roboto Black" size="23.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="33.0" layoutY="63.0" prefHeight="19.0" prefWidth="160.0" text="Debtor Name :">
+               <font>
+                  <Font name="Roboto Medium" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblDebtorName" layoutX="196.0" layoutY="63.0" prefHeight="19.0" prefWidth="266.0" text="&lt;Name Of The Debatot&gt;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="33.0" layoutY="97.0" prefHeight="19.0" prefWidth="160.0" text="Loan Type :">
+               <font>
+                  <Font name="Roboto Medium" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="33.0" layoutY="131.0" prefHeight="19.0" prefWidth="160.0" text="Loan Number :">
+               <font>
+                  <Font name="Roboto Medium" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="33.0" layoutY="165.0" prefHeight="19.0" prefWidth="160.0" text="Loan Amount :">
+               <font>
+                  <Font name="Roboto Medium" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="33.0" layoutY="199.0" prefHeight="19.0" prefWidth="160.0" text="Loan Issuing Date :">
+               <font>
+                  <Font name="Roboto Medium" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="33.0" layoutY="233.0" prefHeight="19.0" prefWidth="160.0" text="Loan Interest Type :">
+               <font>
+                  <Font name="Roboto Medium" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="33.0" layoutY="267.0" prefHeight="19.0" prefWidth="160.0" text="Loan Interest :">
+               <font>
+                  <Font name="Roboto Medium" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="33.0" layoutY="301.0" prefHeight="19.0" prefWidth="160.0" text="Number Of Ins :">
+               <font>
+                  <Font name="Roboto Medium" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="33.0" layoutY="335.0" prefHeight="19.0" prefWidth="160.0" text="Payment Date :">
+               <font>
+                  <Font name="Roboto Medium" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblLoanType" layoutX="196.0" layoutY="97.0" prefHeight="19.0" prefWidth="266.0" text="&lt;Name Of The Debatot&gt;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblLoanNumber" layoutX="196.0" layoutY="131.0" prefHeight="19.0" prefWidth="266.0" text="&lt;Name Of The Debatot&gt;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblLoanAmount" layoutX="196.0" layoutY="165.0" prefHeight="19.0" prefWidth="266.0" text="&lt;Name Of The Debatot&gt;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblLoanIssuingDate" layoutX="196.0" layoutY="199.0" prefHeight="19.0" prefWidth="266.0" text="&lt;Name Of The Debatot&gt;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblInterestType" layoutX="196.0" layoutY="233.0" prefHeight="19.0" prefWidth="266.0" text="&lt;Name Of The Debatot&gt;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblInterest" layoutX="196.0" layoutY="267.0" prefHeight="19.0" prefWidth="266.0" text="&lt;Name Of The Debatot&gt;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblNumOfInstallments" layoutX="196.0" layoutY="301.0" prefHeight="19.0" prefWidth="266.0" text="&lt;Name Of The Debatot&gt;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblPaymentDate" layoutX="196.0" layoutY="335.0" prefHeight="19.0" prefWidth="266.0" text="&lt;Name Of The Debatot&gt;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER_RIGHT" layoutX="33.0" layoutY="369.0" prefHeight="19.0" prefWidth="160.0" text="Next Installment Rs. :">
+               <font>
+                  <Font name="Roboto Medium" size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="lblInstallmentPrice" layoutX="196.0" layoutY="369.0" prefHeight="19.0" prefWidth="266.0" text="&lt;Name Of The Debatot&gt;">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="139.0" layoutX="12.0" layoutY="435.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="456.0">
+               <effect>
+                  <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+               </effect>
+            </Rectangle>
+            <Label layoutX="25.0" layoutY="439.0" text="Verification">
+               <font>
+                  <Font name="Roboto Black" size="23.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtUserName" layoutX="43.0" layoutY="476.0" prefHeight="30.0" prefWidth="189.0" promptText="User Name" styleClass="verification-fields" />
+            <Button layoutX="315.0" layoutY="520.0" mnemonicParsing="false" onAction="#doneButtonOnAction" prefHeight="42.0" prefWidth="115.0" text="Done" />
+            <Button layoutX="186.0" layoutY="521.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="42.0" prefWidth="115.0" text="Cancel" />
+            <TextField fx:id="txtPassword" layoutX="240.0" layoutY="476.0" prefHeight="30.0" prefWidth="189.0" promptText="Password" styleClass="verification-fields" />
+            <Label layoutX="343.0" layoutY="441.0" text="Admin Passwords" textFill="#727272" />
+         </children>
+      </Pane>
+      <Label layoutX="75.0" layoutY="301.0" text="Loan Amount">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtLoanAmount" layoutX="188.0" layoutY="301.0" prefHeight="24.0" prefWidth="231.0" />
+      <Label layoutX="47.0" layoutY="427.0" text="Max. Installments">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtInstallments" layoutX="188.0" layoutY="469.0" prefHeight="24.0" prefWidth="231.0" />
+   </children>
+</AnchorPane>

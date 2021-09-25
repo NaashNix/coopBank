@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="648.0" prefWidth="1280.0" style="-fx-background-color: #e9ecf5;" stylesheets="@styleSheets/depositFormStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DepositFormController">
+<AnchorPane fx:id="depositConfirmContext" prefHeight="648.0" prefWidth="1280.0" style="-fx-background-color: #e9ecf5;" stylesheets="@styleSheets/depositFormStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DepositFormController">
    <children>
       <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="427.0" layoutX="35.0" layoutY="20.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="608.0">
          <effect>
@@ -87,7 +87,7 @@
          </font>
       </Label>
       <Button layoutX="308.0" layoutY="358.0" mnemonicParsing="false" onAction="#confirmButtonOnAction" prefHeight="42.0" prefWidth="115.0" text="CONFIRM" />
-      <Button layoutX="438.0" layoutY="358.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="115.0" text="Cancel" />
+      <Button layoutX="438.0" layoutY="358.0" mnemonicParsing="false" onAction="#depositCancelOnAction" prefHeight="42.0" prefWidth="115.0" text="Cancel" />
       <Label alignment="CENTER" layoutX="137.0" layoutY="551.0" prefHeight="16.0" prefWidth="387.0" text="&lt;Rs. 458.00&gt;">
          <font>
             <Font name="Roboto Black" size="31.0" />

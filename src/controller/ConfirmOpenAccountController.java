@@ -8,17 +8,21 @@ import controller.components.ObjectPasser;
 import controller.dbControllers.CustomerDetailsController;
 import javafx.animation.*;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import model.CustomerModel;
 import model.OpenAccDepMoneyModel;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -43,7 +47,9 @@ public class ConfirmOpenAccountController implements Initializable {
     public ImageView imgDone;
     public Button btnConfirm;
     public Button btnEdit;
-
+    public OpenAccDepMoneyModel depositModel;
+    public CustomerModel customerModel;
+    public AnchorPane confirmOpenAccContext;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -51,8 +57,12 @@ public class ConfirmOpenAccountController implements Initializable {
             --> Initialize method will set the data to all the fields.
          */
 
-        setDataToCustomerFields(ObjectPasser.getCustomerModel());
-        setDataToDepositFields(ObjectPasser.getDepositModel());
+        customerModel = ObjectPasser.getCustomerModel();
+        setDataToCustomerFields(customerModel);
+        depositModel = ObjectPasser.getDepositModel();
+        setDataToDepositFields(depositModel);
+        ObjectPasser.setModels(null,null);
+
     }
 
     private void setDataToDepositFields(OpenAccDepMoneyModel depositModel) {
@@ -102,7 +112,7 @@ public class ConfirmOpenAccountController implements Initializable {
 
         Timeline timeline = new Timeline(
                 new KeyFrame(Duration.ZERO, new KeyValue(progressBarDone.progressProperty(), 0)),
-                new KeyFrame(Duration.seconds(7), e-> {
+                new KeyFrame(Duration.seconds(5), e-> {
                     // do anything you need here on completion...
                     txtStatus.setVisible(false);
                     ft.setNode(txtStatus);
@@ -124,5 +134,15 @@ public class ConfirmOpenAccountController implements Initializable {
             System.out.println("Failed! ");
         }
 
+    }
+
+    public void editButtonOnAction(ActionEvent actionEvent) throws IOException {
+        ObjectPasser.setModels(customerModel,depositModel);
+        URL resource = getClass().getResource("../view/OpenNewAccount.fxml");
+        System.out.println(resource);
+        assert resource != null;
+        Parent load = FXMLLoader.load(resource);
+        confirmOpenAccContext.getChildren().clear();
+        confirmOpenAccContext.getChildren().add(load);
     }
 }

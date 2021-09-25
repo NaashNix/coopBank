@@ -42,11 +42,12 @@ public class OpenNewAccountFormController {
     public TextField txtAccNumber;
     public TextField txtDescription;
     public TextField txtAmount;
-    public Button btnDepositDone;
-    public Button btnDepositCancel;
     public AnchorPane openNewAccountContext;
 
     public void initialize(){
+        // * Setting data to fields.
+        setDataToFields();
+
         // * Setting the account number
         setAccountNumber();
 
@@ -70,6 +71,37 @@ public class OpenNewAccountFormController {
             }
         });
 
+    }
+
+    private void setDataToFields() {
+        CustomerModel customer = ObjectPasser.getCustomerModel();
+        OpenAccDepMoneyModel depositModel = ObjectPasser.getDepositModel();
+
+        if (customer!=null){
+            txtAccNumber.setText(customer.getAccountNumber());
+            txtName.setText(customer.getName());
+            txtAddress.setText(customer.getCustomerAddress());
+            pickerBirthday.getEditor().setText(customer.getCustomerBirthday());
+            if (customer.getSex().equals("Male")){
+                radioMale.selectedProperty().set(true);
+            }else {
+                radioFemale.selectedProperty().set(true);
+            }
+            cmbAccountType.setValue("Savings Account");
+            txtNIC.setText(customer.getCustomerNIC());
+            txtTelephone.setText(customer.getTelephoneNumber());
+            txtEmail.setText(customer.getCustomerEmail());
+        }
+
+        if (depositModel!=null){
+            txtAmount.setText(String.valueOf(depositModel.getAmount()));
+            txtDescription.setText(depositModel.getDescription());
+            txtAccNumber.setText(depositModel.getAccountNumber());
+            toggleDeposit.selectedProperty().set(false);
+        }else{
+            toggleDeposit.selectedProperty().set(true);
+            disableDepositForm();
+        }
     }
 
     private void datePickerFormat() {
@@ -196,11 +228,13 @@ public class OpenNewAccountFormController {
     }
 
     private void setAccountNumber() {
-        // * Generating the account number
-        String accountNumber = new NumberGenerator().generateNumber();
+        if (txtAccountNumber.getText().isEmpty()) {
+            // * Generating the account number
+            String accountNumber = new NumberGenerator().generateNumber();
 
-        // * Setting to the field.
-        txtAccountNumber.setText(accountNumber);
+            // * Setting to the field.
+            txtAccountNumber.setText(accountNumber);
+        }
     }
 
     public void setSexSelection(ActionEvent actionEvent){
@@ -304,7 +338,8 @@ public class OpenNewAccountFormController {
 
         // * If account create with deposit, then this make model of transaction.
         OpenAccDepMoneyModel depositModel = null;
-        if (!toggleDeposit.isDisable()){
+        if (!toggleDeposit.isSelected()){
+            System.out.println("Not Disabled");
             depositModel = new OpenAccDepMoneyModel(
                     new NumberGenerator().getTransactionID(),
                     txtAccountNumber.getText(),
@@ -313,6 +348,8 @@ public class OpenNewAccountFormController {
                     LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
                     LocalDateTime.now().format(DateTimeFormatter.ofPattern("hh:mm:ss"))
             );
+        }else{
+            System.out.println("Disabled.");
         }
 
         // * Parsing customer and deposit model to parser to get in the confirm form.
@@ -320,6 +357,7 @@ public class OpenNewAccountFormController {
 
         // * Opening confirm details form.
         URL resource = getClass().getResource("../view/ConfirmOpenAccount.fxml");
+        assert resource != null;
         Parent load = FXMLLoader.load(resource);
         openNewAccountContext.getChildren().clear();
         openNewAccountContext.getChildren().add(load);
@@ -333,17 +371,21 @@ public class OpenNewAccountFormController {
         txtAccNumber.setText("");
         txtAmount.setText("");
         txtDescription.setText("");
-        btnDepositCancel.setDisable(true);
-        btnDepositDone.setDisable(true);
     }
 
     private void enableDepositForm() {
         txtAccNumber.setDisable(false);
         txtAmount.setDisable(false);
         txtDescription.setDisable(false);
-        btnDepositCancel.setDisable(false);
-        btnDepositDone.setDisable(false);
     }
 
 
+    public void cancelButtonOnAction(ActionEvent actionEvent) throws IOException {
+        URL resource = getClass().getResource("../view/MainDashboardForm.fxml");
+        System.out.println(resource);
+        assert resource != null;
+        Parent load = FXMLLoader.load(resource);
+        openNewAccountContext.getChildren().clear();
+        openNewAccountContext.getChildren().add(load);
+    }
 }

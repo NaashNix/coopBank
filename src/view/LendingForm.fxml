@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<!--
+  ~ Copyright (c) 2021. Coded By Ravindu Thilakshana (naashnix) naashnix.bio.link
+  -->
+
+<AnchorPane fx:id="lendingFormContext" prefHeight="648.0" prefWidth="1280.0" style="-fx-background-color: #fafbff;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LendingFormController">
+   <children>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="122.0" layoutX="25.0" layoutY="36.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="441.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="440.0" layoutX="25.0" layoutY="183.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="608.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <TextField fx:id="txtAccountNumberSearchField" layoutX="62.0" layoutY="96.0" prefHeight="30.0" prefWidth="265.0">
+         <font>
+            <Font name="Open Sans SemiBold" size="13.0" />
+         </font>
+      </TextField>
+      <Button layoutX="342.0" layoutY="95.0" mnemonicParsing="false" onAction="#findButtonOnAction" prefHeight="30.0" prefWidth="82.0" style="-fx-background-color: #2c3e50;" text="Search" textFill="WHITE">
+         <font>
+            <Font name="Open Sans SemiBold" size="15.0" />
+         </font></Button>
+      <TextField fx:id="txtAccountNumber" editable="false" layoutX="247.0" layoutY="267.0" prefHeight="35.0" prefWidth="298.0" styleClass="accountNumberField" stylesheets="@styleSheets/loginForm.css">
+         <font>
+            <Font name="Open Sans SemiBold" size="15.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="txtName" editable="false" layoutX="247.0" layoutY="326.0" prefHeight="30.0" prefWidth="298.0">
+         <font>
+            <Font name="Open Sans SemiBold" size="13.0" />
+         </font>
+      </TextField>
+      <Label alignment="CENTER_RIGHT" layoutX="73.0" layoutY="272.0" prefWidth="151.0" text="Acc. Number" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="73.0" layoutY="330.0" prefWidth="151.0" text="Full Name" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="73.0" layoutY="380.0" prefHeight="21.0" prefWidth="151.0" text="Telephone Nu." textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtTelephone" editable="false" layoutX="247.0" layoutY="376.0" prefHeight="30.0" prefWidth="298.0">
+         <font>
+            <Font name="Open Sans SemiBold" size="13.0" />
+         </font>
+      </TextField>
+      <Label alignment="CENTER_RIGHT" layoutX="73.0" layoutY="460.0" prefHeight="21.0" prefWidth="151.0" text="Ration Loan" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <Separator layoutX="132.0" layoutY="437.0" prefHeight="1.0" prefWidth="413.0" />
+      <Label alignment="CENTER_RIGHT" layoutX="73.0" layoutY="510.0" prefHeight="21.0" prefWidth="151.0" text="Loan By Deposit" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER_RIGHT" layoutX="73.0" layoutY="560.0" prefHeight="21.0" prefWidth="151.0" text="Instant Loan" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnGoForRationLoan" disable="true" layoutX="486.0" layoutY="457.0" mnemonicParsing="false" onAction="#rationLoanButtonOnAction" prefHeight="24.0" prefWidth="91.0" style="-fx-background-color: #16a085;" text="More " textFill="WHITE">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font></Button>
+      <Button fx:id="btnGoForDepositLoan" disable="true" layoutX="486.0" layoutY="507.0" mnemonicParsing="false" onAction="#loanByDepositButtonOnAction" prefHeight="24.0" prefWidth="91.0" style="-fx-background-color: #16a085;" text="More" textFill="WHITE">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font></Button>
+      <Button fx:id="btnGoForInstantLoan" disable="true" layoutX="486.0" layoutY="558.0" mnemonicParsing="false" onAction="#instantLoanButtonOnAction" prefHeight="24.0" prefWidth="91.0" style="-fx-background-color: #16a085;" text="More" textFill="WHITE">
+         <font>
+            <Font name="Roboto Medium" size="15.0" />
+         </font></Button>
+      <TextField fx:id="txtRationLoan" editable="false" layoutX="244.0" layoutY="460.0" prefWidth="228.0" />
+      <TextField fx:id="txtLoanByDeposit" editable="false" layoutX="244.0" layoutY="510.0" prefHeight="24.0" prefWidth="228.0" />
+      <TextField fx:id="txtInstantLoan" editable="false" layoutX="244.0" layoutY="560.0" prefWidth="228.0" />
+      <Label layoutX="40.0" layoutY="42.0" text="Search Account">
+         <font>
+            <Font name="Roboto Black" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="40.0" layoutY="193.0" text="Loan Eligability">
+         <font>
+            <Font name="Roboto Black" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="398.0" layoutY="191.0" text="Click on &quot;More&quot; button to proceed." textFill="#000000cc" />
+      <Label layoutX="305.0" layoutY="42.0" text="Enter Account Number" textFill="#000000cc" />
+   </children>
+</AnchorPane>

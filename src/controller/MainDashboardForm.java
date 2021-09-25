@@ -1,10 +1,8 @@
 package controller;
 
-import controller.components.FormFieldValidator;
-import controller.components.ModifiedAlertBox;
-import controller.components.NumberGenerator;
-import controller.components.ObjectPasser;
+import controller.components.*;
 import controller.dbControllers.CustomerDetailsController;
+import controller.dbControllers.DepositMoneyController;
 import controller.dbControllers.SavingsAccountController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -185,7 +183,7 @@ public class MainDashboardForm {
         boolean existenceInSavingsAccount = new SavingsAccountController().checkRecordIsExist(txtSearchWithdraw.getText());
         if (existenceInSavingsAccount){
             double accountBalance = new SavingsAccountController().getAccountBalance(txtSearchWithdraw.getText());
-            return Double.parseDouble(txtWithdrawAmount.getText() + 100) <= accountBalance;
+            return Double.parseDouble(txtWithdrawAmount.getText())+100 <= accountBalance;
         }else{
             return false;
         }
@@ -226,5 +224,19 @@ public class MainDashboardForm {
             ModifiedAlertBox alert = new ModifiedAlertBox("Invalid!", Alert.AlertType.ERROR,"ERROR!","Invalid number!");
             alert.showAlert();
         }
+    }
+
+    public void withdrawClearButtonOnAction(ActionEvent actionEvent) {
+        FormFieldValidator validator = new FormFieldValidator(
+                txtWithdrawAmount,txtSearchWithdraw,txtWithdrawName,txtWithdrawDesc,txtAccBalance
+        );
+        validator.clearAllTextFields();
+    }
+
+    public void depositClearButtonOnAction(ActionEvent actionEvent) {
+        FormFieldValidator validator = new FormFieldValidator(
+                txtDepositAmount,txtDepositDescription,txtDepositSearch,txtDepositName
+        );
+        validator.clearAllTextFields();
     }
 }
