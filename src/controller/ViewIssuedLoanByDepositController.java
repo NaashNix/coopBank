@@ -27,9 +27,9 @@ public class ViewIssuedLoanByDepositController {
     public TableColumn colNextInstallment;
     public TableColumn colPaymentDate;
     public TableColumn colInterest;
-    public TableView<IssuedLoanTableModel> tableInstantLoan;
     public TableColumn colNumOfInstallments;
     public TableColumn colLoanStatus;
+    public TableView<IssuedLoanTableModel> tableLoanByDeposit;
 
     public void initialize() throws SQLException, ClassNotFoundException {
         // * Get the instant loan models and set to the table.
@@ -67,7 +67,7 @@ public class ViewIssuedLoanByDepositController {
                 ));
 
             }
-            tableInstantLoan.setItems(tableData);
+                tableLoanByDeposit.setItems(tableData);
         }
     }
 

@@ -4,19 +4,23 @@
 
 package controller.components;
 
-import com.sun.org.apache.bcel.internal.generic.Select;
 import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Pair;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedHashMap;
+import java.util.regex.Pattern;
 
 public class FormFieldValidator {
     private final ArrayList<TextField> emptyTextFields = new ArrayList<>();
     private final ArrayList<TextField> correctlyFormatted = new ArrayList<>();
     private final ArrayList<TextField> notFormatted = new ArrayList<>();
     private final ArrayList<TextField> allTextFields = new ArrayList<>();
+    private Pair[] textFields;
+    private String pattern;
 
 
     /*
@@ -131,7 +135,7 @@ public class FormFieldValidator {
             //System.out.println("Id: " + node.getId());
             if (node instanceof TextField) {
                 // clear
-                ((TextField)node).setText("");
+                ((TextField)node).setStyle("-fx-border-color:#b5b5b5");
             }
         }
     }
@@ -176,4 +180,29 @@ public class FormFieldValidator {
             field.setEditable(false);
         }
     }
+
+    public boolean validate(LinkedHashMap<TextField, Pattern> map) {
+        for (TextField textFieldKey : map.keySet()) {
+            Pattern patternValue = map.get(textFieldKey);
+            if (!patternValue.matcher(textFieldKey.getText()).matches()) {
+                if (!textFieldKey.getText().isEmpty()){
+                 textFieldKey.setStyle("-fx-border-color:red");
+                 return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public void validateSingle(TextField textField, Pattern pattern){
+        if (!pattern.matcher(textField.getText()).matches()){
+            if (!textField.getText().isEmpty()){
+                textField.setStyle("-fx-border-color:red");
+            }
+        }else{
+            textField.setStyle("-fx-border-color:green");
+        }
+    }
+
+
 }

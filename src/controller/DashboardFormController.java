@@ -7,6 +7,7 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -46,6 +47,15 @@ public class DashboardFormController {
         }catch (NullPointerException e){
             e.printStackTrace();
         }
+
+        searchField.onKeyReleasedProperty().set(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                if (event.getCode()==KeyCode.ENTER){
+
+                }
+            }
+        });
 
     }
 
@@ -204,6 +214,27 @@ public class DashboardFormController {
 
     public void viewAllAccountOnAction(ActionEvent actionEvent) throws IOException {
         URL resource = getClass().getResource("../view/ViewAllCustomersForm.fxml");
+        Parent load = FXMLLoader.load(resource);
+        playGroundContext.getChildren().clear();
+        playGroundContext.getChildren().add(load);
+    }
+
+    public void payLoanOnAction(ActionEvent actionEvent) throws IOException {
+        URL resource = getClass().getResource("../view/PayLoanInstallments.fxml");
+        Parent load = FXMLLoader.load(resource);
+        playGroundContext.getChildren().clear();
+        playGroundContext.getChildren().add(load);
+    }
+
+    public void IssueLoanByDepositLoanOnAction(ActionEvent actionEvent) throws IOException {
+        URL resource = getClass().getResource("../view/ViewIssuedLoanByDeposit.fxml");
+        Parent load = FXMLLoader.load(resource);
+        playGroundContext.getChildren().clear();
+        playGroundContext.getChildren().add(load);
+    }
+
+    public void IssueRationLoanOnAction(ActionEvent actionEvent) throws IOException {
+        URL resource = getClass().getResource("../view/ViewIssuedRationLoan.fxml");
         Parent load = FXMLLoader.load(resource);
         playGroundContext.getChildren().clear();
         playGroundContext.getChildren().add(load);

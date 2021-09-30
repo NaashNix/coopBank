@@ -50,8 +50,14 @@
                </effect>
             </Rectangle>
             <TextField layoutX="88.0" layoutY="77.0" prefHeight="30.0" prefWidth="189.0" promptText="User Name" styleClass="verification-fields" />
-            <Button layoutX="246.0" layoutY="129.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="115.0" text="Done" />
-            <Button layoutX="376.0" layoutY="129.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="115.0" text="Cancel" />
+            <Button layoutX="246.0" layoutY="129.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="115.0" style="-fx-background-color: #2980b9;" text="Done" textFill="WHITE">
+               <font>
+                  <Font name="Open Sans ExtraBold" size="17.0" />
+               </font></Button>
+            <Button layoutX="376.0" layoutY="129.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="115.0" style="-fx-background-color: #7f8c8d;" text="Cancel" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
             <TextField layoutX="300.0" layoutY="77.0" prefHeight="30.0" prefWidth="189.0" promptText="Password" styleClass="verification-fields" />
             <Label layoutX="38.0" layoutY="17.0" text="Verification">
                <font>

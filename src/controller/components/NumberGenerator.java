@@ -1,5 +1,8 @@
 package controller.components;
 
+import controller.dbControllers.MoneyJournalController;
+
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Random;
@@ -62,6 +65,17 @@ public class NumberGenerator {
         String hour = LocalDateTime.now().format(DateTimeFormatter.ofPattern("hh"));
         String rand =  String.format("%02d",random.nextInt(99));
         return "L"+year+rand+month+sec+day+hour;
+    }
+
+    public String getIncomeTransactionID(){
+        Random random = new Random();
+        String month = LocalDateTime.now().format(DateTimeFormatter.ofPattern("MM"));
+        String day = LocalDateTime.now().format(DateTimeFormatter.ofPattern("d"));
+        String year = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yy"));
+        String sec = LocalDateTime.now().format(DateTimeFormatter.ofPattern("ss"));
+        String hour = LocalDateTime.now().format(DateTimeFormatter.ofPattern("hh"));
+        String rand =  String.format("%02d",random.nextInt(99));
+        return "I"+rand+year+sec+hour+month+day;
     }
 
 }

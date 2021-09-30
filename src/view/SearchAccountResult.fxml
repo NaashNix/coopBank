@@ -9,6 +9,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
@@ -63,7 +64,7 @@
             <Font name="Open Sans SemiBold" size="13.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtName" editable="false" layoutX="257.0" layoutY="315.0" prefHeight="30.0" prefWidth="298.0">
+      <TextField fx:id="txtName" editable="false" layoutX="257.0" layoutY="315.0" onKeyReleased="#onKeyReleasedAction" prefHeight="30.0" prefWidth="298.0">
          <font>
             <Font name="Open Sans SemiBold" size="13.0" />
          </font>
@@ -83,26 +84,32 @@
             <Font name="Roboto Medium" size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="txtNIC" editable="false" layoutX="257.0" layoutY="411.0" prefHeight="30.0" prefWidth="298.0">
+      <TextField fx:id="txtNIC" editable="false" layoutX="257.0" layoutY="411.0" onKeyReleased="#onKeyReleasedAction" prefHeight="30.0" prefWidth="298.0">
          <font>
             <Font name="Open Sans SemiBold" size="13.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtTelephone" editable="false" layoutX="257.0" layoutY="459.0" prefHeight="30.0" prefWidth="298.0">
+      <TextField fx:id="txtTelephone" editable="false" layoutX="257.0" layoutY="459.0" onKeyReleased="#onKeyReleasedAction" prefHeight="30.0" prefWidth="298.0">
          <font>
             <Font name="Open Sans SemiBold" size="13.0" />
          </font>
       </TextField>
-      <TextField fx:id="txtAddress" editable="false" layoutX="257.0" layoutY="507.0" prefHeight="30.0" prefWidth="298.0">
+      <TextField fx:id="txtAddress" editable="false" layoutX="257.0" layoutY="507.0" onKeyReleased="#addressKeyReleased" prefHeight="30.0" prefWidth="298.0">
          <font>
             <Font name="Open Sans SemiBold" size="13.0" />
          </font>
       </TextField>
       <DatePicker fx:id="pickerBirthday" disable="true" editable="false" layoutX="257.0" layoutY="363.0" prefHeight="30.0" prefWidth="298.0" />
-      <Button fx:id="btnEditOrDone" layoutX="406.0" layoutY="553.0" mnemonicParsing="false" onAction="#BtnEditOrDoneOnAction" prefHeight="34.0" prefWidth="84.0" text="EDIT" />
-      <Button layoutX="496.0" layoutY="553.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="84.0" text="Cancel" />
+      <Button fx:id="btnEditOrDone" layoutX="406.0" layoutY="553.0" mnemonicParsing="false" onAction="#BtnEditOrDoneOnAction" prefHeight="34.0" prefWidth="84.0" style="-fx-background-color: #2c3e50;" text="EDIT" textFill="WHITE">
+         <font>
+            <Font name="Open Sans ExtraBold" size="16.0" />
+         </font></Button>
+      <Button layoutX="496.0" layoutY="553.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="84.0" style="-fx-background-color: #7f8c8d;" text="Cancel" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Button>
       <Label layoutX="57.0" layoutY="593.0" text="* Click the &quot;EDIT&quot; button to update the details" />
-      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="108.0" layoutX="655.0" layoutY="34.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="590.0">
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="134.0" layoutX="655.0" layoutY="34.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="590.0">
          <effect>
             <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
          </effect>
@@ -112,17 +119,7 @@
             <Font name="Roboto Black" size="26.0" />
          </font>
       </Label>
-      <JFXComboBox layoutX="1110.0" layoutY="35.0" prefHeight="24.0" prefWidth="126.0" promptText="Account Type" />
-      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="189.0" layoutX="655.0" layoutY="164.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="590.0">
-         <effect>
-            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
-         </effect>
-      </Rectangle>
-      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="249.0" layoutX="655.0" layoutY="376.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="590.0">
-         <effect>
-            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
-         </effect>
-      </Rectangle>
+      <JFXComboBox fx:id="cmbAccountType" layoutX="1050.0" layoutY="35.0" prefHeight="24.0" prefWidth="186.0" promptText="Account Type" />
       <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="91.0" layoutX="35.0" layoutY="34.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="590.0">
          <effect>
             <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
@@ -133,12 +130,134 @@
             <Font name="Open Sans SemiBold" size="17.0" />
          </font>
       </Label>
-      <TextField fx:id="txtAccountNumberShower" layoutX="160.0" layoutY="69.0" prefHeight="35.0" prefWidth="320.0" />
+      <TextField fx:id="txtAccountNumberShower" layoutX="160.0" layoutY="69.0" onKeyReleased="#onKeyReleased" prefHeight="35.0" prefWidth="320.0" />
       <Rectangle fx:id="SQSearchIcon" arcHeight="10.0" arcWidth="10.0" fill="#2c3e50" height="40.0" layoutX="487.0" layoutY="66.0" onMouseClicked="#searchAccount" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="40.0" />
       <ImageView fx:id="imgSearchIcon" fitHeight="30.0" fitWidth="30.0" layoutX="493.0" layoutY="71.0" onMouseClicked="#searchAccount" preserveRatio="true">
          <image>
             <Image url="@../assets/white-search-30.png" />
          </image>
       </ImageView>
+      <Label fx:id="lblAccountBalance" alignment="CENTER" layoutX="716.0" layoutY="112.0" prefHeight="40.0" prefWidth="186.0" text="Rs. 5200.00" textAlignment="CENTER">
+         <font>
+            <Font name="Roboto Medium" size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="684.0" layoutY="93.0" text="Main Balance">
+         <font>
+            <Font name="Roboto Medium" size="17.0" />
+         </font>
+      </Label>
+      <Label layoutX="944.0" layoutY="93.0" text="On Hold">
+         <font>
+            <Font name="Roboto Medium" size="17.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblOnHold" alignment="CENTER" layoutX="953.0" layoutY="112.0" prefHeight="40.0" prefWidth="186.0" text="N/A" textAlignment="CENTER">
+         <font>
+            <Font name="Roboto Medium" size="24.0" />
+         </font>
+      </Label>
+      <Pane fx:id="paneInstantLoan" layoutX="655.0" layoutY="187.0" prefHeight="154.0" prefWidth="604.0" visible="false">
+         <children>
+            <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="125.0" layoutY="5.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="590.0">
+               <effect>
+                  <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+               </effect>
+            </Rectangle>
+            <Label layoutX="14.0" layoutY="10.0" text="Instant Loan">
+               <font>
+                  <Font name="Roboto Black" size="26.0" />
+               </font>
+            </Label>
+            <Label fx:id="instantLoanNextInstallment" alignment="CENTER" layoutX="73.0" layoutY="66.0" prefHeight="40.0" prefWidth="186.0" text="Rs. 5200.00" textAlignment="CENTER">
+               <font>
+                  <Font name="Roboto Medium" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="41.0" layoutY="47.0" text="Next Installment">
+               <font>
+                  <Font name="Roboto Medium" size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="instantLoanNDate" alignment="CENTER" layoutX="323.0" layoutY="66.0" prefHeight="40.0" prefWidth="186.0" text="Rs. 5200.00" textAlignment="CENTER">
+               <font>
+                  <Font name="Roboto Medium" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="291.0" layoutY="47.0" text="Next Installment Date">
+               <font>
+                  <Font name="Roboto Medium" size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="paneRationLoan" layoutX="655.0" layoutY="334.0" prefHeight="134.0" prefWidth="610.0" visible="false">
+         <children>
+            <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="125.0" layoutX="-1.0" layoutY="6.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="590.0">
+               <effect>
+                  <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+               </effect>
+            </Rectangle>
+            <Label layoutX="10.0" layoutY="8.0" text="Ration Loan">
+               <font>
+                  <Font name="Roboto Black" size="26.0" />
+               </font>
+            </Label>
+            <Label fx:id="rationLoanNextInstallment" alignment="CENTER" layoutX="78.0" layoutY="70.0" prefHeight="40.0" prefWidth="186.0" text="Rs. 5200.00" textAlignment="CENTER">
+               <font>
+                  <Font name="Roboto Medium" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="46.0" layoutY="51.0" text="Next Installment">
+               <font>
+                  <Font name="Roboto Medium" size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="rationLoanNDate" alignment="CENTER" layoutX="328.0" layoutY="70.0" prefHeight="40.0" prefWidth="186.0" text="Rs. 5200.00" textAlignment="CENTER">
+               <font>
+                  <Font name="Roboto Medium" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="296.0" layoutY="51.0" text="Next Installment Date">
+               <font>
+                  <Font name="Roboto Medium" size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane fx:id="paneLoanByDeposit" layoutX="655.0" layoutY="489.0" prefHeight="143.0" prefWidth="610.0" visible="false">
+         <children>
+            <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="125.0" layoutX="-2.0" layoutY="-1.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="590.0">
+               <effect>
+                  <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+               </effect>
+            </Rectangle>
+            <Label layoutX="11.0" layoutY="2.0" text="Loan By Deposit">
+               <font>
+                  <Font name="Roboto Black" size="26.0" />
+               </font>
+            </Label>
+            <Label fx:id="loanByDepNextIns" alignment="CENTER" layoutX="79.0" layoutY="64.0" prefHeight="40.0" prefWidth="186.0" text="Rs. 5200.00" textAlignment="CENTER">
+               <font>
+                  <Font name="Roboto Medium" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="47.0" layoutY="45.0" text="Next Installment">
+               <font>
+                  <Font name="Roboto Medium" size="17.0" />
+               </font>
+            </Label>
+            <Label fx:id="loanByDepositNDate" alignment="CENTER" layoutX="329.0" layoutY="64.0" prefHeight="40.0" prefWidth="186.0" text="Rs. 5200.00" textAlignment="CENTER">
+               <font>
+                  <Font name="Roboto Medium" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="297.0" layoutY="45.0" text="Next Installment Date">
+               <font>
+                  <Font name="Roboto Medium" size="17.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

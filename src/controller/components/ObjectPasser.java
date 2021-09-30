@@ -14,6 +14,9 @@ public class ObjectPasser {
     private static WithdrawObjectModel withdrawObjectModel;
     private static CustomerModelMini customerForLoanPassing;
     private static String loanType;
+    private static String accountNumberForPayLoan;
+    private static String accountNumberForShowWithdrawals;
+    private static String accountNumberForShowDeposits;
 
 
     public static void setModels(CustomerModel customer, OpenAccDepMoneyModel deposit){
@@ -68,4 +71,28 @@ public class ObjectPasser {
         return loanType;
     }
 
+    public static String getAccountNumberForPayLoan() {
+        return accountNumberForPayLoan;
+    }
+
+    public static void setAccountNumberForPayLoan(String accountNumberForPayLoan) {
+        ObjectPasser.accountNumberForPayLoan = accountNumberForPayLoan;
+    }
+
+
+    public static String getAccountNumberForShowWithdrawals() {
+        return accountNumberForShowWithdrawals;
+    }
+
+    public static void setAccountNumberForShowWithdrawals(String accountNumberForShowWithdrawals) {
+        ObjectPasser.accountNumberForShowWithdrawals = accountNumberForShowWithdrawals;
+    }
+
+    public static String getAccountNumberForShowDeposits() {
+        return accountNumberForShowDeposits;
+    }
+
+    public static void setAccountNumberForShowDeposits(String accountNumberForShowDeposits) {
+        ObjectPasser.accountNumberForShowDeposits = accountNumberForShowDeposits;
+    }
 }

@@ -213,12 +213,12 @@
             <Font name="Roboto Medium" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="txtLoanAmount" layoutX="188.0" layoutY="301.0" prefHeight="24.0" prefWidth="231.0" />
+      <TextField fx:id="txtLoanAmount" layoutX="188.0" layoutY="301.0" onKeyReleased="#keyReleasedAction" prefHeight="24.0" prefWidth="231.0" />
       <Label layoutX="47.0" layoutY="427.0" text="Max. Installments">
          <font>
             <Font name="Roboto Medium" size="15.0" />
          </font>
       </Label>
-      <TextField fx:id="txtInstallments" layoutX="188.0" layoutY="469.0" prefHeight="24.0" prefWidth="231.0" />
+      <TextField fx:id="txtInstallments" layoutX="188.0" layoutY="469.0" onKeyReleased="#numberReleasedAction" prefHeight="24.0" prefWidth="231.0" />
    </children>
 </AnchorPane>

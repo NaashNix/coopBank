@@ -6,10 +6,12 @@ package controller.dbControllers;
 
 import db.DbConnection;
 import model.DepositObjectModel;
+import model.LastTransacTableModel;
 import model.OpenAccDepMoneyModel;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -74,4 +76,20 @@ public class DepositMoneyController {
 
     }
 
+    public ArrayList<LastTransacTableModel> getLastDepositTransactions(String accountNumber) throws SQLException, ClassNotFoundException {
+        ArrayList<LastTransacTableModel> models = new ArrayList<>();
+        PreparedStatement statement = DbConnection.getInstance().getConnection()
+                .prepareStatement("SELECT * FROM DepositTransactions WHERE accountNumber=? ORDER BY transactionDate DESC,transactionTime DESC LIMIT 10;");
+        statement.setObject(1,accountNumber);
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()){
+            models.add(new LastTransacTableModel(
+                    resultSet.getString("transactionDate"),
+                    "Savings",
+                    resultSet.getString("description"),
+                    resultSet.getDouble("amount")
+            ));
+        }
+        return models;
+    }
 }

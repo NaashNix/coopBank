@@ -226,3 +226,40 @@ DELETE FROM LoanByDeposit;
 DELETE FROM RationLoan;
 DELETE FROM LoanDetails;
 DELETE FROM Customer;
+
+CREATE TABLE MoneyJournal (
+    balanceType VARCHAR(14),
+    transactionDate DATE,
+    transactionTime TIME,
+    balance DECIMAL(10,2),
+    CONSTRAINT PRIMARY KEY (balanceType)
+);
+
+INSERT INTO MoneyJournal VALUES("Main Balance","2021-09-27","12:50:36",0.0);
+
+CREATE TABLE OnHoldDetails (
+    accountNumber VARCHAR(14),
+    holdedAmount DECIMAL(9,2),
+    CONSTRAINT FOREIGN KEY (accountNumber) REFERENCES Customer(accountNumber)
+);
+
+ALTER TABLE RationLoan
+ADD COLUMN installmentsToBePaid INT AFTER rNumberOfInstallments;
+
+ DELETE FROM DepositTransactions;
+ DELETE FROM WithdrawTransactions;
+ DELETE FROM InstantLoan;
+ DELETE FROM LoanByDeposit;
+ DELETE FROM RationLoan;
+ DELETE FROM SavingsAccount;
+ DELETE FROM OnHoldDetails;
+ DELETE FROM Customer;
+
+ CREATE TABLE IF NOT EXISTS Incomes(
+    transactionID VARCHAR(14),
+    description VARCHAR(30),
+    amount DECIMAL(9,2),r
+    CONSTRAINT PRIMARY KEY (transactionID)
+ );
+
+

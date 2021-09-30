@@ -21,30 +21,63 @@ public class SavingsAccountController {
         if (checkRecordIsExist(accountNumber)){
             // * If the savings account has already a record in the savings accoun table.
          Connection connection = DbConnection.getInstance().getConnection();
+         connection.setAutoCommit(false);
          PreparedStatement statement = connection.prepareStatement
                  ("UPDATE SavingsAccount SET personalBalance=(personalBalance+"+amount+") WHERE accountNumber=?");
          statement.setObject(1,accountNumber);
-         return statement.executeUpdate()>0;
+            if (statement.executeUpdate()>0) {
+                if (new MoneyJournalController().makePlusRecord("Main Balance",amount)){
+                    connection.commit();
+                    return true;
+                }else{
+                    connection.rollback();
+                    return false;
+                }
+            }else{
+                return false;
+            }
 
         }else {
             // * If the savings account haven't a record in the savings accoun table.
             Connection connection = DbConnection.getInstance().getConnection();
+            connection.setAutoCommit(false);
             PreparedStatement statement = connection.
                     prepareStatement("INSERT INTO SavingsAccount VALUES(?,?)");
             statement.setObject(1, accountNumber);
             statement.setObject(2, amount);
 
-            return statement.executeUpdate() > 0;
+            if (statement.executeUpdate() > 0) {
+                if (new MoneyJournalController().makePlusRecord("Main Balance",amount)){
+                    connection.commit();
+                    return true;
+                }else{
+                    connection.rollback();
+                    return false;
+                }
+            }else{
+                return false;
+            }
         }
 
     }
 
     public boolean updateSavingsAccountForWithdraw(String accountNumber, double amount) throws SQLException, ClassNotFoundException {
         if (checkRecordIsExist(accountNumber)){
-            PreparedStatement statement = DbConnection.getInstance().getConnection()
-                    .prepareStatement("UPDATE SavingsAccount SET personalBalance=(personalBalance-"+amount+") WHERE accountNumber=?");
+            Connection connection = DbConnection.getInstance().getConnection();
+            connection.setAutoCommit(false);
+            PreparedStatement statement = connection.prepareStatement("UPDATE SavingsAccount SET personalBalance=(personalBalance-"+amount+") WHERE accountNumber=?");
             statement.setObject(1,accountNumber);
-            return statement.executeUpdate()>0;
+            if (statement.executeUpdate()>0) {
+                if (new MoneyJournalController().makeMinusRecord("Main Balance",amount)){
+                    connection.commit();
+                    return true;
+                }else {
+                    connection.rollback();
+                    return false;
+                }
+            }else {
+                return false;
+            }
         }
         return false;
     }

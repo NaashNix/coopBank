@@ -5,6 +5,7 @@
 package controller.components;
 
 import controller.dbControllers.*;
+import model.CustomerModel;
 import model.CustomerModelMini;
 import model.LoanDetailsModel;
 
@@ -108,6 +109,15 @@ public class LoanAlgorithm {
         }
 
         return accountMaturity;
+    }
+
+    public boolean checkThatTheLoanIsIn(String accountNumber) throws SQLException, ClassNotFoundException {
+        CustomerModel model = new CustomerDetailsController().getCustomerDetails(accountNumber);
+        if (model.getInstantLoan().equals("") || model.getInstantLoan() == null){
+
+        }
+        return false
+                ;
     }
 
 }

@@ -51,9 +51,28 @@ public class LoanDetailsFormController {
 
     private void setDataToFields(String newValue) {
         if (newValue.equals("Instant Loan")){
-            for (int i = 0; i < loanDetails.size(); i++){
-                if ("Instant Loan".equals(loanDetails.get(i).getLoanName())){
-                    setData(loanDetails.get(i));
+            for (LoanDetailsModel loanDetail : loanDetails) {
+                if ("Instant Loan".equals(loanDetail.getLoanName())) {
+                    setData(loanDetail);
+                    return;
+                }
+            }
+        }
+
+        if (newValue.equals("Loan By Deposit")){
+            for (LoanDetailsModel loanDetail : loanDetails) {
+                if ("Loan By Deposit".equals(loanDetail.getLoanName())) {
+                    setData(loanDetail);
+                    return;
+                }
+            }
+        }
+
+        if (newValue.equals("Ration Loan")){
+            for (LoanDetailsModel loanDetail : loanDetails) {
+                if ("Ration Loan".equals(loanDetail.getLoanName())) {
+                    setData(loanDetail);
+                    return;
                 }
             }
         }

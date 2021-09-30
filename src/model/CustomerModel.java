@@ -25,8 +25,9 @@ public class CustomerModel {
     public CustomerModel(String accountNumber, String name, int age, String sex,
                          String accountType, String customerAddress, String telephoneNumber,
                          String customerBirthday, String joinedDate, String customerNIC,
-                         String customerEmail, String rationLoan, String instantLoan,
-                         String loanByDeposit) {
+                         String customerEmail, String rationLoan,String loanByDeposit,
+                         String instantLoan)
+                          {
         this.accountNumber = accountNumber;
         this.name = name;
         this.age = age;

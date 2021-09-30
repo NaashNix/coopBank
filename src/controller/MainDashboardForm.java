@@ -3,16 +3,21 @@ package controller;
 import controller.components.*;
 import controller.dbControllers.CustomerDetailsController;
 import controller.dbControllers.DepositMoneyController;
+import controller.dbControllers.MoneyJournalController;
 import controller.dbControllers.SavingsAccountController;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.transformation.TransformationList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import model.DepositObjectModel;
@@ -22,8 +27,10 @@ import model.WithdrawObjectModel;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.regex.Pattern;
 
 
 public class MainDashboardForm {
@@ -41,15 +48,82 @@ public class MainDashboardForm {
     public TextField txtWithdrawName;
     public TextField txtWithdrawDesc;
     public TextField txtAccBalance;
+    public Label lblMainBalance;
+    public Label lblMainBalTime;
+    public TextField txtAccountNumberSearch;
     private double numOne;
+    public DecimalFormat df=new DecimalFormat("#.##");
+    Pattern moneyPattern = Pattern.compile("^[1-9][0-9]*([.][0-9]{2})?$");
+    Pattern mainMoneyPattern = Pattern.compile("^[1-9][0-9]*$");
+    Pattern singleDecimal = Pattern.compile("^[1-9][0-9]*([.][0-9]{1})?$");
 
 
 
-    public void initialize(){
+    public void initialize() throws SQLException, ClassNotFoundException {
+        // * Enter key listener to the deposit account number field.
+        txtDepositSearch.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                if (event.getCode()==KeyCode.ENTER){
+                    ActionEvent actionEvent = null;
+                    try {
+                        btnDepositSearchOnAction(actionEvent);
+                    } catch (SQLException | ClassNotFoundException throwables) {
+                        throwables.printStackTrace();
+                    }
+                }
+            }
+        });
 
+        txtSearchWithdraw.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                if (event.getCode()==KeyCode.ENTER){
+                    ActionEvent actionEvent = null;
+                    try {
+                        withdrawFindButtonOnAction(actionEvent);
+                    } catch (SQLException | ClassNotFoundException throwables) {
+                        throwables.printStackTrace();
+                    }
+                }
+            }
+        });
 
+        // * Re-arranging amount field.
+        txtDepositAmount.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                if (!txtDepositAmount.getText().isEmpty()){
+                    Pattern pattern = Pattern.compile("^[1-9][0-9]*$");
+                    if (pattern.matcher(txtDepositAmount.getText()).matches()) {
+                        txtDepositAmount.setText(txtDepositAmount.getText()+".00");
+                    }
+                }
+            }
+        });
 
+        txtWithdrawAmount.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                if (!txtWithdrawAmount.getText().isEmpty()){
+                    Pattern pattern = Pattern.compile("^[1-9][0-9]*$");
+                    if (pattern.matcher(txtWithdrawAmount.getText()).matches()) {
+                        txtWithdrawAmount.setText(txtWithdrawAmount.getText()+".00");
+                    }
+                }
+            }
+        });
 
+        // * Updating Main balance
+        double mainBalance = new MoneyJournalController().getBalances("Main Balance");
+        String finalBalance = null;
+        if (mainMoneyPattern.matcher(String.valueOf(mainBalance)).matches()){
+            finalBalance = mainBalance+".00";
+            System.out.println("main");
+        }else if (singleDecimal.matcher(String.valueOf(mainBalance)).matches()){
+            finalBalance = mainBalance+"0";
+            System.out.println("single");
+        }
+        lblMainBalance.setText("Rs. "+finalBalance);
+        lblMainBalTime.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("hh:mm a")));
     }
 
     public void processCalKey(ActionEvent actionEvent){
@@ -120,6 +194,9 @@ public class MainDashboardForm {
         validator.filledFieldProperties("-fx-border-color:#b5b5b5");
         validator.emptyFieldProperties("-fx-border-color:red");
         if (!validator.checkEmptyFields()){
+            if (!moneyPattern.matcher(txtDepositAmount.getText()).matches()){
+                return;
+            }
             DepositObjectModel model = new DepositObjectModel(
                     txtDepositSearch.getText(),
                     LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
@@ -182,12 +259,31 @@ public class MainDashboardForm {
     public boolean checkAreThereSufficientBalance() throws SQLException, ClassNotFoundException {
         boolean existenceInSavingsAccount = new SavingsAccountController().checkRecordIsExist(txtSearchWithdraw.getText());
         if (existenceInSavingsAccount){
-            double accountBalance = new SavingsAccountController().getAccountBalance(txtSearchWithdraw.getText());
-            return Double.parseDouble(txtWithdrawAmount.getText())+100 <= accountBalance;
+            if (checkBalanceOnHand()) {
+                double accountBalance = new SavingsAccountController().getAccountBalance(txtSearchWithdraw.getText());
+                if (!(Double.parseDouble(txtWithdrawAmount.getText()) + 100 <= accountBalance)) {
+                    ModifiedAlertBox alertBox = new ModifiedAlertBox(
+                            "Insufficient Balance", Alert.AlertType.ERROR,"ERROR!","Insufficient account balance"
+                    );
+                    alertBox.showAlert();
+                    return false;
+                }else{
+                    return true;
+                }
+            }else{
+                ModifiedAlertBox alertBox = new ModifiedAlertBox("Out Of Main Balance", Alert.AlertType.ERROR,"ERROR!"
+                        ,"Insufficient Main balance");
+                alertBox.showAlert();
+                return false;
+            }
         }else{
             return false;
         }
+    }
 
+    public boolean checkBalanceOnHand() throws SQLException, ClassNotFoundException {
+        double totalBalance = new MoneyJournalController().getBalances("Main Balance");
+        return !(Double.parseDouble(txtWithdrawAmount.getText()) > totalBalance);
     }
 
     public void btnDepositSearchOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
@@ -238,5 +334,36 @@ public class MainDashboardForm {
                 txtDepositAmount,txtDepositDescription,txtDepositSearch,txtDepositName
         );
         validator.clearAllTextFields();
+    }
+
+    public void keyReleased(KeyEvent keyEvent) {
+        FormFieldValidator validator = new FormFieldValidator();
+        TextField currentTextField = (TextField) keyEvent.getSource();
+        validator.validateSingle(currentTextField,moneyPattern);
+    }
+
+    public void payLoanOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException, IOException {
+        if (!txtAccountNumberSearch.getText().isEmpty()){
+            if (new CustomerDetailsController().checkAccountNumberIsExist(txtAccountNumberSearch.getText())){
+                ObjectPasser.setAccountNumberForPayLoan(txtAccountNumberSearch.getText());
+
+                // * Load paying information page.
+                URL resource = getClass().getResource("../view/PayLoanInstallments.fxml");
+                Parent load = FXMLLoader.load(resource);
+                mainDashboardForm.getChildren().clear();
+                mainDashboardForm.getChildren().add(load);
+
+            }else{
+                ModifiedAlertBox alertBox = new ModifiedAlertBox(
+                        "ERROR!", Alert.AlertType.ERROR,"ERROR!","Invalid Account Number."
+                );
+                alertBox.showAlert();
+            }
+        }else{
+            ModifiedAlertBox alertBox = new ModifiedAlertBox(
+                    "ERROR!", Alert.AlertType.ERROR,"ERROR!","Search field is empty."
+            );
+            alertBox.showAlert();
+        }
     }
 }

@@ -1,6 +1,8 @@
 package controller.dbControllers;
 
 import db.DbConnection;
+import javafx.util.Pair;
+import model.CustomerDetailModelForView;
 import model.CustomerModel;
 import model.CustomerModelMini;
 import model.OpenAccDepMoneyModel;
@@ -9,10 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.ArrayList;
 
 public class CustomerDetailsController {
     /*
@@ -181,6 +181,56 @@ public class CustomerDetailsController {
             return resultSet.getDouble(1);
         }
         return 0.0;
+    }
+
+    public ArrayList<CustomerDetailModelForView> getCustomersForView() throws SQLException, ClassNotFoundException {
+        PreparedStatement statement = DbConnection.getInstance().getConnection()
+                .prepareStatement("SELECT*FROM Customer");
+        ResultSet resultSet = statement.executeQuery();
+        ArrayList<Pair<CustomerModelMini,String>> customerAndJoinedDate = new ArrayList<>();
+        ArrayList<CustomerDetailModelForView> realCustomerSet = new ArrayList<>();
+        while (resultSet.next()){
+            customerAndJoinedDate.add(
+                    new Pair<>(new CustomerModelMini(
+                            resultSet.getString("customerName"),
+                            resultSet.getString("accountNumber"),
+                            resultSet.getString("telephoneNumber"),
+                            resultSet.getString("rationLoan"),
+                            resultSet.getString("loanByDeposit"),
+                            resultSet.getString("instantLoan")
+                    ),resultSet.getString("joinedDate"))
+            );
+        }
+        for (Pair<CustomerModelMini, String> model :customerAndJoinedDate
+             ) {
+            // * here goes the code line to get the savings account balance.
+            PreparedStatement statement1 = DbConnection.getInstance().getConnection()
+                    .prepareStatement("SELECT personalBalance FROM SavingsAccount WHERE accountNumber=?");
+            statement1.setObject(1,model.getKey().getAccountNumber());
+            ResultSet resultSet1 = statement1.executeQuery();
+            double accountBalance = 0;
+            double holdBalance = 0;
+            if (resultSet1.next()){
+                accountBalance = resultSet1.getDouble(1);
+            }
+
+            // * here goes the code line to get the holed account balance.
+            holdBalance = new OnHoldDetailController().getTheHoldedAmount(model.getKey().getAccountNumber());
+
+            // * Here goes the code line that create the view customer model.
+            realCustomerSet.add(new CustomerDetailModelForView(
+                    model.getKey().getName(),
+                    model.getKey().getAccountNumber(),
+                    accountBalance,
+                    holdBalance,
+                    model.getKey().getInstantLoan(),
+                    model.getKey().getLoanByDeposit(),
+                    model.getKey().getRationLoan(),
+                    model.getValue()
+            ));
+        }
+
+        return realCustomerSet;
     }
 
 }

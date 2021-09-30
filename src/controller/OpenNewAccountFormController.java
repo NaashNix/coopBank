@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.StringConverter;
 import model.CustomerModel;
@@ -17,11 +18,14 @@ import model.OpenAccDepMoneyModel;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.regex.Pattern;
 
 public class OpenNewAccountFormController {
 
@@ -43,19 +47,44 @@ public class OpenNewAccountFormController {
     public TextField txtDescription;
     public TextField txtAmount;
     public AnchorPane openNewAccountContext;
+    public Button btnDone;
+    Pattern namePattern = Pattern.compile("^[a-zA-Z ]*$");
+    Pattern moneyPattern = Pattern.compile("^[1-9][0-9]*([.][0-9]{2})?$");
+    Pattern idPattern = Pattern.compile("^[0-9]{12}$");
+    Pattern telephonePattern = Pattern.compile("^[0-9]{10}$");
+    Pattern emailPattern = Pattern.compile("^[A-z0-9]{3,}[@][a-z]{2,}[.](com|lk|uk|[a-z]{2,})$");
+    LinkedHashMap<TextField,Pattern> hashMap;
+    public DecimalFormat df=new DecimalFormat("#.##");
 
-    public void initialize(){
+
+
+    public void initialize() {
         // * Setting data to fields.
-        setDataToFields();
+        try {
+            setDataToFields();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        txtAmount.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue){
+                if (!txtAmount.getText().isEmpty()){
+                    Pattern pattern = Pattern.compile("^[1-9][0-9]*$");
+                    if (pattern.matcher(txtAmount.getText()).matches()) {
+                        txtAmount.setText(txtAmount.getText()+".00");
+                    }
+                }
+            }
+        });
 
         // * Setting the account number
         setAccountNumber();
 
         // * Adding values for the Account Type combo box.
-            cmbAccountType.getItems().add("Savings Account");
+        cmbAccountType.getItems().add("Savings Account");
 
         // * Overriding the date picker date format.
-            datePickerFormat();
+        datePickerFormat();
 
         // * Adding Sex radio buttons to toggle group. Default selection [Male].
         ToggleGroup radioGroup = new ToggleGroup();
@@ -64,24 +93,36 @@ public class OpenNewAccountFormController {
 
         // * Listener on deposit toggle. Toggled between deposit form enabled/disabled.
         toggleDeposit.selectedProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue){
+            if (newValue) {
+                txtAccNumber.setText(null);
                 disableDepositForm();
-            }else{
+            } else {
+                txtAccNumber.setText(txtAccountNumber.getText());
                 enableDepositForm();
             }
         });
 
+        // * Setup Hashmap
+        hashMap = new LinkedHashMap<TextField, Pattern>();
+        hashMap.put(txtName, namePattern);
+        hashMap.put(txtNIC, idPattern);
+        hashMap.put(txtTelephone, telephonePattern);
+        hashMap.put(txtEmail, emailPattern);
     }
 
-    private void setDataToFields() {
+    private void setDataToFields() throws ParseException {
         CustomerModel customer = ObjectPasser.getCustomerModel();
         OpenAccDepMoneyModel depositModel = ObjectPasser.getDepositModel();
+        ObjectPasser.setModels(null,null);
 
         if (customer!=null){
             txtAccNumber.setText(customer.getAccountNumber());
             txtName.setText(customer.getName());
             txtAddress.setText(customer.getCustomerAddress());
-            pickerBirthday.getEditor().setText(customer.getCustomerBirthday());
+            String bday = customer.getCustomerBirthday();
+            Date date1=new SimpleDateFormat("yyyy-MM-dd").parse(bday);
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+            pickerBirthday.getEditor().setText(formatter.format(date1));
             if (customer.getSex().equals("Male")){
                 radioMale.selectedProperty().set(true);
             }else {
@@ -94,7 +135,7 @@ public class OpenNewAccountFormController {
         }
 
         if (depositModel!=null){
-            txtAmount.setText(String.valueOf(depositModel.getAmount()));
+            txtAmount.setText(df.format(depositModel.getAmount()));
             txtDescription.setText(depositModel.getDescription());
             txtAccNumber.setText(depositModel.getAccountNumber());
             toggleDeposit.selectedProperty().set(false);
@@ -255,12 +296,14 @@ public class OpenNewAccountFormController {
         // * If all fields are filled, then start the saving process.
         if (!validateFields()){
                 // * Calculate the age by given birthday.
-                int age = calculateAge(pickerBirthday.getEditor().getText());
+                //int age = calculateAge(pickerBirthday.getEditor().getText());
 
                 // * checking the opening deposit
                 if (depositSection()){
+                    System.out.println("deposit Section done");
                     createAccount(actionEvent);
                 }else{
+                    System.out.println("deposit Section failed");
                  ModifiedAlertBox alertBox = new ModifiedAlertBox(
                          "Failed!",
                          Alert.AlertType.WARNING,
@@ -298,15 +341,11 @@ public class OpenNewAccountFormController {
         }else {
             System.out.println("Validator");
             FormFieldValidator validator = new FormFieldValidator(
-                    txtAccNumber,
-                    txtAmount,
-                    txtDescription
+                    txtAmount
             );
             validator.filledFieldProperties("-fx-border-color:#b5b5b5");
             validator.emptyFieldProperties("-fx-border-color:red");
-            return !validator.checkEmptyFields() && txtAccNumber.getText().equals(
-                    txtAccountNumber.getText()
-            );
+            return !validator.checkEmptyFields();
 
         }
 
@@ -317,51 +356,57 @@ public class OpenNewAccountFormController {
             --> This method will make Customer model and as well as if open with the
                 opening deposit, then make the depositMoney model.
          */
-
-        // * Make new Customer Model.
-        CustomerModel customerModel = new CustomerModel(
-                txtAccountNumber.getText(),
-                txtName.getText(),
-                calculateAge(pickerBirthday.getEditor().getText()),
-                radioMale.isSelected()? "Male" : "Female",
-                cmbAccountType.getValue(),
-                txtAddress.getText(),
-                txtTelephone.getText(),
-                pickerBirthday.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
-                LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
-                txtNIC.getText(),
-                txtEmail.getText(),
-                null,
-                null,
-                null
-        );
-
-        // * If account create with deposit, then this make model of transaction.
-        OpenAccDepMoneyModel depositModel = null;
         if (!toggleDeposit.isSelected()){
-            System.out.println("Not Disabled");
-            depositModel = new OpenAccDepMoneyModel(
-                    new NumberGenerator().getTransactionID(),
-                    txtAccountNumber.getText(),
-                    txtDescription.getText(),
-                    Double.parseDouble(txtAmount.getText()),
-                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
-                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("hh:mm:ss"))
-            );
-        }else{
-            System.out.println("Disabled.");
+            hashMap.put(txtAmount,moneyPattern);
         }
+        if (new FormFieldValidator().validate(hashMap)) {
+            // * Make new Customer Model.
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            String bday = pickerBirthday.getEditor().getText();
+            Date date = new SimpleDateFormat("dd-MM-yyyy").parse(bday);
+            String birthday = formatter.format(date);
+            CustomerModel customerModel = new CustomerModel(
+                    txtAccountNumber.getText(),
+                    txtName.getText(),
+                    calculateAge(pickerBirthday.getEditor().getText()),
+                    radioMale.isSelected() ? "Male" : "Female",
+                    cmbAccountType.getValue(),
+                    txtAddress.getText(),
+                    txtTelephone.getText(),
+                    birthday,
+                    LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
+                    txtNIC.getText(),
+                    txtEmail.getText(),
+                    null,
+                    null,
+                    null
+            );
 
-        // * Parsing customer and deposit model to parser to get in the confirm form.
-        ObjectPasser.setModels(customerModel,depositModel);
+            // * If account create with deposit, then this make model of transaction.
+            OpenAccDepMoneyModel depositModel = null;
+            if (!toggleDeposit.isSelected()) {
+                depositModel = new OpenAccDepMoneyModel(
+                        new NumberGenerator().getTransactionID(),
+                        txtAccountNumber.getText(),
+                        txtDescription.getText(),
+                        Double.parseDouble(txtAmount.getText()),
+                        LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
+                        LocalDateTime.now().format(DateTimeFormatter.ofPattern("hh:mm:ss"))
+                );
+            } else {
+                System.out.println("Disabled.");
+            }
 
-        // * Opening confirm details form.
-        URL resource = getClass().getResource("../view/ConfirmOpenAccount.fxml");
-        assert resource != null;
-        Parent load = FXMLLoader.load(resource);
-        openNewAccountContext.getChildren().clear();
-        openNewAccountContext.getChildren().add(load);
+            // * Parsing customer and deposit model to parser to get in the confirm form.
+            ObjectPasser.setModels(customerModel, depositModel);
 
+            // * Opening confirm details form.
+            URL resource = getClass().getResource("../view/ConfirmOpenAccount.fxml");
+            assert resource != null;
+            Parent load = FXMLLoader.load(resource);
+            openNewAccountContext.getChildren().clear();
+            openNewAccountContext.getChildren().add(load);
+        }
     }
 
     private void disableDepositForm() {
@@ -374,6 +419,7 @@ public class OpenNewAccountFormController {
     }
 
     private void enableDepositForm() {
+        txtDescription.setText("Savings");
         txtAccNumber.setDisable(false);
         txtAmount.setDisable(false);
         txtDescription.setDisable(false);
@@ -387,5 +433,30 @@ public class OpenNewAccountFormController {
         Parent load = FXMLLoader.load(resource);
         openNewAccountContext.getChildren().clear();
         openNewAccountContext.getChildren().add(load);
+    }
+
+    public void keyReleaseValidate(KeyEvent keyEvent) {
+        FormFieldValidator validator = new FormFieldValidator();
+        //validator.clearAllTextFields(openNewAccountContext);
+        TextField currentField = (TextField) keyEvent.getSource();
+        Pattern patternToPass = null;
+        switch (currentField.getId()){
+            case "txtName" : {patternToPass=namePattern; break;}
+            case "txtNIC" : {patternToPass=idPattern; break;}
+            case "txtTelephone" : {patternToPass=telephonePattern; break;}
+            case "txtEmail" : {patternToPass=emailPattern; break;}
+            case "txtAmount" : {patternToPass=moneyPattern; break;}
+        }
+        if (patternToPass != null) {
+            validator.validateSingle(currentField,patternToPass);
+        }
+    }
+
+    public void addressKeyReleased(KeyEvent keyEvent) {
+        if (txtAddress.getText().isEmpty()){
+            txtAddress.setStyle("-fx-border-color:red");
+        }else{
+            txtAddress.setStyle("-fx-border-color:green");
+        }
     }
 }

@@ -49,8 +49,9 @@
             <MenuItem mnemonicParsing="false" onAction="#openLoanDetailsOnAction" text="Loan Details" />
             <MenuItem mnemonicParsing="false" onAction="#IssueALoanOnAction" text="Issue A Loan" />
             <MenuItem mnemonicParsing="false" onAction="#IssueInstantLoanOnAction" text="Instant Loan" />
-            <MenuItem mnemonicParsing="false" onAction="#IssueInstantLoanOnAction" text="Loan By Deposit" />
-            <MenuItem mnemonicParsing="false" onAction="#IssueInstantLoanOnAction" text="Ration Loans" />
+            <MenuItem mnemonicParsing="false" onAction="#IssueLoanByDepositLoanOnAction" text="Loan By Deposit" />
+            <MenuItem mnemonicParsing="false" onAction="#IssueRationLoanOnAction" text="Ration Loans" />
+            <MenuItem mnemonicParsing="false" onAction="#payLoanOnAction" text="Pay Loan" />
          </items>
          <font>
             <Font name="Roboto Medium" size="17.0" />
@@ -75,7 +76,7 @@
             <Font name="Roboto Medium" size="17.0" />
          </font>
       </MenuButton>
-      <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="944.0" layoutY="19.0">
+      <ImageView accessibleRole="BUTTON" fitHeight="35.0" fitWidth="35.0" layoutX="944.0" layoutY="19.0">
          <image>
             <Image url="@../assets/icons8-notification-48.png" />
          </image>

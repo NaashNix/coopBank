@@ -13,6 +13,7 @@ public class LoanByDeposit {
     private String IssuedDate;
     private double MonthlyInstallment;
     private int NumberOfInstallments;
+    private int installmentsToBePaid;
     private double LoanPaidAmount;
     private String loanStatus;
     private Date nextInstallmentDate;
@@ -20,13 +21,14 @@ public class LoanByDeposit {
 
     public LoanByDeposit(){}
 
-    public LoanByDeposit(String loanNumber, String accountNumber, double loanAmount, String issuedDate, double monthlyInstallment, int numberOfInstallments, double loanPaidAmount, String loanStatus, Date nextInstallmentDate, double interest) {
+    public LoanByDeposit(String loanNumber, String accountNumber, double loanAmount, String issuedDate, double monthlyInstallment, int numberOfInstallments, int installmentsToBePaid, double loanPaidAmount, String loanStatus, Date nextInstallmentDate, double interest) {
         LoanNumber = loanNumber;
         this.accountNumber = accountNumber;
         LoanAmount = loanAmount;
         IssuedDate = issuedDate;
         MonthlyInstallment = monthlyInstallment;
         NumberOfInstallments = numberOfInstallments;
+        this.installmentsToBePaid = installmentsToBePaid;
         LoanPaidAmount = loanPaidAmount;
         this.loanStatus = loanStatus;
         this.nextInstallmentDate = nextInstallmentDate;
@@ -111,5 +113,13 @@ public class LoanByDeposit {
 
     public void setInterest(double interest) {
         this.interest = interest;
+    }
+
+    public int getInstallmentsToBePaid() {
+        return installmentsToBePaid;
+    }
+
+    public void setInstallmentsToBePaid(int installmentsToBePaid) {
+        this.installmentsToBePaid = installmentsToBePaid;
     }
 }

@@ -181,7 +181,7 @@
       </Label>
       <TextField fx:id="txtDepositSearch" layoutX="496.0" layoutY="119.0" prefHeight="30.0" prefWidth="280.0" promptText="Search Account" />
       <TextField fx:id="txtDepositName" layoutX="496.0" layoutY="222.0" prefHeight="30.0" prefWidth="280.0" promptText="Account Holder’s Name" styleClass="nonEditableField" />
-      <TextField fx:id="txtDepositAmount" layoutX="496.0" layoutY="275.0" prefHeight="30.0" prefWidth="280.0" promptText="Amount" />
+      <TextField fx:id="txtDepositAmount" layoutX="496.0" layoutY="275.0" onKeyReleased="#keyReleased" prefHeight="30.0" prefWidth="280.0" promptText="Amount" />
       <Label layoutX="906.0" layoutY="59.0" text="Make Withdraw">
          <font>
             <Font name="Roboto Black" size="26.0" />
@@ -208,8 +208,8 @@
          </image>
       </ImageView>
       <TextField fx:id="txtSearchWithdraw" layoutX="919.0" layoutY="119.0" prefHeight="30.0" prefWidth="280.0" promptText="Search Account" />
-      <TextField fx:id="txtWithdrawName" layoutX="919.0" layoutY="222.0" prefHeight="30.0" prefWidth="280.0" promptText="Account Holder’s Name" styleClass="nonEditableField" />
-      <TextField fx:id="txtWithdrawAmount" layoutX="919.0" layoutY="328.0" prefHeight="30.0" prefWidth="280.0" promptText="Amount" />
+      <TextField fx:id="txtWithdrawName" editable="false" layoutX="919.0" layoutY="222.0" prefHeight="30.0" prefWidth="280.0" promptText="Account Holder’s Name" styleClass="nonEditableField" />
+      <TextField fx:id="txtWithdrawAmount" layoutX="919.0" layoutY="328.0" onKeyReleased="#keyReleased" prefHeight="30.0" prefWidth="280.0" promptText="Amount" />
       <TextField fx:id="txtWithdrawDesc" layoutX="919.0" layoutY="381.0" prefHeight="30.0" prefWidth="280.0" promptText="Description" />
       <ImageView fitHeight="46.0" fitWidth="45.0" layoutX="1188.0" layoutY="51.0" preserveRatio="true">
          <image>
@@ -261,12 +261,12 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="69.0" layoutY="530.0" prefHeight="41.0" prefWidth="300.0" text="RS. 593,894.00" textFill="WHITE">
+      <Label fx:id="lblMainBalance" alignment="CENTER" layoutX="69.0" layoutY="530.0" prefHeight="41.0" prefWidth="300.0" text="RS. 593,894.00" textFill="WHITE">
          <font>
             <Font name="Roboto Black" size="29.0" />
          </font>
       </Label>
-      <Label layoutX="319.0" layoutY="495.0" text="03 : 15 PM" textFill="WHITE" />
+      <Label fx:id="lblMainBalTime" layoutX="319.0" layoutY="495.0" text="03 : 15 PM" textFill="WHITE" />
       <Button layoutX="581.0" layoutY="168.0" mnemonicParsing="false" onAction="#btnDepositSearchOnAction" prefHeight="24.0" prefWidth="107.0" style="-fx-background-color: #636e72;" styleClass="formButtons" text="Find" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
@@ -278,5 +278,24 @@
          </font>
       </Button>
       <TextField fx:id="txtAccBalance" editable="false" layoutX="919.0" layoutY="275.0" prefHeight="30.0" prefWidth="280.0" promptText="Account Balance" styleClass="nonEditableField" />
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="122.0" layoutX="424.0" layoutY="487.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="443.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <Label layoutX="439.0" layoutY="495.0" text="Pay Loan">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtAccountNumberSearch" layoutX="484.0" layoutY="525.0" prefHeight="30.0" prefWidth="320.0" />
+      <Button layoutX="595.0" layoutY="563.0" mnemonicParsing="false" onAction="#payLoanOnAction" prefHeight="33.0" prefWidth="107.0" style="-fx-background-color: #40739e;" styleClass="formButtons" text="PROCEED" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>

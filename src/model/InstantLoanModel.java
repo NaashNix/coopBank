@@ -14,6 +14,7 @@ public class InstantLoanModel {
     private double iMonthlyInstallment;
     private double interest;
     private int iNumberOfInstallments;
+    private int installmentsToBePaid;
     private double iLoanPaidAmount;
     private String loanStatus;
     private Date nextInstallmentDate;
@@ -34,7 +35,7 @@ public class InstantLoanModel {
                 '}';
     }
 
-    public InstantLoanModel(String iLoanNumber, String accountNumber, double iLoanAmount, String iIssuedDate, double iMonthlyInstallment, double interest, int iNumberOfInstallments, double iLoanPaidAmount, String loanStatus, Date nextInstallmentDate) {
+    public InstantLoanModel(String iLoanNumber, String accountNumber, double iLoanAmount, String iIssuedDate, double iMonthlyInstallment, double interest, int iNumberOfInstallments, int installmentsToBePaid, double iLoanPaidAmount, String loanStatus, Date nextInstallmentDate) {
         this.iLoanNumber = iLoanNumber;
         this.accountNumber = accountNumber;
         this.iLoanAmount = iLoanAmount;
@@ -42,6 +43,7 @@ public class InstantLoanModel {
         this.iMonthlyInstallment = iMonthlyInstallment;
         this.interest = interest;
         this.iNumberOfInstallments = iNumberOfInstallments;
+        this.installmentsToBePaid = installmentsToBePaid;
         this.iLoanPaidAmount = iLoanPaidAmount;
         this.loanStatus = loanStatus;
         this.nextInstallmentDate = nextInstallmentDate;
@@ -125,5 +127,13 @@ public class InstantLoanModel {
 
     public void setNextInstallmentDate(Date nextInstallmentDate) {
         this.nextInstallmentDate = nextInstallmentDate;
+    }
+
+    public int getInstallmentsToBePaid() {
+        return installmentsToBePaid;
+    }
+
+    public void setInstallmentsToBePaid(int installmentsToBePaid) {
+        this.installmentsToBePaid = installmentsToBePaid;
     }
 }

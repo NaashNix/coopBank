@@ -69,7 +69,7 @@ public class LendingFormController {
     }
 
     private void loadingButtonsAndDoingAlgorithm(CustomerModelMini customerModel) throws SQLException, ClassNotFoundException {
-        if (customerModel.getInstantLoan()==null) {
+        if (customerModel.getInstantLoan()==null || customerModel.getInstantLoan().equals("NULL")) {
             LoanAlgorithm loanAction = new LoanAlgorithm();
             if (loanAction.doTheAlgorithmForInstantLoan(customerModel)) {
                 btnGoForInstantLoan.setDisable(false);
@@ -78,10 +78,10 @@ public class LendingFormController {
                 txtInstantLoan.setText("Not Eligible");
             }
         }else{
-            txtInstantLoan.setText("Not Eligible");
+            txtInstantLoan.setText("Already have a loan");
         }
 
-        if (customerModel.getLoanByDeposit()==null) {
+        if (customerModel.getLoanByDeposit()==null || customerModel.getLoanByDeposit().equals("NULL")) {
             LoanAlgorithm loanAction = new LoanAlgorithm();
             if (loanAction.doTheAlgorithmForLoanByDeposit(customerModel)) {
                 btnGoForDepositLoan.setDisable(false);
@@ -90,10 +90,10 @@ public class LendingFormController {
                 txtLoanByDeposit.setText("Not Eligible");
             }
         }else{
-            txtInstantLoan.setText("Not Eligible");
+            txtLoanByDeposit.setText("Already have a loan");
         }
 
-        if (customerModel.getRationLoan()==null){
+        if (customerModel.getRationLoan()==null || customerModel.getRationLoan().equals("NULL")){
             LoanAlgorithm loanAction = new LoanAlgorithm();
             if (loanAction.doTheAlgorithmForRationLoan(customerModel)){
               btnGoForRationLoan.setDisable(false);
@@ -102,7 +102,7 @@ public class LendingFormController {
                 txtRationLoan.setText("Not Eligible");
             }
         }else{
-            txtInstantLoan.setText("Not Eligible");
+            txtRationLoan.setText("Already have a loan");
         }
     }
 

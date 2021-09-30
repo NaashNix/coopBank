@@ -2,6 +2,7 @@ package controller;
 
 import controller.components.FormFieldValidator;
 import controller.components.ModifiedAlertBox;
+import controller.components.NumberGenerator;
 import controller.components.ObjectPasser;
 import controller.dbControllers.CustomerDetailsController;
 import controller.dbControllers.SavingsAccountController;
@@ -15,8 +16,11 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import model.LastTransacTableModel;
-import model.SampleTM;
 import model.WithdrawObjectModel;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,6 +29,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 
 public class WithdrawFormController {
 
@@ -42,6 +47,7 @@ public class WithdrawFormController {
     public WithdrawObjectModel model;
     public Label txtCurrentAccountBalanceShower;
     public AnchorPane withdrawConfirmContext;
+    public Label lblTransactionID;
 
 
     public void initialize() throws SQLException, ClassNotFoundException, ParseException {
@@ -85,6 +91,7 @@ public class WithdrawFormController {
     }
 
     private void setDataToFields() throws SQLException, ClassNotFoundException {
+        lblTransactionID.setText(new NumberGenerator().getWithdrawalID());
         txtAccNumber.setText(model.getAccountNumber());
         txtCurrentAccountBalanceShower.setText("Rs. "+new SavingsAccountController().getAccountBalance(txtAccNumber.getText()));
         txtAccType.setText("Savings Account");
@@ -115,6 +122,7 @@ public class WithdrawFormController {
 
     private void proceedToMakeDeposit(WithdrawObjectModel withdraw) throws SQLException, ClassNotFoundException {
         if(new WithdrawMoneyController().updateWithdrawInfo(withdraw)){
+            printReceipt();
             ModifiedAlertBox alertBox = new ModifiedAlertBox("Done!", Alert.AlertType.INFORMATION,
                     "Succeed!","Transaction succeed!");
             alertBox.showAlert();
@@ -132,4 +140,34 @@ public class WithdrawFormController {
         withdrawConfirmContext.getChildren().clear();
         withdrawConfirmContext.getChildren().add(load);
     }
+
+    private void printReceipt(){
+
+        try {
+            JasperDesign design = JRXmlLoader.load(this.getClass().getResourceAsStream("/reports/WithdrawReceipt.jrxml"));
+            JasperReport compileReport = JasperCompileManager.compileReport(design);
+            HashMap map = new HashMap();
+            map.put("invoiceNumber",lblTransactionID.getText());
+            map.put("accountNumber",txtAccNumber.getText());
+            map.put("accountName",txtName.getText());
+            map.put("accType",txtAccType.getText());
+            map.put("description",txtDesc.getText());
+            map.put("amount",txtAmount.getText());
+            double balance = new SavingsAccountController().getAccountBalance(txtAccNumber.getText());
+            map.put("balance",String.valueOf(balance));
+
+
+            JasperPrint print = JasperFillManager.fillReport(compileReport, map, new JREmptyDataSource(1));
+            JasperViewer.viewReport(print,false);
+
+        } catch (JRException e) {
+            e.printStackTrace();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
+
 }
