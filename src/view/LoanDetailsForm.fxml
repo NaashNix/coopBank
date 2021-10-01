@@ -54,7 +54,7 @@
                <font>
                   <Font name="Open Sans ExtraBold" size="17.0" />
                </font></Button>
-            <Button layoutX="376.0" layoutY="129.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="115.0" style="-fx-background-color: #7f8c8d;" text="Cancel" textFill="WHITE">
+            <Button layoutX="376.0" layoutY="129.0" mnemonicParsing="false" onAction="#cancelOnAction" prefHeight="42.0" prefWidth="115.0" style="-fx-background-color: #7f8c8d;" text="Cancel" textFill="WHITE">
                <font>
                   <Font size="16.0" />
                </font></Button>

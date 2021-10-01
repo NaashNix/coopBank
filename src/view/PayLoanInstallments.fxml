@@ -16,7 +16,7 @@
   ~ Copyright (c) 2021. Coded By Ravindu Thilakshana (naashnix) naashnix.bio.link
   -->
 
-<AnchorPane prefHeight="648.0" prefWidth="1280.0" style="-fx-background-color: #fafbff;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PayLoanInstallmentsController">
+<AnchorPane fx:id="payLoanContext" prefHeight="648.0" prefWidth="1280.0" style="-fx-background-color: #fafbff;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PayLoanInstallmentsController">
    <children>
       <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="91.0" layoutX="18.0" layoutY="21.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="487.0">
          <effect>
@@ -213,8 +213,14 @@
                </font>
             </Label>
             <TextField fx:id="txtUserName" layoutX="43.0" layoutY="406.0" prefHeight="30.0" prefWidth="189.0" promptText="User Name" styleClass="verification-fields" />
-            <Button layoutX="315.0" layoutY="450.0" mnemonicParsing="false" onAction="#doneButtonOnAction" prefHeight="42.0" prefWidth="115.0" text="Done" />
-            <Button layoutX="186.0" layoutY="451.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="42.0" prefWidth="115.0" text="Cancel" />
+            <Button layoutX="315.0" layoutY="450.0" mnemonicParsing="false" onAction="#doneButtonOnAction" prefHeight="42.0" prefWidth="115.0" style="-fx-background-color: #16a085;" text="Done" textFill="WHITE">
+               <font>
+                  <Font name="Open Sans ExtraBold" size="17.0" />
+               </font></Button>
+            <Button layoutX="186.0" layoutY="451.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="42.0" prefWidth="115.0" style="-fx-background-color: #7f8c8d;" text="Cancel" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
             <TextField fx:id="txtPassword" layoutX="240.0" layoutY="406.0" prefHeight="30.0" prefWidth="189.0" promptText="Password" styleClass="verification-fields" />
             <Label layoutX="343.0" layoutY="371.0" text="Admin Passwords" textFill="#727272" />
          </children>

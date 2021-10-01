@@ -13,14 +13,14 @@
   ~ Copyright (c) 2021. Coded By Ravindu Thilakshana (naashnix) naashnix.bio.link
   -->
 
-<AnchorPane prefHeight="648.0" prefWidth="1280.0" style="-fx-background-color: #fafbff;" stylesheets="@styleSheets/IssuedLoanDetailsStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewIssuedLoanByDepositController">
+<AnchorPane fx:id="loanByDepContext" prefHeight="648.0" prefWidth="1280.0" style="-fx-background-color: #fafbff;" stylesheets="@styleSheets/IssuedLoanDetailsStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewIssuedLoanByDepositController">
    <children>
       <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="482.0" layoutX="32.0" layoutY="40.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="1231.0">
          <effect>
             <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
          </effect>
       </Rectangle>
-      <TableView fx:id="tableLoanByDeposit" layoutX="52.0" layoutY="89.0" prefHeight="418.0" prefWidth="1191.0">
+      <TableView fx:id="tableLoanByDeposit" layoutX="52.0" layoutY="89.0" onMouseClicked="#tableRowSelectOrNot" prefHeight="418.0" prefWidth="1191.0">
          <columns>
             <TableColumn fx:id="colName" prefWidth="186.0" styleClass=".noheader" text="Name" />
             <TableColumn fx:id="colLoanCode" prefWidth="158.0" text="Loan Code" />
@@ -42,17 +42,17 @@
             <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
          </effect>
       </Rectangle>
-      <Button layoutX="840.0" layoutY="571.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="115.0" style="-fx-background-color: #2980b9;" text="PAY" textFill="WHITE">
+      <Button fx:id="btnPay" layoutX="840.0" layoutY="571.0" mnemonicParsing="false" onAction="#payOnAction" prefHeight="41.0" prefWidth="115.0" style="-fx-background-color: #2980b9;" text="PAY" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="971.0" layoutY="571.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="133.0" style="-fx-background-color: #16a085;" text="View Details" textFill="WHITE">
+      <Button fx:id="btnViewDetails" layoutX="971.0" layoutY="571.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="133.0" style="-fx-background-color: #16a085;" text="View Details" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="1120.0" layoutY="571.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="115.0" style="-fx-background-color: #7f8c8d;" text="Back" textFill="WHITE">
+      <Button layoutX="1120.0" layoutY="571.0" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="41.0" prefWidth="115.0" style="-fx-background-color: #7f8c8d;" text="Back" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>

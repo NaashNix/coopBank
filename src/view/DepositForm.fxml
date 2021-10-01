@@ -30,7 +30,7 @@
       </Rectangle>
       <TableView fx:id="latestTransactions" layoutX="700.0" layoutY="91.0" prefHeight="478.0" prefWidth="525.0" styleClass="noheader">
         <columns>
-          <TableColumn fx:id="colDate" prefWidth="79.0" style="-fx-alignment: center;" text="Date" />
+          <TableColumn fx:id="colDate" prefWidth="79.0" style="-fx-alignment: center; -fx-font-weight: bold;" text="Date" />
           <TableColumn fx:id="colAccount" prefWidth="147.0" text="Account" />
             <TableColumn fx:id="colDescription" prefWidth="152.0" text="Description" />
             <TableColumn fx:id="colAmount" prefWidth="146.0" text="Amount" />

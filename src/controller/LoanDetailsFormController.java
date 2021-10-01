@@ -2,6 +2,9 @@ package controller;
 
 import com.jfoenix.controls.JFXComboBox;
 import controller.dbControllers.LoanDetailsController;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -9,6 +12,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import model.LoanDetailsModel;
 
+import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -113,5 +118,13 @@ public class LoanDetailsFormController {
             cmbLoanType.getItems().add(model.getLoanName());
         }
 
+    }
+
+    public void cancelOnAction(ActionEvent actionEvent) throws IOException {
+        URL resource = getClass().getResource("../view/MainDashboardForm.fxml");
+        System.out.println(resource);
+        Parent load = FXMLLoader.load(resource);
+        loanDetailsContext.getChildren().clear();
+        loanDetailsContext.getChildren().add(load);
     }
 }

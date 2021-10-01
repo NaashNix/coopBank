@@ -205,6 +205,10 @@ CREATE TABLE LoanByDepositTransactions(
 DROP TABLE InstantLoan;
 DROP TABLE InstantLoanTransactions;
 
+ALTER TABLE RationLoan
+MODIFY interest
+DECIMAL(4,2);
+
 ALTER TABLE LoanByDeposit
 ADD interest DECIMAL(3,2);
 

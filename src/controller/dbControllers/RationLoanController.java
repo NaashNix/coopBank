@@ -43,7 +43,7 @@ public class RationLoanController {
                     resultSet.getDouble("rLoanAmount"),
                     resultSet.getString("rIssuedDate"),
                     resultSet.getDouble("rMonthlyInstallment"),
-                    resultSet.getInt("rNumberOfInstallment"),
+                    resultSet.getInt("rNumberOfInstallments"),
                     resultSet.getInt("installmentsToBePaid"),
                     resultSet.getDouble("rLoanPaidAmount"),
                     resultSet.getString("loanStatus"),

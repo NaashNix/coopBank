@@ -239,4 +239,15 @@ public class DashboardFormController {
         playGroundContext.getChildren().clear();
         playGroundContext.getChildren().add(load);
     }
+
+    public void reportProblemOnAction(ActionEvent actionEvent) throws IOException {
+        URL resource = getClass().getResource("../view/ReportProblemForm.fxml");
+        Parent load = FXMLLoader.load(resource);
+        playGroundContext.getChildren().clear();
+        playGroundContext.getChildren().add(load);
+    }
+
+    public void customizeMainBalance(ActionEvent actionEvent) {
+
+    }
 }

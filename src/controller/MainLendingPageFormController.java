@@ -215,6 +215,7 @@ public class MainLendingPageFormController {
                         sqlNextInstallmentDay,
                         loanModel.getInterest()
                 );
+                System.out.println("Interest : "+loanModel.getInterest());
                 if (new RationLoanController().saveLoan(rationLoanModel)) {
                     Optional<ButtonType> buttonType = alertBoxSaved.showAndWait();
                     if (!buttonType.isPresent()){

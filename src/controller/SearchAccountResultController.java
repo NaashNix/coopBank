@@ -142,6 +142,8 @@ SearchAccountResultController {
         pickerBirthday.getEditor().setOpacity(1);
         double accountBalance = new SavingsAccountController().getAccountBalance(model.getAccountNumber());
         lblAccountBalance.setText("Rs. "+df.format(accountBalance));
+        double onHoldAmount = new OnHoldDetailController().getTheHoldedAmount(model.getAccountNumber());
+        lblOnHold.setText(df.format(onHoldAmount));
 
         loadLoanDetails(model);
 

@@ -121,7 +121,11 @@ public class MainDashboardForm {
         }else if (singleDecimal.matcher(String.valueOf(mainBalance)).matches()){
             finalBalance = mainBalance+"0";
             System.out.println("single");
+        }else{
+            finalBalance = String.valueOf(mainBalance);
         }
+        System.out.println("Final balance : "+finalBalance);
+        System.out.println("main bal : "+mainBalance);
         lblMainBalance.setText("Rs. "+finalBalance);
         lblMainBalTime.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("hh:mm a")));
     }

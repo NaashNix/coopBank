@@ -57,10 +57,10 @@
             <Font name="Roboto Medium" size="17.0" />
          </font>
       </MenuButton>
-      <MenuButton alignment="CENTER" layoutX="671.0" layoutY="8.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="144.0" text="Reports" textFill="WHITE">
+      <MenuButton alignment="CENTER" layoutX="671.0" layoutY="8.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="144.0" text="Settings" textFill="WHITE">
          <items>
-            <MenuItem mnemonicParsing="false" text="Action 1" />
-            <MenuItem mnemonicParsing="false" text="Action 2" />
+            <MenuItem mnemonicParsing="false" onAction="#customizeMainBalance" text="Main Balance" />
+            <MenuItem mnemonicParsing="false" onAction="#reportProblemOnAction" text="Report A Problem" />
          </items>
          <font>
             <Font name="Roboto Medium" size="17.0" />
@@ -81,8 +81,8 @@
             <Image url="@../assets/icons8-notification-48.png" />
          </image>
       </ImageView>
-      <Circle fill="#ff6b6b" layoutX="992.0" layoutY="35.0" radius="11.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Text fill="WHITE" layoutX="987.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8">
+      <Circle fill="#2ecc71" layoutX="992.0" layoutY="35.0" radius="11.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Text fill="WHITE" layoutX="987.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>

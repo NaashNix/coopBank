@@ -12,17 +12,22 @@ import controller.dbControllers.*;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import model.*;
 
+import java.io.IOException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.time.LocalDate;
@@ -58,6 +63,7 @@ public class PayLoanInstallmentsController {
     public LoanByDeposit loanByDeposit = null;
     public RationLoanModel rationLoanModel = null;
     public DecimalFormat df = new DecimalFormat("#.##");
+    public AnchorPane payLoanContext;
 
     public void initialize() throws SQLException, ClassNotFoundException {
         accountNumber = ObjectPasser.getAccountNumberForPayLoan();
@@ -102,6 +108,7 @@ public class PayLoanInstallmentsController {
             }
         } else if (loanType.equals("Ration Loan")) {
             rationLoanModel = new RationLoanController().getRationLoanModelByID(accountNumber);
+            System.out.println(rationLoanModel.toString());
             if (rationLoanModel != null) {
                 txtLoanNumber.setText(rationLoanModel.getLoanNumber());
                 txtDebtorName.setText(customerModel.getName());
@@ -242,7 +249,7 @@ public class PayLoanInstallmentsController {
 
     }
 
-    public void doneButtonOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+    public void doneButtonOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException, IOException {
         // * Here goes the payment functions for this.
         // * 1.0 Installment should set installment=installment-1;
         // * Calculate the interest and the set to the investment table.
@@ -260,6 +267,14 @@ public class PayLoanInstallmentsController {
                             "Loan is Completed!"
                     );
                     alertBox.showAlert();
+                    // * Navigate to the main dashboard
+                    URL resource = getClass().getResource("../view/MainDashboardForm.fxml");
+                    System.out.println(resource);
+                    Parent load = FXMLLoader.load(resource);
+                    payLoanContext.getChildren().clear();
+                    payLoanContext.getChildren().add(load);
+
+
                     return;
                 }else {
                     System.out.println();
@@ -287,6 +302,12 @@ public class PayLoanInstallmentsController {
                         "Payment Successful!"
                 );
                 alertBox.showAlert();
+                // * Navigate to the main dashboard
+                URL resource = getClass().getResource("../view/MainDashboardForm.fxml");
+                System.out.println(resource);
+                Parent load = FXMLLoader.load(resource);
+                payLoanContext.getChildren().clear();
+                payLoanContext.getChildren().add(load);
             }
 
             // * Loan By Deposit
@@ -305,6 +326,12 @@ public class PayLoanInstallmentsController {
                             "Loan is Completed!"
                     );
                     alertBox.showAlert();
+                    // * Navigate to the main dashboard
+                    URL resource = getClass().getResource("../view/MainDashboardForm.fxml");
+                    System.out.println(resource);
+                    Parent load = FXMLLoader.load(resource);
+                    payLoanContext.getChildren().clear();
+                    payLoanContext.getChildren().add(load);
                 }else {
                     System.out.println();
                 }
@@ -331,6 +358,12 @@ public class PayLoanInstallmentsController {
                         "Payment Successful!"
                 );
                 alertBox.showAlert();
+                // * Navigate to the main dashboard
+                URL resource = getClass().getResource("../view/MainDashboardForm.fxml");
+                System.out.println(resource);
+                Parent load = FXMLLoader.load(resource);
+                payLoanContext.getChildren().clear();
+                payLoanContext.getChildren().add(load);
             } else {
 
             }
@@ -345,6 +378,12 @@ public class PayLoanInstallmentsController {
                             "Loan is Completed!"
                     );
                     alertBox.showAlert();
+                    // * Navigate to the main dashboard
+                    URL resource = getClass().getResource("../view/MainDashboardForm.fxml");
+                    System.out.println(resource);
+                    Parent load = FXMLLoader.load(resource);
+                    payLoanContext.getChildren().clear();
+                    payLoanContext.getChildren().add(load);
                     return;
                 }else {
                     System.out.println();
@@ -370,6 +409,12 @@ public class PayLoanInstallmentsController {
                         "Payment Successful!"
                 );
                 alertBox.showAlert();
+                // * Navigate to the main dashboard
+                URL resource = getClass().getResource("../view/MainDashboardForm.fxml");
+                System.out.println(resource);
+                Parent load = FXMLLoader.load(resource);
+                payLoanContext.getChildren().clear();
+                payLoanContext.getChildren().add(load);
             } else {
 
             }

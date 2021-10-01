@@ -67,8 +67,14 @@
          </font>
       </Label>
       <TextField fx:id="txtMaxInstallments" editable="false" layoutX="188.0" layoutY="427.0" prefHeight="24.0" prefWidth="231.0" />
-      <Button layoutX="188.0" layoutY="523.0" mnemonicParsing="false" onAction="#confirmButtonOnAction" prefHeight="40.0" prefWidth="111.0" text="CONFIRM" />
-      <Button layoutX="310.0" layoutY="523.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="111.0" text="Cancel" />
+      <Button layoutX="188.0" layoutY="523.0" mnemonicParsing="false" onAction="#confirmButtonOnAction" prefHeight="40.0" prefWidth="111.0" style="-fx-background-color: #27ae60;" text="CONFIRM" textFill="WHITE">
+         <font>
+            <Font name="Open Sans ExtraBold" size="15.0" />
+         </font></Button>
+      <Button layoutX="310.0" layoutY="523.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="111.0" style="-fx-background-color: #7f8c8d;" text="Cancel" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
       <Label layoutX="52.0" layoutY="27.0" text="Basic Details">
          <font>
             <Font name="Roboto Black" size="23.0" />
@@ -202,8 +208,14 @@
                </font>
             </Label>
             <TextField fx:id="txtUserName" layoutX="43.0" layoutY="476.0" prefHeight="30.0" prefWidth="189.0" promptText="User Name" styleClass="verification-fields" />
-            <Button layoutX="315.0" layoutY="520.0" mnemonicParsing="false" onAction="#doneButtonOnAction" prefHeight="42.0" prefWidth="115.0" text="Done" />
-            <Button layoutX="186.0" layoutY="521.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="42.0" prefWidth="115.0" text="Cancel" />
+            <Button layoutX="315.0" layoutY="520.0" mnemonicParsing="false" onAction="#doneButtonOnAction" prefHeight="42.0" prefWidth="115.0" style="-fx-background-color: #2980b9;" text="Done" textFill="WHITE">
+               <font>
+                  <Font name="Open Sans ExtraBold" size="17.0" />
+               </font></Button>
+            <Button layoutX="186.0" layoutY="521.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="42.0" prefWidth="115.0" style="-fx-background-color: #7f8c8d;" text="Cancel" textFill="WHITE">
+               <font>
+                  <Font size="17.0" />
+               </font></Button>
             <TextField fx:id="txtPassword" layoutX="240.0" layoutY="476.0" prefHeight="30.0" prefWidth="189.0" promptText="Password" styleClass="verification-fields" />
             <Label layoutX="343.0" layoutY="441.0" text="Admin Passwords" textFill="#727272" />
          </children>
