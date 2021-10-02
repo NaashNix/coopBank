@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
@@ -8,6 +9,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -57,10 +59,12 @@
             <Font name="Roboto Medium" size="17.0" />
          </font>
       </MenuButton>
-      <MenuButton alignment="CENTER" layoutX="671.0" layoutY="8.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="144.0" text="Settings" textFill="WHITE">
+      <MenuButton alignment="CENTER" layoutX="671.0" layoutY="8.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="144.0" text="Pecuniary" textFill="WHITE">
          <items>
-            <MenuItem mnemonicParsing="false" onAction="#customizeMainBalance" text="Main Balance" />
-            <MenuItem mnemonicParsing="false" onAction="#reportProblemOnAction" text="Report A Problem" />
+            <MenuItem mnemonicParsing="false" onAction="#viewExpenditures" text="View Expenditures" />
+            <MenuItem mnemonicParsing="false" onAction="#addExpenditures" text="Add Expenditures" />
+            <MenuItem mnemonicParsing="false" onAction="#viewIncomes" text="View Incomes" />
+            <MenuItem mnemonicParsing="false" onAction="#viewAddIncome" text="Add Incomes" />
          </items>
          <font>
             <Font name="Roboto Medium" size="17.0" />
@@ -71,27 +75,35 @@
             <MenuItem mnemonicParsing="false" onAction="#openBankDetailsOnAction" style="-fx-width: 10px;" text="Bank Info" />
             <MenuItem mnemonicParsing="false" onAction="#openUserDetailsOnAction" text="User Details" />
             <MenuItem mnemonicParsing="false" onAction="#openLoginForm" text="Log Out" />
+            <MenuItem mnemonicParsing="false" onAction="#reportProblemOnAction" text="Report A Problem" />
          </items>
          <font>
             <Font name="Roboto Medium" size="17.0" />
          </font>
       </MenuButton>
-      <ImageView accessibleRole="BUTTON" fitHeight="35.0" fitWidth="35.0" layoutX="944.0" layoutY="19.0">
-         <image>
-            <Image url="@../assets/icons8-notification-48.png" />
-         </image>
-      </ImageView>
-      <Circle fill="#2ecc71" layoutX="992.0" layoutY="35.0" radius="11.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-      <Text fill="WHITE" layoutX="987.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Text>
       <TextField id="textField" fx:id="searchField" layoutX="1034.0" layoutY="23.0" onKeyPressed="#searchFieldOnKeyPressed" prefHeight="15.0" prefWidth="205.0" promptText="Search Account" />
       <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="1215.0" layoutY="26.0" preserveRatio="true">
          <image>
             <Image url="@../assets/icons8-search.gif" />
          </image>
       </ImageView>
+      <Pane layoutX="941.0" layoutY="11.0" onMouseClicked="#openArrearsLoanForm" prefHeight="48.0" prefWidth="68.0">
+         <children>
+            <ImageView accessibleRole="BUTTON" fitHeight="35.0" fitWidth="35.0" layoutY="6.0" onMouseClicked="#openArrearsLoanForm">
+               <image>
+                  <Image url="@../assets/icons8-notification-48.png" />
+               </image>
+            </ImageView>
+            <Circle fx:id="notificationCircle" fill="#2ecc71" layoutX="45.0" layoutY="23.0" onMouseClicked="#openArrearsLoanForm" radius="11.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+            <Text fx:id="txtNotificationNumber" fill="WHITE" layoutX="35.0" layoutY="28.0" onMouseClicked="#openArrearsLoanForm" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="19.29541015625">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Text>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Pane>
    </children>
 </AnchorPane>

@@ -57,7 +57,7 @@ public class MainLendingPageFormController {
     public LoanDetailsModel loanModel;
     public Label lblInstallmentPrice;
     public AnchorPane confirmLendingContext;
-    FadeTransition ft;  // * RUN eka balapn supiri error ekak athui appata hikena jathiye ekak.
+    FadeTransition ft;
     public double installmentValue =0;
     public DecimalFormat df=new DecimalFormat("#.##");
     Pattern moneyPattern = Pattern.compile("^[1-9][0-9]*([.][0-9]{2})?$");

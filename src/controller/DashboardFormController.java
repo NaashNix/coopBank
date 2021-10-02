@@ -3,6 +3,9 @@ package controller;
 import controller.components.ModifiedAlertBox;
 import controller.components.ObjectPasser;
 import controller.dbControllers.CustomerDetailsController;
+import controller.dbControllers.InstantLoanController;
+import controller.dbControllers.LoanByDepositController;
+import controller.dbControllers.RationLoanController;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -17,14 +20,23 @@ import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import model.InstantLoanModel;
+import model.LoanByDeposit;
+import model.RationLoanModel;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 
 public class DashboardFormController {
@@ -34,6 +46,8 @@ public class DashboardFormController {
     public Label lblDashboardDate;
     public MenuButton buttonOther;
     public TextField searchField;
+    public Circle notificationCircle;
+    public Text txtNotificationNumber;
 
     // * Initialize Method For Date And Time.
     public void initialize() throws IOException {
@@ -56,6 +70,13 @@ public class DashboardFormController {
                 }
             }
         });
+
+        // * Check arrears loans.
+        try {
+            checkOutDatedLoans();
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
 
     }
 
@@ -247,7 +268,77 @@ public class DashboardFormController {
         playGroundContext.getChildren().add(load);
     }
 
-    public void customizeMainBalance(ActionEvent actionEvent) {
+    public void viewExpenditures(ActionEvent actionEvent) throws IOException {
+        URL resource = getClass().getResource("../view/BankExpendituresForm.fxml");
+        Parent load = FXMLLoader.load(resource);
+        playGroundContext.getChildren().clear();
+        playGroundContext.getChildren().add(load);
+    }
 
+    public void addExpenditures(ActionEvent actionEvent) throws IOException {
+        URL resource = getClass().getResource("../view/AddBankExpenditures.fxml");
+        Parent load = FXMLLoader.load(resource);
+        playGroundContext.getChildren().clear();
+        playGroundContext.getChildren().add(load);
+    }
+
+    public void viewAddIncome(ActionEvent actionEvent) throws IOException {
+        URL resource = getClass().getResource("../view/IncomeAdder.fxml");
+        Parent load = FXMLLoader.load(resource);
+        playGroundContext.getChildren().clear();
+        playGroundContext.getChildren().add(load);
+    }
+
+    public void viewIncomes(ActionEvent actionEvent) throws IOException {
+        URL resource = getClass().getResource("../view/ViewIncomesForm.fxml");
+        Parent load = FXMLLoader.load(resource);
+        playGroundContext.getChildren().clear();
+        playGroundContext.getChildren().add(load);
+    }
+
+    public void checkOutDatedLoans() throws SQLException, ClassNotFoundException {
+        ArrayList<InstantLoanModel> ArreasedInstantLoan = new InstantLoanController().getArreasedLoan();
+        ArrayList<LoanByDeposit> ArreasedLoanByDeposits = new LoanByDepositController().getArreasedLoan();
+        ArrayList<RationLoanModel> ArreasedRationLoan = new RationLoanController().getArreasedLoan();
+
+        int numberOfAreasLoans = 0;
+        ArrayList<String> arreasLoanNumbers = new ArrayList<>();
+
+        if (ArreasedInstantLoan!=null){
+            for (InstantLoanModel model : ArreasedInstantLoan
+            ) {
+                numberOfAreasLoans++;
+            }
+        }
+
+        if (ArreasedLoanByDeposits!=null){
+            for (LoanByDeposit rModels : ArreasedLoanByDeposits
+            ) {
+                numberOfAreasLoans++;
+            }
+        }
+
+        if (ArreasedRationLoan!=null){
+            for (RationLoanModel rModel : ArreasedRationLoan
+            ) {
+                numberOfAreasLoans++;
+            }
+        }
+
+        if (numberOfAreasLoans>0){
+            txtNotificationNumber.setText(String.valueOf(numberOfAreasLoans));
+            notificationCircle.setFill(Color.RED);
+        }
+
+        ObjectPasser.setArrearsLoans(ArreasedInstantLoan,ArreasedRationLoan,ArreasedLoanByDeposits);
+
+    }
+
+
+    public void openArrearsLoanForm(MouseEvent mouseEvent) throws IOException {
+        URL resource = getClass().getResource("../view/LoanArreasForm.fxml");
+        Parent load = FXMLLoader.load(resource);
+        playGroundContext.getChildren().clear();
+        playGroundContext.getChildren().add(load);
     }
 }

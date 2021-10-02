@@ -14,7 +14,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class InstantLoanController{
 
@@ -183,5 +186,35 @@ public class InstantLoanController{
         statement.setObject(1,loanStatus);
         statement.setObject(2,loanNumber);
         return statement.executeUpdate()>0;
+    }
+
+    public ArrayList<InstantLoanModel> getArreasedLoan() throws SQLException, ClassNotFoundException {
+        PreparedStatement statement = DbConnection.getInstance().getConnection()
+                .prepareStatement("SELECT * FROM InstantLoan WHERE nextInstallmentDate <= ? AND loanStatus=?");
+        LocalDate today = LocalDate.from(LocalDateTime.now());
+
+        statement.setObject(1,"2021-11-04");
+        //statement.setObject(1,today);
+        statement.setObject(2,"Active");
+        ArrayList<InstantLoanModel> models = new ArrayList<>();
+        ResultSet resultSet = statement.executeQuery();
+
+        while (resultSet.next()){
+            models.add(new InstantLoanModel(
+                    resultSet.getString("iLoanNumber"),
+                    resultSet.getString("accountNumber"),
+                    resultSet.getDouble("iLoanAmount"),
+                    resultSet.getString("iIssuedDate"),
+                    resultSet.getDouble("iMonthlyInstallment"),
+                    resultSet.getDouble("interest"),
+                    resultSet.getInt("iNumberOfInstallments"),
+                    resultSet.getInt("installmentsToBePaid"),
+                    resultSet.getDouble("iLoanPaidAmount"),
+                    resultSet.getString("loanStatus"),
+                    resultSet.getDate("nextInstallmentDate")
+            ));
+        }
+
+        return models;
     }
 }

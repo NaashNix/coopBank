@@ -94,7 +94,7 @@ public class ConfirmOpenAccountController implements Initializable {
             txtEmail.setText(customer.getCustomerEmail());
         }
 
-    public void confirmButtonOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
+    public void confirmButtonOnAction(ActionEvent actionEvent) throws SQLException, ClassNotFoundException, IOException {
 
         btnConfirm.setDisable(true);
         btnEdit.setDisable(true);
@@ -112,7 +112,7 @@ public class ConfirmOpenAccountController implements Initializable {
 
         Timeline timeline = new Timeline(
                 new KeyFrame(Duration.ZERO, new KeyValue(progressBarDone.progressProperty(), 0)),
-                new KeyFrame(Duration.seconds(5), e-> {
+                new KeyFrame(Duration.seconds(4), e-> {
                     // do anything you need here on completion...
                     txtStatus.setVisible(false);
                     ft.setNode(txtStatus);

@@ -3,6 +3,7 @@ package controller.components;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DialogPane;
 import javafx.scene.layout.AnchorPane;
@@ -41,6 +42,11 @@ public class ModifiedAlertBox {
             e.printStackTrace();
         }
 
+        ButtonBar buttonBar = (ButtonBar)alert.getDialogPane().lookup(".button-bar");
+        //buttonBar.setStyle("-fx-text-fill:white;");
+        buttonBar.getButtons().forEach(b->b.setStyle("-fx-background-color:#2c3e50;" +
+                "-fx-font-weight:bold; -fx-text-fill:white;"));
+
     }
 
     public void setMethodToButtons(AnchorPane pane, String fxmlFile) throws IOException {
@@ -60,6 +66,8 @@ public class ModifiedAlertBox {
         pane.getChildren().clear();
         pane.getChildren().add(load);
     }
+
+
 
     /*
         --> default .show() method will run when calling this

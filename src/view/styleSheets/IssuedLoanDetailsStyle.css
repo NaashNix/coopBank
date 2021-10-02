@@ -16,6 +16,7 @@
     -fx-background-color: transparent;
     -fx-background-insets: 0, 0 0 1 0   ;
     -fx-padding: 0.0em;
+    -fx-cell-size:25px;
 }
 
 .table-row-cell:selected {

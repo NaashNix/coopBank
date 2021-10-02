@@ -1,10 +1,7 @@
 package controller;
 
 import controller.components.*;
-import controller.dbControllers.CustomerDetailsController;
-import controller.dbControllers.DepositMoneyController;
-import controller.dbControllers.MoneyJournalController;
-import controller.dbControllers.SavingsAccountController;
+import controller.dbControllers.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.transformation.TransformationList;
@@ -20,8 +17,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import model.DepositObjectModel;
-import model.WithdrawObjectModel;
+import model.*;
 
 
 import java.io.IOException;
@@ -30,6 +26,7 @@ import java.sql.SQLException;
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 
@@ -128,6 +125,7 @@ public class MainDashboardForm {
         System.out.println("main bal : "+mainBalance);
         lblMainBalance.setText("Rs. "+finalBalance);
         lblMainBalTime.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("hh:mm a")));
+
     }
 
     public void processCalKey(ActionEvent actionEvent){
@@ -370,4 +368,6 @@ public class MainDashboardForm {
             alertBox.showAlert();
         }
     }
+
+
 }

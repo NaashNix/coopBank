@@ -6,6 +6,8 @@ package controller.components;
 
 import model.*;
 
+import java.util.ArrayList;
+
 public class ObjectPasser {
     private static CustomerModel customerModel;
     private static OpenAccDepMoneyModel depositModel;
@@ -17,6 +19,9 @@ public class ObjectPasser {
     private static String accountNumberForPayLoan;
     private static String accountNumberForShowWithdrawals;
     private static String accountNumberForShowDeposits;
+    private static ArrayList<InstantLoanModel> arrearsInstantLoans;
+    private static ArrayList<LoanByDeposit> arrearsLoanByDeposit;
+    private static ArrayList<RationLoanModel> arrearsRationLoans;
 
 
     public static void setModels(CustomerModel customer, OpenAccDepMoneyModel deposit){
@@ -94,5 +99,23 @@ public class ObjectPasser {
 
     public static void setAccountNumberForShowDeposits(String accountNumberForShowDeposits) {
         ObjectPasser.accountNumberForShowDeposits = accountNumberForShowDeposits;
+    }
+
+    public static void setArrearsLoans(ArrayList<InstantLoanModel> iModels, ArrayList<RationLoanModel> rModels, ArrayList<LoanByDeposit> lModels ){
+        arrearsInstantLoans = iModels;
+        arrearsRationLoans = rModels;
+        arrearsLoanByDeposit = lModels;
+    }
+
+    public static ArrayList<InstantLoanModel> getArrearsInstantLoans(){
+        return arrearsInstantLoans;
+    }
+
+    public static ArrayList<LoanByDeposit> getArrearsLoanByDeposit(){
+        return arrearsLoanByDeposit;
+    }
+
+    public static ArrayList<RationLoanModel> getArrearsRationLoans(){
+        return arrearsRationLoans;
     }
 }

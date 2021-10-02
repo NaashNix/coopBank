@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<!--
+  ~ Copyright (c) 2021. Coded By Ravindu Thilakshana (naashnix) naashnix.bio.link
+  -->
+
+<AnchorPane prefHeight="648.0" prefWidth="1280.0" style="-fx-background-color: #F8FAFF;" stylesheets="@styleSheets/IssuedLoanDetailsStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoanArrearsFormController">
+   <children>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="485.0" layoutX="16.0" layoutY="30.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="1244.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <Label layoutX="46.0" layoutY="37.0" text="Arreas Loan Details">
+         <font>
+            <Font name="Roboto Black" size="23.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tableExpenditures" layoutX="31.0" layoutY="81.0" prefHeight="411.0" prefWidth="1199.0">
+         <columns>
+            <TableColumn fx:id="colLoanNumber" prefWidth="129.0" text="Loan Number" />
+            <TableColumn fx:id="colDebtorName" prefWidth="224.0" style="-fx-font-weight: bold;" text="Debtor Name" />
+            <TableColumn fx:id="colLoanType" prefWidth="140.0" text="Loan Type" />
+            <TableColumn fx:id="colInstallment" prefWidth="130.0" text="Installment" />
+            <TableColumn fx:id="colLoanAmount" prefWidth="151.0" text="Loan Amount" />
+            <TableColumn fx:id="colPaymentDate" prefWidth="137.0" text="Payment Date" />
+            <TableColumn fx:id="colRemainingInstallments" minWidth="0.0" prefWidth="130.0" text="Remaining Ins." />
+            <TableColumn fx:id="colDebtorTelephone" prefWidth="157.0" text="Debtor Telephone" />
+         </columns>
+      </TableView>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="85.0" layoutX="631.0" layoutY="537.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="630.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <Label layoutX="987.0" layoutY="36.0" prefHeight="20.0" prefWidth="275.0" text="Select Row and move to below options" textFill="#686868">
+         <font>
+            <Font name="Open Sans SemiBold" size="14.0" />
+         </font>
+      </Label>
+      <Button layoutX="771.0" layoutY="557.0" mnemonicParsing="false" onAction="#sendEmailOnAction" prefHeight="45.0" prefWidth="111.0" style="-fx-background-color: #2980b9;" text="Send Email" textFill="WHITE">
+         <font>
+            <Font name="Open Sans SemiBold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="648.0" layoutY="557.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="111.0" style="-fx-background-color: #16a085;" text="PAY" textFill="WHITE">
+         <font>
+            <Font name="Open Sans ExtraBold" size="16.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="892.0" layoutY="557.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="111.0" style="-fx-background-color: #34495e;" text="Print " textFill="WHITE">
+         <font>
+            <Font name="Open Sans SemiBold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="1014.0" layoutY="557.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="111.0" style="-fx-background-color: #c0392b#c0392b;" text="Bad Credit" textFill="WHITE">
+         <font>
+            <Font name="Open Sans SemiBold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="1135.0" layoutY="557.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="111.0" style="-fx-background-color: #7f8c8d;" text="Back" textFill="WHITE">
+         <font>
+            <Font name="Open Sans SemiBold" size="15.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+   </children>
+</AnchorPane>

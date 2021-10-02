@@ -5,6 +5,7 @@
 package controller;
 
 import controller.dbControllers.ExpenditureController;
+import controller.dbControllers.IncomeController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.ComboBox;
@@ -13,14 +14,16 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.BankExpenditureModel;
+import model.IncomeViewerModel;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class BankExpendituresFormController {
+public class ViewIncomesFormController {
+
     public ComboBox<String> cmbTimePeriod;
     public Label lblTotalExpenditure;
-    public TableView<BankExpenditureModel> tableExpenditures;
+    public TableView<IncomeViewerModel> tableExpenditures;
     public TableColumn colReceiptNumber;
     public TableColumn colDesc;
     public TableColumn colDate;
@@ -30,10 +33,10 @@ public class BankExpendituresFormController {
     public void initialize() throws SQLException, ClassNotFoundException {
         // * Set cell values factories
         colAmount.setCellValueFactory(new PropertyValueFactory<>("amount"));
-        colDesc.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colDesc.setCellValueFactory(new PropertyValueFactory<>("desc"));
         colTime.setCellValueFactory(new PropertyValueFactory<>("time"));
         colDate.setCellValueFactory(new PropertyValueFactory<>("date"));
-        colReceiptNumber.setCellValueFactory(new PropertyValueFactory<>("receiptNumber"));
+        colReceiptNumber.setCellValueFactory(new PropertyValueFactory<>("transactionID"));
 
         // * set values to column and set default selected values to the last month
         cmbTimePeriod.getItems().addAll("All The Time","Last Month");
@@ -44,9 +47,8 @@ public class BankExpendituresFormController {
             setDataToFields(newValue);
         });
 
-        // * initialize last month datas
+        // * initialize last month data.
         getLastMonthData();
-
 
     }
 
@@ -68,9 +70,9 @@ public class BankExpendituresFormController {
     }
 
     private void getAllTheTimeData() throws SQLException, ClassNotFoundException {
-        lblTotalExpenditure.setText("Rs. "+new ExpenditureController().calculateTotalExpensesInAllTheTime());
-        ArrayList<BankExpenditureModel> bankModels = new ExpenditureController().getAllExpenditures();
-        ObservableList<BankExpenditureModel> tableModelsAllTheTime = FXCollections.observableArrayList();
+        lblTotalExpenditure.setText("Rs. "+new IncomeController().calculateAllTheTimeIncomes());
+        ArrayList<IncomeViewerModel> bankModels = new IncomeController().getAllTheTimeIncomes();
+        ObservableList<IncomeViewerModel> tableModelsAllTheTime = FXCollections.observableArrayList();
         tableModelsAllTheTime.clear();
         if (bankModels!=null){
             tableModelsAllTheTime.addAll(bankModels);
@@ -82,9 +84,9 @@ public class BankExpendituresFormController {
 
     public void getLastMonthData() throws SQLException, ClassNotFoundException {
 
-        lblTotalExpenditure.setText("Rs. "+(new ExpenditureController().calculateTotalExpensesInMonth()));
-        ArrayList<BankExpenditureModel> bankModels = new ExpenditureController().getLastMonthExpenses();
-        ObservableList<BankExpenditureModel> tableModels = FXCollections.observableArrayList();
+        lblTotalExpenditure.setText("Rs. "+(new IncomeController().calculateLastMonthIncomes()));
+        ArrayList<IncomeViewerModel> bankModels = new IncomeController().getLastMonthIncomes();
+        ObservableList<IncomeViewerModel> tableModels = FXCollections.observableArrayList();
         tableModels.clear();
         if (bankModels!=null){
             tableModels.addAll(bankModels);
@@ -93,6 +95,5 @@ public class BankExpendituresFormController {
         tableExpenditures.setItems(tableModels);
 
     }
-
 
 }

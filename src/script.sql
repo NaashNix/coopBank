@@ -169,7 +169,7 @@ WithdrawObjectModel model = new WithdrawObjectModel(
 
 INSERT INTO LoanDetails VALUES("Instant Loan" ,"L001" ,"Savings Account" ,10000.0 ,5 ,20000.0,"Reducing BS",3,"Monthly" ,5 ,"From Deposit","Legal Action");
 INSERT INTO LoanDetails VALUES("Ration Loan" ,"L002" ,"Savings Account" ,10000 ,12 ,50000.0,"Flat Rate",12,"Yearly" ,12 ,"From Deposit","Legal Action");
-INSERT INTO LoanDetails VALUES("Loan By Deposit" ,"L003" ,"Savings Account" ,100.0 ,5 ,80,"Reducing BS",4,"Monthly" ,37,"","Legal Action");
+INSERT INTO LoanDetails VALUES("Loan By Deposit" ,"L003" ,"Savings Account" ,30000.0 ,10,80,"Reducing BS",4,"Monthly" ,37,"","Legal Action");
 
 ALTER TABLE 
 
@@ -209,8 +209,9 @@ ALTER TABLE RationLoan
 MODIFY interest
 DECIMAL(4,2);
 
-ALTER TABLE LoanByDeposit
-ADD interest DECIMAL(3,2);
+ALTER TABLE Incomes
+ADD transactionDate DATE,
+ADD transactionTime TIME;
 
 ALTER TABLE LoanByDeposit
 DROP COLUMN loanNumber;
@@ -229,7 +230,10 @@ DELETE FROM InstantLoan;
 DELETE FROM LoanByDeposit;
 DELETE FROM RationLoan;
 DELETE FROM LoanDetails;
+DELETE FROM Incomes;
+DELETE FROM Expenditures;
 DELETE FROM Customer;
+
 
 CREATE TABLE MoneyJournal (
     balanceType VARCHAR(14),
@@ -267,3 +271,15 @@ ADD COLUMN installmentsToBePaid INT AFTER rNumberOfInstallments;
  );
 
 
+ALTER TABLE Expenditures
+MODIFY description VARCHAR(30);
+
+SELECT * FROM Expenditures
+WHERE YEAR(2021-10-01) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH)
+AND MONTH(date_created) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)
+
+SELECT * FROM Expenditures WHERE transactionDate BETWEEN (CURRENT_DATE() - INTERVAL 1 MONTH) AND CURRENT_DATE();
+
+INSERT INTO Expenditures VALUES("E5656565656","Other","03:56:10","2021-08-20",200);
+
+SELECT * FROM LoanByDeposit WHERE nextInstallmentDate <= '2021-11-04' AND loanStatus<>"Active";
