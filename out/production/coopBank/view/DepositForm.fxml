@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="depositConfirmContext" prefHeight="648.0" prefWidth="1280.0" style="-fx-background-color: #fafbff;" stylesheets="@styleSheets/depositFormStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DepositFormController">
+   <children>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="427.0" layoutX="35.0" layoutY="20.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="608.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="126.0" layoutX="35.0" layoutY="484.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="608.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="591.0" layoutX="685.0" layoutY="20.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="556.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <TableView fx:id="latestTransactions" layoutX="700.0" layoutY="91.0" prefHeight="478.0" prefWidth="525.0" styleClass="noheader">
+        <columns>
+          <TableColumn fx:id="colDate" prefWidth="79.0" style="-fx-alignment: center; -fx-font-weight: bold;" text="Date" />
+          <TableColumn fx:id="colAccount" prefWidth="147.0" text="Account" />
+            <TableColumn fx:id="colDescription" prefWidth="152.0" text="Description" />
+            <TableColumn fx:id="colAmount" prefWidth="146.0" text="Amount" />
+        </columns>
+      </TableView>
+      <Label layoutX="702.0" layoutY="34.0" text="Latest Transaction">
+         <font>
+            <Font name="Roboto Black" size="21.0" />
+         </font></Label>
+      <Label layoutX="53.0" layoutY="31.0" text="Transaction Details">
+         <font>
+            <Font name="Roboto Black" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="453.0" layoutY="31.0" text="DEPOSIT SLIP" textFill="#16a085">
+         <font>
+            <Font name="Roboto Black" size="28.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cmbBalanceShower" layoutX="438.0" layoutY="496.0" prefHeight="24.0" prefWidth="192.0" promptText="Select Account" />
+      <Label layoutX="53.0" layoutY="494.0" text="Current Account Balance">
+         <font>
+            <Font name="Roboto Black" size="21.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtAccNumber" editable="false" layoutX="247.0" layoutY="112.0" prefHeight="30.0" prefWidth="254.0" />
+      <Label layoutX="146.0" layoutY="116.0" text="Acc. No" textFill="#494949">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtName" editable="false" layoutX="247.0" layoutY="160.0" prefHeight="30.0" prefWidth="254.0" />
+      <Label layoutX="163.0" layoutY="164.0" text="Name" textFill="#494949">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtAccType" editable="false" layoutX="247.0" layoutY="208.0" prefHeight="30.0" prefWidth="254.0" />
+      <Label layoutX="123.0" layoutY="212.0" text="Acc. Type" textFill="#494949">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtDescription" layoutX="247.0" layoutY="256.0" prefHeight="30.0" prefWidth="254.0" />
+      <Label layoutX="104.0" layoutY="259.0" text="Description" textFill="#494949">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtAmount" layoutX="248.0" layoutY="301.0" prefHeight="30.0" prefWidth="254.0" />
+      <Label layoutX="140.0" layoutY="305.0" text="Amount" textFill="#494949">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="308.0" layoutY="358.0" mnemonicParsing="false" onAction="#confirmButtonOnAction" prefHeight="42.0" prefWidth="115.0" style="-fx-background-color: #16a085;" text="CONFIRM" textFill="WHITE">
+         <font>
+            <Font name="Open Sans ExtraBold" size="16.0" />
+         </font></Button>
+      <Button layoutX="438.0" layoutY="358.0" mnemonicParsing="false" onAction="#depositCancelOnAction" prefHeight="42.0" prefWidth="115.0" style="-fx-background-color: #7f8c8d;" text="Cancel" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font></Button>
+      <Label fx:id="lblAccountBalance" alignment="CENTER" layoutX="137.0" layoutY="551.0" prefHeight="16.0" prefWidth="387.0" text="&lt;Rs. 458.00&gt;">
+         <font>
+            <Font name="Roboto Black" size="31.0" />
+         </font>
+      </Label>
+      <Label layoutX="50.0" layoutY="422.0" text="Transaction ID : " />
+      <Label fx:id="lblTransactionID" layoutX="166.0" layoutY="422.0" prefHeight="18.0" prefWidth="222.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

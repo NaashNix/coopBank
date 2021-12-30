@@ -184,8 +184,8 @@ public class RationLoanController {
                 .prepareStatement("SELECT * FROM RationLoan WHERE nextInstallmentDate <= ? AND loanStatus=?");
         LocalDate today = LocalDate.from(LocalDateTime.now());
 
-        //statement.setObject(1,"2021-11-04");
-        statement.setObject(1,today);
+        statement.setObject(1,"2021-11-04");
+       // statement.setObject(1,today);
         statement.setObject(2,"Active");
         ArrayList<RationLoanModel> models = new ArrayList<>();
         ResultSet resultSet = statement.executeQuery();

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="withdrawConfirmContext" prefHeight="648.0" prefWidth="1280.0" style="-fx-background-color: #fafbff;" stylesheets="@styleSheets/withdrawFormStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.WithdrawFormController">
+   <children>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="427.0" layoutX="45.0" layoutY="30.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="608.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="126.0" layoutX="45.0" layoutY="494.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="608.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="591.0" layoutX="695.0" layoutY="30.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="556.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <TableView fx:id="latestTransactions" layoutX="710.0" layoutY="101.0" prefHeight="478.0" prefWidth="525.0" styleClass="noheader">
+         <columns>
+            <TableColumn fx:id="colDate" prefWidth="79.0" style="-fx-alignment: center; -fx-font-weight: bold;" styleClass="tableContent" text="Date" />
+            <TableColumn fx:id="colAccount" prefWidth="147.0" styleClass="tableContent" text="Account" />
+            <TableColumn fx:id="colDescription" prefWidth="152.0" text="Description" />
+            <TableColumn fx:id="colAmount" prefWidth="146.0" text="Amount" />
+         </columns>
+      </TableView>
+      <Label layoutX="712.0" layoutY="44.0" text="Latest Transaction">
+         <font>
+            <Font name="Roboto Black" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="63.0" layoutY="41.0" text="Transaction Details">
+         <font>
+            <Font name="Roboto Black" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="424.0" layoutY="41.0" text="WITHDRAW SLIP" textFill="#2980b9">
+         <font>
+            <Font name="Roboto Black" size="28.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cmbAccountType" layoutX="429.0" layoutY="506.0" prefHeight="24.0" prefWidth="211.0" promptText="Select Account" />
+      <Label layoutX="63.0" layoutY="504.0" text="Current Account Balance">
+         <font>
+            <Font name="Roboto Black" size="21.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtAccNumber" editable="false" layoutX="257.0" layoutY="122.0" prefHeight="30.0" prefWidth="254.0" />
+      <Label layoutX="156.0" layoutY="126.0" text="Acc. No" textFill="#494949">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtName" editable="false" layoutX="257.0" layoutY="170.0" prefHeight="30.0" prefWidth="254.0" />
+      <Label layoutX="173.0" layoutY="174.0" text="Name" textFill="#494949">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtAccType" editable="false" layoutX="257.0" layoutY="218.0" prefHeight="30.0" prefWidth="254.0" />
+      <Label layoutX="133.0" layoutY="222.0" text="Acc. Type" textFill="#494949">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtDesc" layoutX="257.0" layoutY="266.0" prefHeight="30.0" prefWidth="254.0" />
+      <Label layoutX="114.0" layoutY="269.0" text="Description" textFill="#494949">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtAmount" layoutX="258.0" layoutY="311.0" prefHeight="30.0" prefWidth="254.0" />
+      <Label layoutX="150.0" layoutY="315.0" text="Amount" textFill="#494949">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="318.0" layoutY="378.0" mnemonicParsing="false" onAction="#btnConfirmWithdrawOnAction" prefHeight="42.0" prefWidth="115.0" style="-fx-background-color: #2980b9;" text="CONFIRM" textFill="WHITE">
+         <font>
+            <Font name="Open Sans ExtraBold" size="16.0" />
+         </font></Button>
+      <Button layoutX="448.0" layoutY="378.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="42.0" prefWidth="115.0" style="-fx-background-color: #7f8c8d;" text="Cancel" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font></Button>
+      <Label fx:id="txtCurrentAccountBalanceShower" alignment="CENTER" layoutX="147.0" layoutY="561.0" prefHeight="16.0" prefWidth="387.0" text="&lt;Rs. 458.00&gt;">
+         <font>
+            <Font name="Roboto Black" size="31.0" />
+         </font>
+      </Label>
+      <Label layoutX="60.0" layoutY="432.0" text="Transaction ID : " />
+      <Label fx:id="lblTransactionID" layoutX="176.0" layoutY="432.0" prefHeight="18.0" prefWidth="222.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

@@ -5,6 +5,7 @@ import controller.components.ModifiedAlertBox;
 import controller.components.NumberGenerator;
 import controller.components.ObjectPasser;
 import controller.dbControllers.CustomerDetailsController;
+import controller.dbControllers.MoneyJournalController;
 import controller.dbControllers.SavingsAccountController;
 import controller.dbControllers.WithdrawMoneyController;
 import javafx.collections.FXCollections;
@@ -30,6 +31,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.regex.Pattern;
 
 public class WithdrawFormController {
 
@@ -48,6 +50,9 @@ public class WithdrawFormController {
     public Label txtCurrentAccountBalanceShower;
     public AnchorPane withdrawConfirmContext;
     public Label lblTransactionID;
+    Pattern moneyPattern = Pattern.compile("^[1-9][0-9]*([.][0-9]{2})?$");
+    Pattern mainMoneyPattern = Pattern.compile("^[1-9][0-9]*$");
+    Pattern singleDecimal = Pattern.compile("^[1-9][0-9]*([.][0-9]{1})?$");
 
 
     public void initialize() throws SQLException, ClassNotFoundException, ParseException {
@@ -69,6 +74,19 @@ public class WithdrawFormController {
 
         // * Getting the data to the table and load them.
         setDataToTable();
+
+        // * Amount fields
+        // * Re-arranging amount field.
+        txtAmount.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue) {
+                if (!txtAmount.getText().isEmpty()){
+                    Pattern pattern = Pattern.compile("^[1-9][0-9]*$");
+                    if (pattern.matcher(txtAmount.getText()).matches()) {
+                        txtAmount.setText(txtAmount.getText()+".00");
+                    }
+                }
+            }
+        });
     }
 
     private void setDataToTable() throws SQLException, ClassNotFoundException, ParseException {
@@ -93,7 +111,19 @@ public class WithdrawFormController {
     private void setDataToFields() throws SQLException, ClassNotFoundException {
         lblTransactionID.setText(new NumberGenerator().getWithdrawalID());
         txtAccNumber.setText(model.getAccountNumber());
-        txtCurrentAccountBalanceShower.setText("Rs. "+new SavingsAccountController().getAccountBalance(txtAccNumber.getText()));
+
+        // * Updating Main balance
+        double mainBalance = new SavingsAccountController().getAccountBalance(txtAccNumber.getText());
+        String finalBalance = null;
+        if (mainMoneyPattern.matcher(String.valueOf(mainBalance)).matches()){
+            finalBalance = mainBalance+".00";
+        }else if (singleDecimal.matcher(String.valueOf(mainBalance)).matches()){
+            finalBalance = mainBalance+"0";
+        }else{
+            finalBalance = String.valueOf(mainBalance);
+        }
+
+        txtCurrentAccountBalanceShower.setText("Rs. "+finalBalance);
         txtAccType.setText("Savings Account");
         txtAmount.setText(String.valueOf(model.getAmount()));
         txtName.setText(new CustomerDetailsController().getAccountHolderName(model.getAccountNumber()));
@@ -126,6 +156,17 @@ public class WithdrawFormController {
             ModifiedAlertBox alertBox = new ModifiedAlertBox("Done!", Alert.AlertType.INFORMATION,
                     "Succeed!","Transaction succeed!");
             alertBox.showAlert();
+            URL resource = getClass().getResource("../view/MainDashboardForm.fxml");
+            System.out.println(resource);
+            assert resource != null;
+            Parent load = null;
+            try {
+                load = FXMLLoader.load(resource);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            withdrawConfirmContext.getChildren().clear();
+            withdrawConfirmContext.getChildren().add(load);
         }else{
             System.out.println("ERROR->[@Code:01]");
         }

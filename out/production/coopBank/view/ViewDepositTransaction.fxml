@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<!--
+  ~ Copyright (c) 2021. Coded By Ravindu Thilakshana (naashnix) naashnix.bio.link
+  -->
+
+
+<AnchorPane fx:id="depositContext" prefHeight="648.0" prefWidth="1280.0" style="-fx-background-color: #fafbff;" stylesheets="@styleSheets/withdrawFormStyle.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ViewDepositTransactionController">
+   <children>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="591.0" layoutX="565.0" layoutY="33.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="556.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <TableView fx:id="latestTransactions" layoutX="580.0" layoutY="104.0" prefHeight="478.0" prefWidth="525.0" styleClass="noheader">
+         <columns>
+            <TableColumn fx:id="colDate" prefWidth="79.0" style="-fx-alignment: center; -fx-font-weight: bold;" styleClass="tableContent" text="Date" />
+            <TableColumn fx:id="colAccount" prefWidth="147.0" styleClass="tableContent" text="Account" />
+            <TableColumn fx:id="colDescription" prefWidth="152.0" text="Description" />
+            <TableColumn fx:id="colAmount" prefWidth="146.0" text="Amount" />
+         </columns>
+      </TableView>
+      <Label layoutX="582.0" layoutY="47.0" text="Deposit Transactions">
+         <font>
+            <Font name="Roboto Black" size="21.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="281.0" layoutX="38.0" layoutY="32.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="469.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <Label layoutX="46.0" layoutY="43.0" text="Transaction Details">
+         <font>
+            <Font name="Roboto Black" size="23.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtAccNumber" editable="false" layoutX="195.0" layoutY="104.0" prefHeight="30.0" prefWidth="254.0" />
+      <Label layoutX="94.0" layoutY="108.0" text="Acc. No" textFill="#494949">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtName" editable="false" layoutX="195.0" layoutY="152.0" prefHeight="30.0" prefWidth="254.0" />
+      <Label layoutX="111.0" layoutY="156.0" text="Name" textFill="#494949">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtAccType" editable="false" layoutX="195.0" layoutY="200.0" prefHeight="30.0" prefWidth="254.0" />
+      <Label layoutX="71.0" layoutY="204.0" text="Acc. Type" textFill="#494949">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button layoutX="334.0" layoutY="255.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="42.0" prefWidth="115.0" style="-fx-background-color: #7f8c8d;" text="Back" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

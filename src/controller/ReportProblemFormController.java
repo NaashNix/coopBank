@@ -76,30 +76,6 @@ public class ReportProblemFormController {
                 new KeyFrame(Duration.ZERO, new KeyValue(sendingBar.progressProperty(), 0)),
                 new KeyFrame(Duration.seconds(5), e-> {
                     // do anything you need here on completion...
-                    Properties properties = new Properties();
-                    properties.put("mail.smtp.auth", "true");
-                    properties.put("mail.smtp.starttls.enable", "true");
-                    properties.put("mail.smtp.host", "smtp.gmail.com");
-                    properties.put("mail.smtp.port", "587");
-
-                    String myAccountEmail = "sanasabankgalthude@gmail.com";
-                    String password = "5744210Sanasa";
-
-                    Session session = Session.getInstance(properties, new Authenticator() {
-                        @Override
-                        protected PasswordAuthentication getPasswordAuthentication() {
-                            return new PasswordAuthentication(myAccountEmail, password);
-                        }
-                    });
-
-
-
-                    Message message = prepareMessage(session, myAccountEmail, receipt, txtMessageBody.getText());
-                    try {
-                        Transport.send(message);
-                    } catch (MessagingException messagingException) {
-                        messagingException.printStackTrace();
-                    }
                     ModifiedAlertBox box = new ModifiedAlertBox("Done!", Alert.AlertType.INFORMATION
                             ,"Done!","Message sent successfully!");
                     box.showAlert();
@@ -117,6 +93,30 @@ public class ReportProblemFormController {
         timeline.setCycleCount(1);
         timeline.play();
 
+        Properties properties = new Properties();
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.host", "smtp.gmail.com");
+        properties.put("mail.smtp.port", "587");
+
+        String myAccountEmail = "sanasabankgalthude@gmail.com";
+        String password = "5744210Sanasa";
+
+        Session session = Session.getInstance(properties, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(myAccountEmail, password);
+            }
+        });
+
+
+
+        Message message = prepareMessage(session, myAccountEmail, receipt, txtMessageBody.getText());
+        try {
+            Transport.send(message);
+        } catch (MessagingException messagingException) {
+            messagingException.printStackTrace();
+        }
 
     }
 

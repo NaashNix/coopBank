@@ -1,0 +1,26 @@
+.verification-fields {
+    -fx-background-color: -fx-text-box-border, -fx-background ;
+    -fx-background-color : #C4C4C4;
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-prompt-text-fill: #554E4E;
+    -fx-background-radius: 0 ;
+}
+.text-field{
+        -fx-border-color:#b5b5b5;
+        -fx-border-radius:3;
+        -fx-border-width:1;
+        -fx-background-radius:3;
+
+}
+.accountNumberField{
+        -fx-background-color:#2980b9;
+        -fx-background-color : #C4C4C4;
+        -fx-background-insets: 0, 0 0 1 0 ;
+        -fx-prompt-text-fill: #554E4E;
+        -fx-text-fill : #c0392b;
+        -fx-border-color:#34495e;
+        -fx-border-radius:5;
+        -fx-border-width:2;
+        -fx-background-radius: 5 ;
+}
+

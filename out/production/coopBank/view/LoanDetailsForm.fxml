@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="loanDetailsContext" prefHeight="648.0" prefWidth="1280.0" style="-fx-background-color: #fafbff;" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoanDetailsFormController">
+   <children>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="109.0" layoutX="45.0" layoutY="30.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="389.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <Label layoutX="61.0" layoutY="39.0" text="Select Loan Type To View" textFill="#5e5e5e">
+         <font>
+            <Font name="Roboto Medium" size="20.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="455.0" layoutX="45.0" layoutY="170.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="608.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <JFXComboBox fx:id="cmbLoanType" layoutX="97.0" layoutY="92.0" prefHeight="24.0" prefWidth="280.0" />
+      <Label layoutX="63.0" layoutY="180.0" text="View Details">
+         <font>
+            <Font name="Roboto Black" size="23.0" />
+         </font>
+      </Label>
+      <JFXToggleButton layoutX="487.0" layoutY="162.0" text="View / Edit" textFill="#575757">
+         <font>
+            <Font name="Roboto Black" size="18.0" />
+         </font>
+      </JFXToggleButton>
+      <Pane fx:id="UserVerificationPane" layoutX="676.0" layoutY="346.0" prefHeight="219.0" prefWidth="572.0" stylesheets="@styleSheets/loginForm.css">
+         <children>
+            <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="203.0" layoutX="26.0" layoutY="6.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="532.0">
+               <effect>
+                  <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+               </effect>
+            </Rectangle>
+            <TextField layoutX="88.0" layoutY="77.0" prefHeight="30.0" prefWidth="189.0" promptText="User Name" styleClass="verification-fields" />
+            <Button layoutX="246.0" layoutY="129.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="115.0" style="-fx-background-color: #2980b9;" text="Done" textFill="WHITE">
+               <font>
+                  <Font name="Open Sans ExtraBold" size="17.0" />
+               </font></Button>
+            <Button layoutX="376.0" layoutY="129.0" mnemonicParsing="false" onAction="#cancelOnAction" prefHeight="42.0" prefWidth="115.0" style="-fx-background-color: #7f8c8d;" text="Cancel" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
+            <TextField layoutX="300.0" layoutY="77.0" prefHeight="30.0" prefWidth="189.0" promptText="Password" styleClass="verification-fields" />
+            <Label layoutX="38.0" layoutY="17.0" text="Verification">
+               <font>
+                  <Font name="Roboto Black" size="23.0" />
+               </font>
+            </Label>
+            <Label layoutX="429.0" layoutY="18.0" text="Admin Passwords" textFill="#727272" />
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </Pane>
+      <TextField fx:id="txtName" editable="false" layoutX="285.0" layoutY="245.0" prefHeight="30.0" prefWidth="254.0" />
+      <Label layoutX="147.0" layoutY="249.0" text="Loan Name" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtLoanCode" editable="false" layoutX="285.0" layoutY="293.0" prefHeight="30.0" prefWidth="254.0" />
+      <Label layoutX="150.0" layoutY="297.0" text="Loan Code" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtLoanType" editable="false" layoutX="285.0" layoutY="341.0" prefHeight="30.0" prefWidth="254.0" />
+      <Label layoutX="153.0" layoutY="345.0" text="Loan Type" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="199.0" layoutY="393.0" text="For " textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="83.0" layoutY="444.0" lineSpacing="1.0" prefHeight="56.0" prefWidth="148.0" text="Minimum Acc Balance" textAlignment="RIGHT" textFill="#494949" wrapText="true">
+         <font>
+            <Font name="Roboto Medium" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtMinimumBalance" editable="false" layoutX="285.0" layoutY="477.0" prefHeight="30.0" prefWidth="254.0" promptText="Eg. Rs. 10000.00" />
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="285.0" layoutX="701.0" layoutY="25.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="532.0">
+         <effect>
+            <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
+         </effect>
+      </Rectangle>
+      <TextField fx:id="txtInterestType" editable="false" layoutX="927.0" layoutY="96.0" prefHeight="30.0" prefWidth="254.0" />
+      <Label layoutX="769.0" layoutY="100.0" text="Interest Type" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtInterest" editable="false" layoutX="927.0" layoutY="144.0" prefHeight="30.0" prefWidth="115.0" />
+      <Label layoutX="816.0" layoutY="148.0" text="Interest" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtNoMaxInstallments" editable="false" layoutX="927.0" layoutY="192.0" prefHeight="30.0" prefWidth="254.0" />
+      <Label layoutX="741.0" layoutY="197.0" text="No. of Installments" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="16.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cmbForWhom" disable="true" layoutX="286.0" layoutY="390.0" prefHeight="30.0" prefWidth="254.0" />
+      <CheckBox fx:id="tickMinimumBalance" disable="true" layoutX="287.0" layoutY="442.0" mnemonicParsing="false" text="Minimum Balance Required ">
+         <font>
+            <Font name="Roboto Medium" size="13.0" />
+         </font></CheckBox>
+      <TextField fx:id="txtAccMaturity" editable="false" layoutX="285.0" layoutY="533.0" prefHeight="30.0" prefWidth="254.0" promptText="Eg. Rs. 10000.00" />
+      <Label layoutX="81.0" layoutY="520.0" lineSpacing="1.0" prefHeight="56.0" prefWidth="158.0" text="Minimum Acc. Maturity  " textAlignment="RIGHT" textFill="#494949" wrapText="true">
+         <font>
+            <Font name="Roboto Medium" size="16.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cmbInterestCalPeriod" disable="true" layoutX="1054.0" layoutY="143.0" prefHeight="30.0" prefWidth="129.0" />
+      <Label layoutX="796.0" layoutY="251.0" text="Not repaid" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+      <CheckBox fx:id="tickFromDeposit" disable="true" layoutX="929.0" layoutY="253.0" mnemonicParsing="false" text="From Deposit">
+         <font>
+            <Font name="Roboto Medium" size="13.0" />
+         </font>
+      </CheckBox>
+      <CheckBox fx:id="tickLegalAction" disable="true" layoutX="1076.0" layoutY="253.0" mnemonicParsing="false" text="Legal Action">
+         <font>
+            <Font name="Roboto Medium" size="13.0" />
+         </font>
+      </CheckBox>
+      <TextField fx:id="txtLoanAmount" editable="false" layoutX="927.0" layoutY="46.0" prefHeight="30.0" prefWidth="254.0" />
+      <Label layoutX="729.0" layoutY="50.0" text="Max Loan Amount" textFill="#494949">
+         <font>
+            <Font name="Roboto Medium" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

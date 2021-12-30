@@ -2,6 +2,7 @@ package controller;
 
 import com.jfoenix.controls.JFXComboBox;
 import controller.dbControllers.LoanDetailsController;
+import controller.dbControllers.SavingsAccountController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,6 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class LoanDetailsFormController {
     public AnchorPane loanDetailsContext;
@@ -36,6 +38,9 @@ public class LoanDetailsFormController {
     public JFXComboBox<String> cmbLoanType;
     public ArrayList<LoanDetailsModel> loanDetails;
     public TextField txtName;
+    Pattern moneyPattern = Pattern.compile("^[1-9][0-9]*([.][0-9]{2})?$");
+    Pattern mainMoneyPattern = Pattern.compile("^[1-9][0-9]*$");
+    Pattern singleDecimal = Pattern.compile("^[1-9][0-9]*([.][0-9]{1})?$");
 
     public void initialize() throws SQLException, ClassNotFoundException {
         // * Setting a data to fields.
@@ -89,8 +94,20 @@ public class LoanDetailsFormController {
         txtInterest.setText(String.valueOf(loanDetailsModel.getInterest())+" %");
         txtLoanAmount.setText("Rs. "+String.valueOf(loanDetailsModel.getMaximumLoanAmount()));
         txtInterestType.setText(loanDetailsModel.getInterestType());
+
+        // * Updating Main balance
+        double mainBalance = loanDetailsModel.getMinimumAccountBalance();
+        String finalBalance = null;
+        if (mainMoneyPattern.matcher(String.valueOf(mainBalance)).matches()){
+            finalBalance = mainBalance+".00";
+        }else if (singleDecimal.matcher(String.valueOf(mainBalance)).matches()){
+            finalBalance = mainBalance+"0";
+        }else{
+            finalBalance = String.valueOf(mainBalance);
+        }
+
         txtNoMaxInstallments.setText(String.valueOf(loanDetailsModel.getMaximumNoOfInstallments()));
-        txtMinimumBalance.setText(String.valueOf(loanDetailsModel.getMinimumAccountBalance()));
+        txtMinimumBalance.setText(finalBalance);
         txtLoanType.setText("not specified");
         txtLoanCode.setText(loanDetailsModel.getLoanCode());
         cmbForWhom.setValue(loanDetailsModel.getForWhom());

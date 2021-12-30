@@ -1,0 +1,30 @@
+.calKeys {
+    -fx-background-color : #8E8E8E;
+    -fx-background-radius:8;
+    -fx-border-color:white;
+    -fx-border-radius : 8;
+    -fx-border-width: 1 1 1 1;
+    -fx-background-insets: 0;
+}
+
+.formButtons {
+
+    -fx-background-insects : 0;
+    -fx-border-width : 1 1 1 1;
+    -fx-background-radius : 20px;
+
+}
+
+.nonEditableField{
+        /*-fx-background-color:#2980b9;*/
+        /*-fx-background-color : #C4C4C4;*/
+        -fx-background-insets: 0, 0 0 1 0 ;
+        -fx-prompt-text-fill: #95a5a6;
+        -fx-text-fill : #34495e;
+        -fx-font-weight:bold;
+        -fx-border-color:#7f8c8d;
+        -fx-border-radius:5;
+        -fx-border-width:1;
+        -fx-background-radius: 5 ;
+}
+

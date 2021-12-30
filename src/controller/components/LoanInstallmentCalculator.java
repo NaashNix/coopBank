@@ -34,7 +34,9 @@ public class LoanInstallmentCalculator {
         if (loanModel!=null) {
             if (loanModel.getInterestType().equals("Flat Rate")) {
                 if (loanModel.getInterestCalPeriod().equals("Yearly")) {
-                    double totalInterest = (amount * ((double) installments / 12) * loanModel.getInterest()) / installments;
+                    double totalInterest = (amount * ((double) installments / 12) * loanModel.getInterest()/100);
+                    System.out.println("totalInterest"+totalInterest);
+                    System.out.println("Rate"+loanModel.getInterest());
                     double monthlyInstallment = (amount+totalInterest)/installments;
                     return monthlyInstallment;
 

@@ -2,9 +2,6 @@ package controller;
 
 import controller.components.*;
 import controller.dbControllers.*;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.transformation.TransformationList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -114,15 +111,11 @@ public class MainDashboardForm {
         String finalBalance = null;
         if (mainMoneyPattern.matcher(String.valueOf(mainBalance)).matches()){
             finalBalance = mainBalance+".00";
-            System.out.println("main");
         }else if (singleDecimal.matcher(String.valueOf(mainBalance)).matches()){
             finalBalance = mainBalance+"0";
-            System.out.println("single");
         }else{
             finalBalance = String.valueOf(mainBalance);
         }
-        System.out.println("Final balance : "+finalBalance);
-        System.out.println("main bal : "+mainBalance);
         lblMainBalance.setText("Rs. "+finalBalance);
         lblMainBalTime.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("hh:mm a")));
 
@@ -317,7 +310,18 @@ public class MainDashboardForm {
         }else if(new CustomerDetailsController().checkAccountNumberIsExist(txtSearchWithdraw.getText())){
             txtSearchWithdraw.setStyle("-fx-border-color:#b5b5b5");
             txtWithdrawName.setText(new CustomerDetailsController().getAccountHolderName(txtSearchWithdraw.getText()));
-            txtAccBalance.setText(String.valueOf(new SavingsAccountController().getAccountBalance(txtSearchWithdraw.getText())));
+            // * Updating Main balance
+            double accountBalance = new SavingsAccountController().getAccountBalance(txtSearchWithdraw.getText());
+            String finalBalance = null;
+            if (mainMoneyPattern.matcher(String.valueOf(accountBalance)).matches()){
+                finalBalance = accountBalance+".00";
+            }else if (singleDecimal.matcher(String.valueOf(accountBalance)).matches()){
+                finalBalance = accountBalance+"0";
+            }else{
+                finalBalance = String.valueOf(accountBalance);
+            }
+            txtAccBalance.setText(finalBalance);
+
         }else{
             ModifiedAlertBox alert = new ModifiedAlertBox("Invalid!", Alert.AlertType.ERROR,"ERROR!","Invalid number!");
             alert.showAlert();

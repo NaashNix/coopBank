@@ -17,8 +17,9 @@ public class ArrearsLoanDisplayModel {
     private String telephone;
     private String email;
     private String address;
+    private String accountNumber;
 
-    public ArrearsLoanDisplayModel(String loanNumber, String debtorName, String loanType, double installment, double loanAmount, Date paymentDate, int remainingInstallments, String telephone, String email, String address) {
+    public ArrearsLoanDisplayModel(String loanNumber, String debtorName, String loanType, double installment, double loanAmount, Date paymentDate, int remainingInstallments, String telephone, String email, String address, String accountNumber) {
         this.loanNumber = loanNumber;
         this.debtorName = debtorName;
         this.loanType = loanType;
@@ -29,6 +30,7 @@ public class ArrearsLoanDisplayModel {
         this.telephone = telephone;
         this.email = email;
         this.address = address;
+        this.accountNumber = accountNumber;
     }
 
     public String getLoanNumber() {
@@ -109,5 +111,13 @@ public class ArrearsLoanDisplayModel {
 
     public void setLoanType(String loanType) {
         this.loanType = loanType;
+    }
+
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
     }
 }

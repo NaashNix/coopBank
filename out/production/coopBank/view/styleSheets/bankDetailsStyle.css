@@ -1,0 +1,22 @@
+.dep-date-field {
+    -fx-background-color: -fx-text-box-border, -fx-background ;
+    -fx-background-color : #C4C4C4;
+    -fx-background-insets: 0, 0 0 1 0 ;
+    -fx-prompt-text-fill: #554E4E;
+    -fx-background-radius: 5;
+    -fx-text-fill : #000000;
+}
+
+.text-field {
+    /*-fx-background-insets: 1, 1 1 1 1 ;*/
+    -fx-background-radius: 5;
+    -fx-text-box-border : #6E6E6E;
+
+}
+.formButtons {
+
+    -fx-background-insects : 0;
+    -fx-border-width : 1 1 1 1;
+    -fx-background-radius : 15px;
+
+}

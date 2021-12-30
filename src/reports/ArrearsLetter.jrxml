@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.17.0.final using JasperReports Library version 6.17.0-6d93193241dd8cc42629e188b94f9e0bc5722efd  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ArrearsLetter" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="47ea22f8-9c5f-419e-996c-d0bc8f0533e3">
+	<parameter name="name" class="java.lang.String"/>
+	<parameter name="loanNumber" class="java.lang.String"/>
+	<parameter name="loanAmount" class="java.lang.Double"/>
+	<parameter name="installmentAmount" class="java.lang.Double"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="115" splitType="Stretch">
+			<image>
+				<reportElement x="245" y="0" width="68" height="66" uuid="e76af172-5cd6-4882-bab8-20de35b3da28"/>
+				<imageExpression><![CDATA["/media/naashnix/Projects/Documents/Java Projects/coopBank/src/assets/sanasaLogo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="65" width="555" height="25" uuid="ddc3059a-a025-44d8-8370-3dabdf4aaaee"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Sanasa Co-oparaive Socety]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="78" width="555" height="25" uuid="7ba8b47c-88f2-47d2-94d2-0b06956c5948"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Galthude, Panadura]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="97" width="555" height="13" uuid="495ec7f1-8411-49ee-bec7-23d7acdf9b30"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<text><![CDATA[Tel : +(94) 38 96 96 458]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="25" width="515" height="19" uuid="48555067-149a-46a2-8239-08c3dba72e98"/>
+				<textElement textAlignment="Left">
+					<font size="12" isBold="true" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[Regaurding : Arrears of installment in you loan lend by the bank.]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="2a197b77-b0b1-449c-aa56-cb5ad5252906"/>
+			</line>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="324" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="70" width="80" height="15" uuid="b9badf9e-5a96-4cd8-a634-8595de2b656f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Dear Mr/Mrs]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="106" width="115" height="15" uuid="fd343724-a8da-42b4-a4d8-f28393381945">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<text><![CDATA[Your Loan Number is : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="70" width="200" height="15" uuid="4d22ad0f-acc9-4b6b-9116-551a19701f8a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="115" y="106" width="165" height="15" uuid="ff9d8cf6-de40-4d6e-9b5f-290ce8b3f0ca">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{loanNumber}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="55" y="147" width="175" height="15" uuid="5fd4cea3-79f4-4da3-83f8-1f5966c1b6d0">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<text><![CDATA[You have borrowed amount of Rs. ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="230" y="147" width="100" height="15" uuid="db249148-7282-4847-a7b9-e8194e3fb534">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{loanAmount}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="330" y="147" width="205" height="15" uuid="e36b30b2-a913-41ad-90e7-6abe2ece44c2">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<text><![CDATA[from Galthude Sanasa Bank. This letter]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="162" width="380" height="15" uuid="8604e7f1-07d1-40c9-a80b-30dc478d62c2">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<text><![CDATA[is for you to inform that the you have missed a installment of a amount Rs. ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="380" y="162" width="90" height="15" uuid="56880eb2-310c-4fd3-943c-e3effacc3d51">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{installmentAmount}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="177" width="555" height="15" uuid="7ef8acba-52da-4ea6-9672-671b1973d622">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<text><![CDATA[your cheque for the whole amount so that the oustanding in your account is cleared. If you want any further]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="192" width="555" height="15" uuid="c36790d6-12c4-4162-a87a-65676297b203">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<text><![CDATA[information regarding this letter please feel free to call us via +(94) 38 96 96 699 (Sanasa Bank)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="470" y="162" width="85" height="15" uuid="f3e00dc4-faaf-4dfd-bb8e-be79df1481ce">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<text><![CDATA[Please send]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="215" width="100" height="15" uuid="2e88f8da-b06d-4aa3-93a7-0e9e27513dc1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<text><![CDATA[Thank You!]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="253" width="100" height="15" uuid="5908aefa-40fe-4486-8dad-498adf6b1ea0">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<text><![CDATA[Your Faithfully,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="268" width="100" height="15" uuid="12c8905f-6e19-4caf-88ac-dbdb1a4de5c5">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Branch Manager]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="0" y="283" width="130" height="15" uuid="1b54fdcd-c480-42f8-8908-6e1b95b805b5">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

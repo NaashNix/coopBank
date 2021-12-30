@@ -85,11 +85,6 @@
             <Font name="Roboto Black" size="23.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="130.0" layoutY="516.0" lineSpacing="1.5" prefHeight="73.0" prefWidth="423.0" text="Ravindu Thilakshana - (94) 70 20 53 777 2020P1148 - IJSE(GDSE)" textAlignment="CENTER" wrapText="true">
-         <font>
-            <Font name="DejaVu Sans Mono Bold" size="18.0" />
-         </font>
-      </Label>
       <Rectangle arcHeight="40.0" arcWidth="40.0" fill="WHITE" focusTraversable="true" height="400.0" layoutX="683.0" layoutY="30.0" stroke="LIGHTGRAY" strokeType="INSIDE" width="556.0">
          <effect>
             <DropShadow offsetX="2.0" offsetY="2.0" spread="0.1" />
@@ -103,6 +98,11 @@
       <ImageView fitHeight="58.0" fitWidth="200.0" layoutX="442.0" layoutY="456.0">
          <image>
             <Image url="@../assets/ijse.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="65.0" fitWidth="433.0" layoutX="124.0" layoutY="524.0" preserveRatio="true">
+         <image>
+            <Image url="@../assets/logo.png" />
          </image>
       </ImageView>
    </children>

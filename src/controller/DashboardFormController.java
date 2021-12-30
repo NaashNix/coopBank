@@ -336,6 +336,11 @@ public class DashboardFormController {
 
 
     public void openArrearsLoanForm(MouseEvent mouseEvent) throws IOException {
+        try {
+            checkOutDatedLoans();
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
         URL resource = getClass().getResource("../view/LoanArreasForm.fxml");
         Parent load = FXMLLoader.load(resource);
         playGroundContext.getChildren().clear();
